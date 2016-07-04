@@ -1,0 +1,4 @@
+# calibration results: online constraint filtering
+# format: q1 q2 q3 q4 x y
+mean of error: 0.00011482 0.00014476 0.70711 -0.70711 -2.7902 -1.3846 
+std of error: 8.7256e-05 8.7269e-05 3.7458e-08 1.0025e-08 2.6633 0.62222 

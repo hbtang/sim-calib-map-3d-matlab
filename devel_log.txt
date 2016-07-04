@@ -1,0 +1,45 @@
+version: simcalibmap3d-matlab-v3.1
+date: 2016.3.7
+1. ClassSolverRt: full calibration and ground plane calibration
+
+version: simcalibmap3d-matlab-v3.0
+date: 2016.2.29
+1. ClassSolverRt: unstable.
+
+version: simcalibmap3d-matlab-v2.5
+date: 2016.1.21
+1. Jacobian matrix in ClassSolver.CostLocalLoopOpt and ClassSolver.CostLocalOpt.
+
+version: simcalibmap3d-matlab-v2.4
+date: 2016.1.19
+1. new function ClassSolver.SolveLocalLoopOpt: solve local optimization consider loop closure info, but without SLAM.
+
+version: simcalibmap3d-matlab-v2.3
+date: 2016.1.18
+1. fix bug in ClassSolver.CostJointOpt, wrong order of output in odometry part.
+2. delete artificial error in simulator, replace by ClassSimulator.AddNoise2Rec to impose error on an ideal rec file.
+
+version: simcalibmap3d-matlab-v2.2
+date: 2016.1.15
+1. new member variable ClassSimlator.stdErrRatioOdoLin and ClassSimlator.stdErrRatioOdoRot, norm distribution error of odometry in simulator.
+
+version: simcalibmap3d-matlab-v2.1
+date: 2016.1.12
+1. new class ClassSimlator finished: for simulation and generate record file
+2. try main_calib on record data from simulator, drop into local minimum, related with the initial guess.
+3. new member function ClassSimlator.SolveLocalOpt, full calibration with local info, good performance with simulator data.
+
+version: simcalibmap3d-matlab-v1.2
+date: 2016.1.10
+1. ClassMap.DrawWithMeasure: show results including trajectory, mark, and mark observation projection.
+
+version: simcalibmap3d-matlab-v1.1
+date: 2016.1.8
+1. finish four class: ClassCalib, ClassMap, ClassMeasure, ClassSolver
+2. calibration realized, but weak accuracy and efficiency.
+
+version: simcalibmap3d-matlab-v0.2
+date: 2016.1.7
+1. calibration and mapping by lsqnonlin finished
+2. add mat_std for each mark observation, set by user, larger in depth direction
+
