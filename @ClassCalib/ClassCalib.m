@@ -15,6 +15,7 @@ classdef ClassCalib < handle
         % distance from ground to camera, positive if camera above ground
         dist_g_c;
     end
+    
     methods
         % constructor function
         function this = ClassCalib()
@@ -27,6 +28,8 @@ classdef ClassCalib < handle
 %             RefreshByTbc(this);
             
         end
+        
+        
         
         % refresh calibration properties according to _b_c
         RefreshByTbc(this); RefreshByVecbc(this);
@@ -49,6 +52,13 @@ classdef ClassCalib < handle
             this.rvec_b_cg = [0;0;ps2d_b_cg(3)];
             this.tvec_b_cg = [ps2d_b_cg(1:2);0];
             RefreshByVecbcgc(this);
+        end
+        
+        % set T_b_c by rodrigues vec and translational vec
+        function SetVecbc(this, rvec_b_c, tvec_b_c)
+            this.rvec_b_c = rvec_b_c;
+            this.tvec_b_c = tvec_b_c;            
+            RefreshByVecbc(this);
         end
         
         % display ps2d_b_cg

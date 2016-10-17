@@ -1,26 +1,24 @@
 %% init: create class objs and load data
 clear;
 
+settingFile = 'C:\Workspace\Data\sim\sim-sqrmap-inout-2016.1.18\config\setting-simcalibmap3d-slam.xml';
+configXml = readXml_slam(settingFile);
+
 % measure
-PathFold = '../data/r1-right-jx1-mk127-20160627';
-% PathFold = '../data/sim-sqrmap-inout-20160118';
-NameMk = 'Mk.rec'; NameOdo = 'Odo.rec';
+PathFold = configXml.PathFold;
+NameMk = configXml.NameMk;
+NameOdo = configXml.NameOdo;
+
 measure = ClassMeasure(PathFold, NameMk, NameOdo);
 measure.ReadRecData;
-measure.PruneData(200, 10*pi/180);
+measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
 
 % solver
-errConfig.stdErrRatioOdoLin = 0.03;
-errConfig.stdErrRatioOdoRot = 0.005;
-errConfig.stdErrRatioMkX = 0.002;
-errConfig.stdErrRatioMkY = 0.002;
-errConfig.stdErrRatioMkZ = 0.01;
-
-% errConfig.stdErrRatioOdoLin = 0.05;
-% errConfig.stdErrRatioOdoRot = 0.1;
-% errConfig.stdErrRatioMkX = 0.01;
-% errConfig.stdErrRatioMkY = 0.01;
-% errConfig.stdErrRatioMkZ = 0.05;
+errConfig.stdErrRatioOdoLin = configXml.SolverConfig_StdErrRatioOdoLin;
+errConfig.stdErrRatioOdoRot = configXml.SolverConfig_StdErrRatioOdoRot;
+errConfig.stdErrRatioMkX = configXml.SolverConfig_StdErrRatioMkX;
+errConfig.stdErrRatioMkY = configXml.SolverConfig_StdErrRatioMkY;
+errConfig.stdErrRatioMkZ = configXml.SolverConfig_StdErrRatioMkZ;
 solver = ClassSolver(errConfig);
 
 % map
@@ -28,16 +26,11 @@ map = ClassMap;
 
 % calib
 calib = ClassCalib;
-% calib.SetPs2dbcg([-1000;1000;-pi/4]);
-
-%% debuging: refine map
-% measure.odo = FunRefineOdo(measure.odo, 1, 0.97);
-
-% for rec_p1_right_clock_mk120_2016031509
-% measure.odo = FunRefineOdo(measure.odo, 1, 0.945);
-
-% for rec_p1_right_anticlock_mk120_2016031422
-% measure.odo = FunRefineOdo(measure.odo, 1, 0.97);
+qcbInit = configXml.qcbInit;
+pt3cbInit = configXml.pt3cbInit;
+RcbInit = quat2rot(qcbInit);
+rveccbInit = rodrigues(RcbInit);
+calib.SetVecbc(rveccbInit, pt3cbInit);
 
 %% init map
 map.InitMap(measure, calib);
@@ -65,7 +58,6 @@ calib.DispPs2dbcg;
 %% solve step 3: joint optimization
 solver.SolveJointOpt(measure, calib, map);
 calib.DispPs2dbcg;
-
 
 %% draw final SLAM results
 map.DrawMapWithMeasure(measure, calib);

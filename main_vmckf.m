@@ -1,45 +1,28 @@
 %% init: create class objs and load data
 clear;
+settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-vmckf.xml';
+configXml = readXml_vmckf(settingFile);
 
 % measure
-PathFold = './data/rec_r2_rightback_bidir_mk127_2016031520';
-NameMk = 'Mk.rec';
-NameOdo = 'Odo.rec';
-% NameMk = 'MkNs-0.05-0.01.rec';
-% NameOdo = 'OdoNs-0.05-0.01.rec';
+PathFold = configXml.PathFold;
+NameMk = configXml.NameMk;
+NameOdo = configXml.NameOdo;
 
 measure = ClassMeasure(PathFold, NameMk, NameOdo);
 measure.ReadRecData;
-measure.PruneData(200, 4*pi/180);
+measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
 
 % init solver
 solverRt = ClassSolverRt;
-% q_c_b = [1;0;0;0];
-q_c_b = [0;0;1/sqrt(2);-1/sqrt(2)];
-sigma_q_c_b = diag([3;3;3;3]);
-pt3_c_b = [100;100;0];
-sigma_pt3_c_b = diag([1e6;1e6;1e6]);
+
+q_c_b = configXml.qcbInit;
+sigma_q_c_b = configXml.qcbSigmaInit;
+pt3_c_b = configXml.pt3cbInit;
+sigma_pt3_c_b = configXml.pt3cbSigmaInit;
 solverRt.InitXFull(q_c_b, sigma_q_c_b, pt3_c_b, sigma_pt3_c_b);
 
-% init ground truth, for simulator dataset
-% for rec_r2_rightback_bidir_mk127_2016031520
-mu_x_true = [0.1499; 0.1490; 0.6803; -0.7018; 175.5707; -289.4186];
-% mu_x_true = [0;0;0;0;0;0];
-% mu_x_true = [0;0;1/sqrt(2);-1/sqrt(2);0;0];
-% mu_x_true = [0.0062;0.0010;0.6304;-0.7762;144.6295;-436.894];
-
-
-%% debuging: refine map
-% measure.odo = FunRefineOdo(measure.odo, 1.0, 1.0);
-
-% for rec_r2_right_anticlockx3_20160119
-% measure.odo = FunRefineOdo(measure.odo, 1.0015, 0.9975);
-
-% for rec_p1_right_clock_mk120_2016031509
-% measure.odo = FunRefineOdo(measure.odo, 1, 0.945);
-
-% for rec_p1_right_anticlock_mk120_2016031422
-% measure.odo = FunRefineOdo(measure.odo, 1, 0.97);
+% init ground truth
+mu_x_true = configXml.MuXTrue;
 
 %% solve in rt, main loop
 vecLp = measure.odo.lp;
