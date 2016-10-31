@@ -1,6 +1,15 @@
-function DrawMapWithMeasure( this, measure, calib )
+function DrawMapWithMeasure( this, measure, calib, bDrawMeasure, strTitle )
 %DRAWMAPWITHMEASURE Draw current map with mark observation
 %   Detailed explanation goes here
+
+switch nargin
+    case 3
+        strTitle = 'Mapping Results';
+        bDrawMeasure = false;
+    case 4
+        strTitle = 'Mapping Results';       
+    otherwise        
+end
 
 %% init
 % if isempty(this.hdFigMap)
@@ -9,11 +18,16 @@ function DrawMapWithMeasure( this, measure, calib )
 % figure(this.hdFigMap);
 
 figure;
+set(gcf, 'Position', [800,1,640,480]);
+
+set(gca,'Xtick',-10000:2000:10000) 
+set(gca,'Ytick',-10000:2000:10000) 
+
 hold on; grid on; axis equal;
-set(gca,'XTick',-10000:1000:10000);
-set(gca,'YTick',-10000:1000:10000);
-% set(gca, 'xlim', [-10000 5000]);
-% set(gca, 'ylim', [-3000 8000]);
+title(strTitle, 'FontWeight','bold');
+xlabel('X (mm)');
+ylabel('Y (mm)');
+box on;
 view(2);
 % set(this.hdFigMap, 'Name', 'Current Map', 'NumberTitle', 'off');
 
@@ -39,16 +53,20 @@ for i = 1:mk.num
     T3d_w_c = T3d_w_b*T3d_b_c;
     
     tvec_w_m_measure = T3d_w_c(1:3,1:3)*tvec_c_m + T3d_w_c(1:3,4);
-       
-%     plot3(tvec_w_m_measure(1), tvec_w_m_measure(2), tvec_w_m_measure(3),...
-%         '.', 'Color', 'r');    
-%     plot3([tvec_w_b(1);tvec_w_m_measure(1)], [tvec_w_b(2);tvec_w_m_measure(2)], ...
-%         [tvec_w_b(3);tvec_w_m_measure(3)], '-', 'Color','r');
+    
+    if bDrawMeasure
+        
+        plot3(tvec_w_m_measure(1), tvec_w_m_measure(2), tvec_w_m_measure(3),...
+            '.', 'Color', 'r');
+        plot3([tvec_w_b(1);tvec_w_m_measure(1)], [tvec_w_b(2);tvec_w_m_measure(2)], ...
+            [tvec_w_b(3);tvec_w_m_measure(3)], '-', 'Color','r');
+        
+    end
 end
 
 %% draw marks
 plot3(this.mks.tvec_w_m(:,1), this.mks.tvec_w_m(:,2), this.mks.tvec_w_m(:,3), ...
-    'o', 'LineWidth', 2, 'MarkerEdgeColor',[0;0;0], 'MarkerFaceColor',[1 0.2 0.2], 'MarkerSize', 10);
+    'o', 'LineWidth', 1.5, 'MarkerEdgeColor',[0;0;0], 'MarkerFaceColor',[1;1;1], 'MarkerSize', 10);
 
 end
 

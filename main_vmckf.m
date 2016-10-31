@@ -1,14 +1,14 @@
 %% init: create class objs and load data
 clear;
-settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-vmckf.xml';
+
+[FileName,PathName] = uigetfile('*.xml', 'Select the setting file', 'C:\Workspace\Data\');
+settingFile = [PathName, FileName];
+% settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-vmckf.xml';
+
 configXml = readXml_vmckf(settingFile);
 
 % measure
-PathFold = configXml.PathFold;
-NameMk = configXml.NameMk;
-NameOdo = configXml.NameOdo;
-
-measure = ClassMeasure(PathFold, NameMk, NameOdo);
+measure = ClassMeasure(configXml.PathFold, configXml.NameMk, configXml.NameOdo);
 measure.ReadRecData;
 measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
 

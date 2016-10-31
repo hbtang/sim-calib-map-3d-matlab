@@ -1,0 +1,11845 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Creator: MATLAB, The MathWorks, Inc. Version 8.1.0.604 (R2013a). Operating System: Microsoft Windows 8.
+%%Title: .\temp\slam.eps
+%%CreationDate: 10/31/2016  11:21:49
+%%DocumentNeededFonts: Helvetica
+%%+ Helvetica-Bold
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%Extensions: CMYK
+%%Pages: 1
+%%BoundingBox:    78   228   504   570
+%%EndComments
+
+%%BeginProlog
+% MathWorks dictionary
+/MathWorks 160 dict begin
+% definition operators
+/bdef {bind def} bind def
+/ldef {load def} bind def
+/xdef {exch def} bdef
+/xstore {exch store} bdef
+% operator abbreviations
+/c  /clip ldef
+/cc /concat ldef
+/cp /closepath ldef
+/gr /grestore ldef
+/gs /gsave ldef
+/mt /moveto ldef
+/np /newpath ldef
+/cm /currentmatrix ldef
+/sm /setmatrix ldef
+/rm /rmoveto ldef
+/rl /rlineto ldef
+/s {show newpath} bdef
+/sc {setcmykcolor} bdef
+/sr /setrgbcolor ldef
+/sg /setgray ldef
+/w /setlinewidth ldef
+/j /setlinejoin ldef
+/cap /setlinecap ldef
+/rc {rectclip} bdef
+/rf {rectfill} bdef
+% page state control
+/pgsv () def
+/bpage {/pgsv save def} bdef
+/epage {pgsv restore} bdef
+/bplot /gsave ldef
+/eplot {stroke grestore} bdef
+% orientation switch
+/portraitMode 0 def /landscapeMode 1 def /rotateMode 2 def
+% coordinate system mappings
+/dpi2point 0 def
+% font control
+/FontSize 0 def
+/FMS {/FontSize xstore findfont [FontSize 0 0 FontSize neg 0 0]
+  makefont setfont} bdef
+/ISOLatin1Encoding where {pop /WindowsLatin1Encoding 256 array bdef
+ISOLatin1Encoding WindowsLatin1Encoding copy pop
+/.notdef/.notdef/quotesinglbase/florin/quotedblbase/ellipsis/dagger
+/daggerdbl/circumflex/perthousand/Scaron/guilsinglleft/OE/.notdef/.notdef
+/.notdef/.notdef/quoteleft/quoteright/quotedblleft/quotedblright/bullet
+/endash/emdash/tilde/trademark/scaron/guilsinglright/oe/.notdef/.notdef
+/Ydieresis WindowsLatin1Encoding 128 32 getinterval astore pop}
+{/WindowsLatin1Encoding StandardEncoding bdef} ifelse
+/reencode {exch dup where {pop load} {pop StandardEncoding} ifelse
+  exch dup 3 1 roll findfont dup length dict begin
+  { 1 index /FID ne {def}{pop pop} ifelse } forall
+  /Encoding exch def currentdict end definefont pop} bdef
+/isroman {findfont /CharStrings get /Agrave known} bdef
+/FMSR {3 1 roll 1 index dup isroman {reencode} {pop pop} ifelse
+  exch FMS} bdef
+/csm {1 dpi2point div -1 dpi2point div scale neg translate
+ dup landscapeMode eq {pop -90 rotate}
+  {rotateMode eq {90 rotate} if} ifelse} bdef
+% line types: solid, dotted, dashed, dotdash
+/SO { [] 0 setdash } bdef
+/DO { [.5 dpi2point mul 4 dpi2point mul] 0 setdash } bdef
+/DA { [6 dpi2point mul] 0 setdash } bdef
+/DD { [.5 dpi2point mul 4 dpi2point mul 6 dpi2point mul 4
+  dpi2point mul] 0 setdash } bdef
+% macros for lines and objects
+/L {lineto stroke} bdef
+/MP {3 1 roll moveto 1 sub {rlineto} repeat} bdef
+/AP {{rlineto} repeat} bdef
+/PDlw -1 def
+/W {/PDlw currentlinewidth def setlinewidth} def
+/PP {closepath eofill} bdef
+/DP {closepath stroke} bdef
+/MR {4 -2 roll moveto dup  0 exch rlineto exch 0 rlineto
+  neg 0 exch rlineto closepath} bdef
+/FR {MR stroke} bdef
+/PR {MR fill} bdef
+/L1i {{currentfile picstr readhexstring pop} image} bdef
+/tMatrix matrix def
+/MakeOval {newpath tMatrix currentmatrix pop translate scale
+0 0 1 0 360 arc tMatrix setmatrix} bdef
+/FO {MakeOval stroke} bdef
+/PO {MakeOval fill} bdef
+/PD {currentlinewidth 2 div 0 360 arc fill
+   PDlw -1 eq not {PDlw w /PDlw -1 def} if} def
+/FA {newpath tMatrix currentmatrix pop translate scale
+  0 0 1 5 -2 roll arc tMatrix setmatrix stroke} bdef
+/PA {newpath tMatrix currentmatrix pop	translate 0 0 moveto scale
+  0 0 1 5 -2 roll arc closepath tMatrix setmatrix fill} bdef
+/FAn {newpath tMatrix currentmatrix pop translate scale
+  0 0 1 5 -2 roll arcn tMatrix setmatrix stroke} bdef
+/PAn {newpath tMatrix currentmatrix pop translate 0 0 moveto scale
+  0 0 1 5 -2 roll arcn closepath tMatrix setmatrix fill} bdef
+/vradius 0 def /hradius 0 def /lry 0 def
+/lrx 0 def /uly 0 def /ulx 0 def /rad 0 def
+/MRR {/vradius xdef /hradius xdef /lry xdef /lrx xdef /uly xdef
+  /ulx xdef newpath tMatrix currentmatrix pop ulx hradius add uly
+  vradius add translate hradius vradius scale 0 0 1 180 270 arc 
+  tMatrix setmatrix lrx hradius sub uly vradius add translate
+  hradius vradius scale 0 0 1 270 360 arc tMatrix setmatrix
+  lrx hradius sub lry vradius sub translate hradius vradius scale
+  0 0 1 0 90 arc tMatrix setmatrix ulx hradius add lry vradius sub
+  translate hradius vradius scale 0 0 1 90 180 arc tMatrix setmatrix
+  closepath} bdef
+/FRR {MRR stroke } bdef
+/PRR {MRR fill } bdef
+/MlrRR {/lry xdef /lrx xdef /uly xdef /ulx xdef /rad lry uly sub 2 div def
+  newpath tMatrix currentmatrix pop ulx rad add uly rad add translate
+  rad rad scale 0 0 1 90 270 arc tMatrix setmatrix lrx rad sub lry rad
+  sub translate rad rad scale 0 0 1 270 90 arc tMatrix setmatrix
+  closepath} bdef
+/FlrRR {MlrRR stroke } bdef
+/PlrRR {MlrRR fill } bdef
+/MtbRR {/lry xdef /lrx xdef /uly xdef /ulx xdef /rad lrx ulx sub 2 div def
+  newpath tMatrix currentmatrix pop ulx rad add uly rad add translate
+  rad rad scale 0 0 1 180 360 arc tMatrix setmatrix lrx rad sub lry rad
+  sub translate rad rad scale 0 0 1 0 180 arc tMatrix setmatrix
+  closepath} bdef
+/FtbRR {MtbRR stroke } bdef
+/PtbRR {MtbRR fill } bdef
+/stri 6 array def /dtri 6 array def
+/smat 6 array def /dmat 6 array def
+/tmat1 6 array def /tmat2 6 array def /dif 3 array def
+/asub {/ind2 exch def /ind1 exch def dup dup
+  ind1 get exch ind2 get sub exch } bdef
+/tri_to_matrix {
+  2 0 asub 3 1 asub 4 0 asub 5 1 asub
+  dup 0 get exch 1 get 7 -1 roll astore } bdef
+/compute_transform {
+  dmat dtri tri_to_matrix tmat1 invertmatrix 
+  smat stri tri_to_matrix tmat2 concatmatrix } bdef
+/ds {stri astore pop} bdef
+/dt {dtri astore pop} bdef
+/db {2 copy /cols xdef /rows xdef mul dup 3 mul string
+  currentfile exch readhexstring pop
+  dup 0 3 index getinterval /rbmap xdef
+  dup 2 index dup getinterval /gbmap xdef
+  1 index dup 2 mul exch getinterval /bbmap xdef pop pop}bdef
+/it {gs np dtri aload pop moveto lineto lineto cp c
+  cols rows 8 compute_transform 
+  rbmap gbmap bbmap true 3 colorimage gr}bdef
+/il {newpath moveto lineto stroke}bdef
+currentdict end def
+%%EndProlog
+
+%%BeginSetup
+MathWorks begin
+
+0 cap
+
+end
+%%EndSetup
+
+%%Page: 1 1
+%%BeginPageSetup
+%%PageBoundingBox:    78   228   504   570
+MathWorks begin
+bpage
+%%EndPageSetup
+
+%%BeginObject: obj1
+bplot
+
+/dpi2point 1.33333 def
+portraitMode 0088 0768 csm
+
+   17     7   568   457 MR c np
+85 dict begin %Colortable dictionary
+/c0 { 0.000000 0.000000 0.000000 sr} bdef
+/c1 { 1.000000 1.000000 1.000000 sr} bdef
+/c2 { 0.900000 0.000000 0.000000 sr} bdef
+/c3 { 0.000000 0.820000 0.000000 sr} bdef
+/c4 { 0.000000 0.000000 0.800000 sr} bdef
+/c5 { 0.910000 0.820000 0.320000 sr} bdef
+/c6 { 1.000000 0.260000 0.820000 sr} bdef
+/c7 { 0.000000 0.820000 0.820000 sr} bdef
+c0
+1 j
+1 sg
+   0    0  640  481 PR
+0.666667 w
+0 390 495 0 0 -390 83 426 4 MP
+PP
+-495 0 0 390 495 0 0 -390 83 426 5 MP stroke
+0.444444 w
+DO
+0 sg
+ 125  426 mt  125   36 L
+ 125   36 mt  125   36 L
+ 197  426 mt  197   36 L
+ 197   36 mt  197   36 L
+ 268  426 mt  268   36 L
+ 268   36 mt  268   36 L
+ 340  426 mt  340   36 L
+ 340   36 mt  340   36 L
+ 411  426 mt  411   36 L
+ 411   36 mt  411   36 L
+ 483  426 mt  483   36 L
+ 483   36 mt  483   36 L
+ 555  426 mt  555   36 L
+ 555   36 mt  555   36 L
+  83  361 mt  578  361 L
+ 578  361 mt  578  361 L
+  83  290 mt  578  290 L
+ 578  290 mt  578  290 L
+  83  218 mt  578  218 L
+ 578  218 mt  578  218 L
+  83  147 mt  578  147 L
+ 578  147 mt  578  147 L
+  83   75 mt  578   75 L
+ 578   75 mt  578   75 L
+SO
+0.666667 w
+  83   36 mt  578   36 L
+  83  426 mt  578  426 L
+ 578  426 mt  578   36 L
+  83  426 mt   83   36 L
+  83  426 mt  578  426 L
+  83  426 mt   83   36 L
+ 125  426 mt  125  421 L
+ 125   36 mt  125   41 L
+%%IncludeResource: font Helvetica
+/Helvetica /WindowsLatin1Encoding 13.3333 FMSR
+
+ 104  442 mt 
+(-6000) s
+ 197  426 mt  197  421 L
+ 197   36 mt  197   41 L
+ 176  442 mt 
+(-4000) s
+ 268  426 mt  268  421 L
+ 268   36 mt  268   41 L
+ 247  442 mt 
+(-2000) s
+ 340  426 mt  340  421 L
+ 340   36 mt  340   41 L
+ 337  442 mt 
+(0) s
+ 411  426 mt  411  421 L
+ 411   36 mt  411   41 L
+ 397  442 mt 
+(2000) s
+ 483  426 mt  483  421 L
+ 483   36 mt  483   41 L
+ 469  442 mt 
+(4000) s
+ 555  426 mt  555  421 L
+ 555   36 mt  555   41 L
+ 541  442 mt 
+(6000) s
+  83  361 mt   87  361 L
+ 578  361 mt  573  361 L
+  42  365 mt 
+(-6000) s
+  83  290 mt   87  290 L
+ 578  290 mt  573  290 L
+  42  294 mt 
+(-4000) s
+  83  218 mt   87  218 L
+ 578  218 mt  573  218 L
+  42  222 mt 
+(-2000) s
+  83  147 mt   87  147 L
+ 578  147 mt  573  147 L
+  72  151 mt 
+(0) s
+  83   75 mt   87   75 L
+ 578   75 mt  573   75 L
+  50   79 mt 
+(2000) s
+  83   36 mt  578   36 L
+  83  426 mt  578  426 L
+ 578  426 mt  578   36 L
+  83  426 mt   83   36 L
+gs 83 36 496 391 MR c np
+gs 536 147 19 19 MR c np
+4 W
+/c8 { 1.000000 0.000000 0.000000 sr} bdef
+c8
+545 156 PD
+gr
+
+c8
+gs 535 147 19 19 MR c np
+4 W
+544 156 PD
+gr
+
+gs 535 148 19 19 MR c np
+4 W
+544 157 PD
+gr
+
+gs 535 147 19 19 MR c np
+4 W
+544 156 PD
+gr
+
+gs 535 147 19 19 MR c np
+4 W
+544 156 PD
+gr
+
+gs 535 148 19 19 MR c np
+4 W
+544 157 PD
+gr
+
+gs 535 147 19 19 MR c np
+4 W
+544 156 PD
+gr
+
+gs 535 147 19 19 MR c np
+4 W
+544 156 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+2 w
+gr
+
+2 w
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  543  157 PO
+0 sg
+   6    6  543  157 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 534 148 19 19 MR c np
+4 W
+c8
+543 157 PD
+gr
+
+c8
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 147 19 19 MR c np
+4 W
+543 156 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 534 148 19 19 MR c np
+4 W
+543 157 PD
+gr
+
+gs 533 147 19 19 MR c np
+4 W
+542 156 PD
+gr
+
+gs 533 148 19 19 MR c np
+4 W
+542 157 PD
+gr
+
+gs 533 147 19 19 MR c np
+4 W
+542 156 PD
+gr
+
+gs 533 148 19 19 MR c np
+4 W
+542 157 PD
+gr
+
+gs 533 147 19 19 MR c np
+4 W
+542 156 PD
+gr
+
+gs 531 205 19 19 MR c np
+4 W
+540 214 PD
+gr
+
+gs 531 205 19 19 MR c np
+4 W
+540 214 PD
+gr
+
+gs 531 205 19 19 MR c np
+4 W
+540 214 PD
+gr
+
+gs 531 205 19 19 MR c np
+4 W
+540 214 PD
+gr
+
+gs 530 205 19 19 MR c np
+4 W
+539 214 PD
+gr
+
+gs 530 205 19 19 MR c np
+4 W
+539 214 PD
+gr
+
+gs 530 204 19 19 MR c np
+4 W
+539 213 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  539  214 PO
+0 sg
+   6    6  539  214 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 530 205 19 19 MR c np
+4 W
+c8
+539 214 PD
+gr
+
+c8
+gs 530 205 19 19 MR c np
+4 W
+539 214 PD
+gr
+
+gs 530 205 19 19 MR c np
+4 W
+539 214 PD
+gr
+
+gs 530 205 19 19 MR c np
+4 W
+539 214 PD
+gr
+
+gs 529 205 19 19 MR c np
+4 W
+538 214 PD
+gr
+
+gs 529 205 19 19 MR c np
+4 W
+538 214 PD
+gr
+
+gs 526 276 19 19 MR c np
+4 W
+535 285 PD
+gr
+
+gs 526 276 19 19 MR c np
+4 W
+535 285 PD
+gr
+
+gs 526 276 19 19 MR c np
+4 W
+535 285 PD
+gr
+
+gs 526 276 19 19 MR c np
+4 W
+535 285 PD
+gr
+
+gs 526 276 19 19 MR c np
+4 W
+535 285 PD
+gr
+
+gs 526 276 19 19 MR c np
+4 W
+535 285 PD
+gr
+
+/c9 { 0.000000 0.000000 1.000000 sr} bdef
+c9
+ 363  335 mt  370  332 L
+gs 176 125 281 237 MR c np
+4 W
+363 335 PD
+gr
+
+ 364  329 mt  370  325 L
+gs 176 125 281 237 MR c np
+4 W
+364 329 PD
+gr
+
+ 350  313 mt  354  307 L
+gs 176 125 281 237 MR c np
+4 W
+350 313 PD
+gr
+
+ 354  309 mt  347  312 L
+gs 176 125 281 237 MR c np
+4 W
+354 309 PD
+gr
+
+c8
+ 344  328 mt  319  256 L
+c9
+ 356  332 mt  364  329 L
+gs 176 125 281 237 MR c np
+4 W
+356 332 PD
+gr
+
+ 360  327 mt  367  323 L
+gs 176 125 281 237 MR c np
+4 W
+360 327 PD
+gr
+
+ 368  326 mt  361  330 L
+gs 176 125 281 237 MR c np
+4 W
+368 326 PD
+gr
+
+c8
+ 364  330 mt  319  256 L
+ 392  316 mt  319  256 L
+ 398  311 mt  319  256 L
+ 407  320 mt  319  256 L
+c9
+ 362  295 mt  367  289 L
+gs 176 125 281 237 MR c np
+4 W
+362 295 PD
+gr
+
+c8
+ 352  173 mt  477  123 L
+ 370  169 mt  479  123 L
+ 377  158 mt  346  244 L
+ 370  173 mt  477  123 L
+ 380  160 mt  345  244 L
+ 404  306 mt  319  256 L
+ 409  300 mt  319  256 L
+ 390  303 mt  345  244 L
+ 388  277 mt  479  123 L
+c9
+ 388  277 mt  396  275 L
+gs 176 125 281 237 MR c np
+4 W
+388 277 PD
+gr
+
+ 390  279 mt  391  271 L
+gs 176 125 281 237 MR c np
+4 W
+390 279 PD
+gr
+
+ 407  271 mt  405  278 L
+gs 176 125 281 237 MR c np
+4 W
+407 271 PD
+gr
+
+ 407  276 mt  400  279 L
+gs 176 125 281 237 MR c np
+4 W
+407 276 PD
+gr
+
+c8
+ 405  278 mt  319  256 L
+ 405  234 mt  478  123 L
+ 410  228 mt  478  123 L
+ 396  275 mt  478  123 L
+ 403  273 mt  478  124 L
+ 410  271 mt  478  123 L
+ 417  269 mt  478  123 L
+ 420  262 mt  478  123 L
+ 420  267 mt  478  124 L
+ 425  268 mt  478  122 L
+ 431  251 mt  345  244 L
+ 429  200 mt  346  244 L
+ 424  207 mt  345  244 L
+c9
+ 400  212 mt  403  219 L
+gs 176 125 281 237 MR c np
+4 W
+400 212 PD
+gr
+
+ 406  216 mt  405  209 L
+gs 176 125 281 237 MR c np
+4 W
+406 216 PD
+gr
+
+ 407  216 mt  405  209 L
+gs 176 125 281 237 MR c np
+4 W
+407 216 PD
+gr
+
+ 420  205 mt  415  199 L
+gs 176 125 281 237 MR c np
+4 W
+420 205 PD
+gr
+
+ 421  200 mt  424  207 L
+gs 176 125 281 237 MR c np
+4 W
+421 200 PD
+gr
+
+ 405  227 mt  407  234 L
+gs 176 125 281 237 MR c np
+4 W
+405 227 PD
+gr
+
+ 408  232 mt  407  224 L
+gs 176 125 281 237 MR c np
+4 W
+408 232 PD
+gr
+
+ 410  228 mt  416  223 L
+gs 176 125 281 237 MR c np
+4 W
+410 228 PD
+gr
+
+ 414  229 mt  410  222 L
+gs 176 125 281 237 MR c np
+4 W
+414 229 PD
+gr
+
+c8
+ 416  223 mt  479  123 L
+ 433  207 mt  345  244 L
+ 427  214 mt  346  244 L
+c9
+ 429  215 mt  429  223 L
+gs 176 125 281 237 MR c np
+4 W
+429 215 PD
+gr
+
+ 429  223 mt  428  231 L
+gs 176 125 281 237 MR c np
+4 W
+429 223 PD
+gr
+
+ 429  226 mt  427  219 L
+gs 176 125 281 237 MR c np
+4 W
+429 226 PD
+gr
+
+c8
+ 429  221 mt  345  244 L
+ 423  201 mt  345  244 L
+ 429  247 mt  478  123 L
+ 432  244 mt  345  244 L
+ 369  302 mt  345  244 L
+c9
+ 354  307 mt  357  301 L
+gs 176 125 281 237 MR c np
+4 W
+354 307 PD
+gr
+
+ 361  305 mt  354  309 L
+gs 176 125 281 237 MR c np
+4 W
+361 305 PD
+gr
+
+ 367  323 mt  373  319 L
+gs 176 125 281 237 MR c np
+4 W
+367 323 PD
+gr
+
+ 370  325 mt  376  319 L
+gs 176 125 281 237 MR c np
+4 W
+370 325 PD
+gr
+
+ 327  151 mt  319  149 L
+gs 176 125 281 237 MR c np
+4 W
+327 151 PD
+gr
+
+ 329  168 mt  322  165 L
+gs 176 125 281 237 MR c np
+4 W
+329 168 PD
+gr
+
+ 330  156 mt  323  152 L
+gs 176 125 281 237 MR c np
+4 W
+330 156 PD
+gr
+
+ 331  168 mt  323  166 L
+gs 176 125 281 237 MR c np
+4 W
+331 168 PD
+gr
+
+ 338  170 mt  331  168 L
+gs 176 125 281 237 MR c np
+4 W
+338 170 PD
+gr
+
+ 347  170 mt  338  170 L
+gs 176 125 281 237 MR c np
+4 W
+347 170 PD
+gr
+
+ 350  168 mt  343  165 L
+gs 176 125 281 237 MR c np
+4 W
+350 168 PD
+gr
+
+ 338  149 mt  344  153 L
+gs 176 125 281 237 MR c np
+4 W
+338 149 PD
+gr
+
+ 356  171 mt  350  168 L
+gs 176 125 281 237 MR c np
+4 W
+356 171 PD
+gr
+
+c8
+ 325  142 mt  324  234 L
+c9
+ 340  147 mt  348  149 L
+gs 176 125 281 237 MR c np
+4 W
+340 147 PD
+gr
+
+ 342  149 mt  350  152 L
+gs 176 125 281 237 MR c np
+4 W
+342 149 PD
+gr
+
+ 349  158 mt  342  155 L
+gs 176 125 281 237 MR c np
+4 W
+349 158 PD
+gr
+
+ 344  153 mt  351  157 L
+gs 176 125 281 237 MR c np
+4 W
+344 153 PD
+gr
+
+ 352  173 mt  344  172 L
+gs 176 125 281 237 MR c np
+4 W
+352 173 PD
+gr
+
+c8
+ 316  160 mt  408  107 L
+ 316  160 mt  381  104 L
+ 316  148 mt  381  104 L
+ 319  149 mt  381  104 L
+ 322  165 mt  408  107 L
+ 322  165 mt  381  104 L
+ 323  152 mt  381  104 L
+ 323  166 mt  408  107 L
+ 323  166 mt  381  104 L
+c9
+ 325  142 mt  332  145 L
+gs 176 125 281 237 MR c np
+4 W
+325 142 PD
+gr
+
+ 326  143 mt  333  144 L
+gs 176 125 281 237 MR c np
+4 W
+326 143 PD
+gr
+
+c8
+ 327  151 mt  381  104 L
+c9
+ 334  153 mt  327  151 L
+gs 176 125 281 237 MR c np
+4 W
+334 153 PD
+gr
+
+ 342  155 mt  334  153 L
+gs 176 125 281 237 MR c np
+4 W
+342 155 PD
+gr
+
+c8
+ 331  168 mt  408  107 L
+ 336  161 mt  408  107 L
+c9
+ 343  165 mt  336  161 L
+gs 176 125 281 237 MR c np
+4 W
+343 165 PD
+gr
+
+ 344  172 mt  336  171 L
+gs 176 125 281 237 MR c np
+4 W
+344 172 PD
+gr
+
+c8
+ 342  149 mt  324  235 L
+c9
+ 359  175 mt  352  173 L
+gs 176 125 281 237 MR c np
+4 W
+359 175 PD
+gr
+
+ 362  172 mt  354  171 L
+gs 176 125 281 237 MR c np
+4 W
+362 172 PD
+gr
+
+ 363  174 mt  356  171 L
+gs 176 125 281 237 MR c np
+4 W
+363 174 PD
+gr
+
+c8
+ 366  178 mt  478  123 L
+c9
+ 369  170 mt  374  175 L
+gs 176 125 281 237 MR c np
+4 W
+369 170 PD
+gr
+
+ 370  173 mt  362  172 L
+gs 176 125 281 237 MR c np
+4 W
+370 173 PD
+gr
+
+ 370  169 mt  364  165 L
+gs 176 125 281 237 MR c np
+4 W
+370 169 PD
+gr
+
+ 371  175 mt  363  174 L
+gs 176 125 281 237 MR c np
+4 W
+371 175 PD
+gr
+
+ 374  179 mt  366  178 L
+gs 176 125 281 237 MR c np
+4 W
+374 179 PD
+gr
+
+c8
+ 373  157 mt  345  244 L
+ 374  179 mt  478  123 L
+ 377  173 mt  478  123 L
+ 383  162 mt  346  244 L
+c9
+ 374  175 mt  380  180 L
+gs 176 125 281 237 MR c np
+4 W
+374 175 PD
+gr
+
+ 383  178 mt  377  173 L
+gs 176 125 281 237 MR c np
+4 W
+383 178 PD
+gr
+
+ 380  180 mt  384  186 L
+gs 176 125 281 237 MR c np
+4 W
+380 180 PD
+gr
+
+ 370  155 mt  377  158 L
+gs 176 125 281 237 MR c np
+4 W
+370 155 PD
+gr
+
+ 366  178 mt  359  175 L
+gs 176 125 281 237 MR c np
+4 W
+366 178 PD
+gr
+
+ 373  157 mt  380  160 L
+gs 176 125 281 237 MR c np
+4 W
+373 157 PD
+gr
+
+ 377  173 mt  370  169 L
+gs 176 125 281 237 MR c np
+4 W
+377 173 PD
+gr
+
+c8
+ 377  158 mt  336  235 L
+c9
+ 378  176 mt  370  173 L
+gs 176 125 281 237 MR c np
+4 W
+378 176 PD
+gr
+
+ 379  175 mt  371  175 L
+gs 176 125 281 237 MR c np
+4 W
+379 175 PD
+gr
+
+ 363  165 mt  369  170 L
+gs 176 125 281 237 MR c np
+4 W
+363 165 PD
+gr
+
+c8
+ 363  174 mt  437  109 L
+ 377  158 mt  324  235 L
+c9
+ 365  155 mt  373  157 L
+gs 176 125 281 237 MR c np
+4 W
+365 155 PD
+gr
+
+c8
+ 363  174 mt  408  107 L
+ 383  162 mt  324  235 L
+ 373  157 mt  337  235 L
+c9
+ 381  181 mt  374  179 L
+gs 176 125 281 237 MR c np
+4 W
+381 181 PD
+gr
+
+ 393  199 mt  397  205 L
+gs 176 125 281 237 MR c np
+4 W
+393 199 PD
+gr
+
+ 402  201 mt  399  194 L
+gs 176 125 281 237 MR c np
+4 W
+402 201 PD
+gr
+
+ 404  202 mt  401  195 L
+gs 176 125 281 237 MR c np
+4 W
+404 202 PD
+gr
+
+ 406  188 mt  412  192 L
+gs 176 125 281 237 MR c np
+4 W
+406 188 PD
+gr
+
+ 409  194 mt  403  190 L
+gs 176 125 281 237 MR c np
+4 W
+409 194 PD
+gr
+
+ 412  188 mt  417  194 L
+gs 176 125 281 237 MR c np
+4 W
+412 188 PD
+gr
+
+c8
+ 415  189 mt  345  244 L
+c9
+ 397  205 mt  400  212 L
+gs 176 125 281 237 MR c np
+4 W
+397 205 PD
+gr
+
+ 403  219 mt  405  227 L
+gs 176 125 281 237 MR c np
+4 W
+403 219 PD
+gr
+
+ 407  224 mt  406  216 L
+gs 176 125 281 237 MR c np
+4 W
+407 224 PD
+gr
+
+ 410  222 mt  407  216 L
+gs 176 125 281 237 MR c np
+4 W
+410 222 PD
+gr
+
+ 427  214 mt  429  221 L
+gs 176 125 281 237 MR c np
+4 W
+427 214 PD
+gr
+
+ 427  219 mt  424  212 L
+gs 176 125 281 237 MR c np
+4 W
+427 219 PD
+gr
+
+c8
+ 431  215 mt  345  244 L
+ 405  209 mt  542  157 L
+ 386  320 mt  319  256 L
+c9
+ 357  301 mt  362  295 L
+gs 176 125 281 237 MR c np
+4 W
+357 301 PD
+gr
+
+ 377  158 mt  383  162 L
+gs 176 125 281 237 MR c np
+4 W
+377 158 PD
+gr
+
+ 380  160 mt  387  164 L
+gs 176 125 281 237 MR c np
+4 W
+380 160 PD
+gr
+
+ 363  153 mt  370  155 L
+gs 176 125 281 237 MR c np
+4 W
+363 153 PD
+gr
+
+c8
+ 384  186 mt  345  244 L
+c9
+ 383  162 mt  389  166 L
+gs 176 125 281 237 MR c np
+4 W
+383 162 PD
+gr
+
+ 385  179 mt  378  176 L
+gs 176 125 281 237 MR c np
+4 W
+385 179 PD
+gr
+
+ 386  166 mt  391  171 L
+gs 176 125 281 237 MR c np
+4 W
+386 166 PD
+gr
+
+ 387  175 mt  379  175 L
+gs 176 125 281 237 MR c np
+4 W
+387 175 PD
+gr
+
+ 387  164 mt  393  168 L
+gs 176 125 281 237 MR c np
+4 W
+387 164 PD
+gr
+
+c8
+ 389  166 mt  337  235 L
+ 389  192 mt  346  244 L
+c9
+ 384  186 mt  389  192 L
+gs 176 125 281 237 MR c np
+4 W
+384 186 PD
+gr
+
+ 389  192 mt  393  199 L
+gs 176 125 281 237 MR c np
+4 W
+389 192 PD
+gr
+
+c8
+ 379  175 mt  437  109 L
+ 387  164 mt  336  236 L
+c9
+ 391  183 mt  385  179 L
+gs 176 125 281 237 MR c np
+4 W
+391 183 PD
+gr
+
+ 357  154 mt  365  155 L
+gs 176 125 281 237 MR c np
+4 W
+357 154 PD
+gr
+
+c8
+ 331  168 mt  381  104 L
+c9
+ 332  145 mt  338  149 L
+gs 176 125 281 237 MR c np
+4 W
+332 145 PD
+gr
+
+c8
+ 334  153 mt  408  107 L
+ 334  153 mt  381  104 L
+c9
+ 336  171 mt  329  168 L
+gs 176 125 281 237 MR c np
+4 W
+336 171 PD
+gr
+
+ 336  161 mt  330  156 L
+gs 176 125 281 237 MR c np
+4 W
+336 161 PD
+gr
+
+c8
+ 336  146 mt  324  235 L
+c9
+ 357  161 mt  363  165 L
+gs 176 125 281 237 MR c np
+4 W
+357 161 PD
+gr
+
+ 364  165 mt  357  162 L
+gs 176 125 281 237 MR c np
+4 W
+364 165 PD
+gr
+
+c8
+ 370  152 mt  324  235 L
+c9
+ 348  149 mt  355  150 L
+gs 176 125 281 237 MR c np
+4 W
+348 149 PD
+gr
+
+c8
+ 349  158 mt  408  107 L
+c9
+ 357  162 mt  349  158 L
+gs 176 125 281 237 MR c np
+4 W
+357 162 PD
+gr
+
+c8
+ 356  171 mt  408  107 L
+ 357  162 mt  437  109 L
+ 384  186 mt  336  236 L
+c9
+ 374  284 mt  380  280 L
+gs 176 125 281 237 MR c np
+4 W
+374 284 PD
+gr
+
+ 388  289 mt  382  294 L
+gs 176 125 281 237 MR c np
+4 W
+388 289 PD
+gr
+
+c8
+ 390  295 mt  345  244 L
+c9
+ 393  166 mt  386  166 L
+gs 176 125 281 237 MR c np
+4 W
+393 166 PD
+gr
+
+ 403  190 mt  396  186 L
+gs 176 125 281 237 MR c np
+4 W
+403 190 PD
+gr
+
+c8
+ 393  199 mt  337  236 L
+ 397  205 mt  346  244 L
+ 383  178 mt  478  123 L
+ 387  175 mt  478  123 L
+c9
+ 388  183 mt  381  181 L
+gs 176 125 281 237 MR c np
+4 W
+388 183 PD
+gr
+
+ 389  182 mt  383  178 L
+gs 176 125 281 237 MR c np
+4 W
+389 182 PD
+gr
+
+ 389  166 mt  395  171 L
+gs 176 125 281 237 MR c np
+4 W
+389 166 PD
+gr
+
+c8
+ 391  171 mt  478  123 L
+c9
+ 391  171 mt  396  177 L
+gs 176 125 281 237 MR c np
+4 W
+391 171 PD
+gr
+
+ 393  168 mt  399  173 L
+gs 176 125 281 237 MR c np
+4 W
+393 168 PD
+gr
+
+ 394  176 mt  387  175 L
+gs 176 125 281 237 MR c np
+4 W
+394 176 PD
+gr
+
+ 400  168 mt  393  166 L
+gs 176 125 281 237 MR c np
+4 W
+400 168 PD
+gr
+
+c8
+ 399  165 mt  336  235 L
+ 394  176 mt  478  123 L
+c9
+ 395  188 mt  389  182 L
+gs 176 125 281 237 MR c np
+4 W
+395 188 PD
+gr
+
+ 395  171 mt  401  176 L
+gs 176 125 281 237 MR c np
+4 W
+395 171 PD
+gr
+
+ 402  178 mt  394  176 L
+gs 176 125 281 237 MR c np
+4 W
+402 178 PD
+gr
+
+c8
+ 399  173 mt  337  235 L
+c9
+ 405  209 mt  402  201 L
+gs 176 125 281 237 MR c np
+4 W
+405 209 PD
+gr
+
+ 405  209 mt  404  202 L
+gs 176 125 281 237 MR c np
+4 W
+405 209 PD
+gr
+
+c8
+ 415  199 mt  538  214 L
+c9
+ 417  194 mt  421  200 L
+gs 176 125 281 237 MR c np
+4 W
+417 194 PD
+gr
+
+ 419  195 mt  423  201 L
+gs 176 125 281 237 MR c np
+4 W
+419 195 PD
+gr
+
+ 420  196 mt  425  201 L
+gs 176 125 281 237 MR c np
+4 W
+420 196 PD
+gr
+
+ 424  197 mt  421  190 L
+gs 176 125 281 237 MR c np
+4 W
+424 197 PD
+gr
+
+ 385  157 mt  392  161 L
+gs 176 125 281 237 MR c np
+4 W
+385 157 PD
+gr
+
+c8
+ 387  175 mt  437  109 L
+c9
+ 396  186 mt  388  183 L
+gs 176 125 281 237 MR c np
+4 W
+396 186 PD
+gr
+
+ 397  187 mt  391  183 L
+gs 176 125 281 237 MR c np
+4 W
+397 187 PD
+gr
+
+ 400  239 mt  405  234 L
+gs 176 125 281 237 MR c np
+4 W
+400 239 PD
+gr
+
+ 427  208 mt  431  215 L
+gs 176 125 281 237 MR c np
+4 W
+427 208 PD
+gr
+
+c8
+ 435  214 mt  346  244 L
+ 405  227 mt  345  244 L
+c9
+ 401  195 mt  397  187 L
+gs 176 125 281 237 MR c np
+4 W
+401 195 PD
+gr
+
+c8
+ 399  194 mt  543  157 L
+ 403  190 mt  539  214 L
+ 412  188 mt  337  236 L
+ 396  186 mt  539  214 L
+c9
+ 399  194 mt  395  188 L
+gs 176 125 281 237 MR c np
+4 W
+399 194 PD
+gr
+
+ 401  183 mt  406  188 L
+gs 176 125 281 237 MR c np
+4 W
+401 183 PD
+gr
+
+c8
+ 407  182 mt  336  236 L
+c9
+ 407  182 mt  412  188 L
+gs 176 125 281 237 MR c np
+4 W
+407 182 PD
+gr
+
+ 410  183 mt  415  189 L
+gs 176 125 281 237 MR c np
+4 W
+410 183 PD
+gr
+
+ 416  184 mt  409  180 L
+gs 176 125 281 237 MR c np
+4 W
+416 184 PD
+gr
+
+c8
+ 417  180 mt  346  244 L
+c9
+ 412  192 mt  420  196 L
+gs 176 125 281 237 MR c np
+4 W
+412 192 PD
+gr
+
+ 415  199 mt  409  194 L
+gs 176 125 281 237 MR c np
+4 W
+415 199 PD
+gr
+
+c8
+ 419  195 mt  346  244 L
+c9
+ 396  177 mt  401  183 L
+gs 176 125 281 237 MR c np
+4 W
+396 177 PD
+gr
+
+c8
+ 401  176 mt  336  235 L
+ 388  277 mt  408  107 L
+ 397  246 mt  408  107 L
+c9
+ 407  234 mt  408  242 L
+gs 176 125 281 237 MR c np
+4 W
+407 234 PD
+gr
+
+ 410  240 mt  408  232 L
+gs 176 125 281 237 MR c np
+4 W
+410 240 PD
+gr
+
+ 362  150 mt  370  152 L
+gs 176 125 281 237 MR c np
+4 W
+362 150 PD
+gr
+
+ 367  289 mt  374  284 L
+gs 176 125 281 237 MR c np
+4 W
+367 289 PD
+gr
+
+ 394  254 mt  397  246 L
+gs 176 125 281 237 MR c np
+4 W
+394 254 PD
+gr
+
+ 408  264 mt  407  271 L
+gs 176 125 281 237 MR c np
+4 W
+408 264 PD
+gr
+
+ 408  170 mt  400  168 L
+gs 176 125 281 237 MR c np
+4 W
+408 170 PD
+gr
+
+ 404  178 mt  410  183 L
+gs 176 125 281 237 MR c np
+4 W
+404 178 PD
+gr
+
+ 409  180 mt  402  178 L
+gs 176 125 281 237 MR c np
+4 W
+409 180 PD
+gr
+
+c8
+ 397  246 mt  437  109 L
+c9
+ 397  246 mt  400  239 L
+gs 176 125 281 237 MR c np
+4 W
+397 246 PD
+gr
+
+c8
+ 410  240 mt  543  156 L
+ 421  252 mt  532  322 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  532  321 PO
+0 sg
+   6    6  532  321 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 417  237 mt  532  322 L
+ 417  237 mt  535  285 L
+c9
+ 420  244 mt  417  237 L
+gs 176 125 281 237 MR c np
+4 W
+420 244 PD
+gr
+
+c8
+ 427  264 mt  479  122 L
+c9
+ 428  231 mt  428  239 L
+gs 176 125 281 237 MR c np
+4 W
+428 231 PD
+gr
+
+c8
+ 430  255 mt  478  123 L
+c9
+ 431  241 mt  430  233 L
+gs 176 125 281 237 MR c np
+4 W
+431 241 PD
+gr
+
+ 431  236 mt  432  244 L
+gs 176 125 281 237 MR c np
+4 W
+431 236 PD
+gr
+
+ 436  237 mt  435  246 L
+gs 176 125 281 237 MR c np
+4 W
+436 237 PD
+gr
+
+c8
+ 438  237 mt  346  244 L
+ 407  276 mt  408  107 L
+c9
+ 409  249 mt  409  257 L
+gs 176 125 281 237 MR c np
+4 W
+409 249 PD
+gr
+
+c8
+ 415  255 mt  543  157 L
+c9
+ 415  255 mt  413  247 L
+gs 176 125 281 237 MR c np
+4 W
+415 255 PD
+gr
+
+ 421  252 mt  420  244 L
+gs 176 125 281 237 MR c np
+4 W
+421 252 PD
+gr
+
+ 428  256 mt  430  248 L
+gs 176 125 281 237 MR c np
+4 W
+428 256 PD
+gr
+
+ 429  247 mt  430  255 L
+gs 176 125 281 237 MR c np
+4 W
+429 247 PD
+gr
+
+ 431  251 mt  429  259 L
+gs 176 125 281 237 MR c np
+4 W
+431 251 PD
+gr
+
+c8
+ 434  261 mt  478  123 L
+c9
+ 435  246 mt  435  253 L
+gs 176 125 281 237 MR c np
+4 W
+435 246 PD
+gr
+
+c8
+ 438  253 mt  345  244 L
+ 392  263 mt  408  107 L
+ 392  263 mt  381  105 L
+c9
+ 420  262 mt  415  255 L
+gs 176 125 281 237 MR c np
+4 W
+420 262 PD
+gr
+
+ 422  260 mt  421  252 L
+gs 176 125 281 237 MR c np
+4 W
+422 260 PD
+gr
+
+ 425  263 mt  428  256 L
+gs 176 125 281 237 MR c np
+4 W
+425 263 PD
+gr
+
+ 430  255 mt  434  261 L
+gs 176 125 281 237 MR c np
+4 W
+430 255 PD
+gr
+
+ 435  253 mt  433  261 L
+gs 176 125 281 237 MR c np
+4 W
+435 253 PD
+gr
+
+c8
+ 438  260 mt  345  244 L
+ 391  271 mt  381  106 L
+ 388  277 mt  437  108 L
+c9
+ 392  263 mt  394  254 L
+gs 176 125 281 237 MR c np
+4 W
+392 263 PD
+gr
+
+c8
+ 396  275 mt  436  109 L
+c9
+ 396  275 mt  403  273 L
+gs 176 125 281 237 MR c np
+4 W
+396 275 PD
+gr
+
+c8
+ 403  273 mt  437  109 L
+ 407  276 mt  437  109 L
+c9
+ 409  257 mt  408  264 L
+gs 176 125 281 237 MR c np
+4 W
+409 257 PD
+gr
+
+c8
+ 414  271 mt  436  109 L
+ 408  170 mt  543  156 L
+ 408  232 mt  543  157 L
+ 409  194 mt  540  214 L
+ 409  180 mt  478  123 L
+c9
+ 410  271 mt  417  269 L
+gs 176 125 281 237 MR c np
+4 W
+410 271 PD
+gr
+
+c8
+ 410  222 mt  535  285 L
+ 413  247 mt  542  157 L
+c9
+ 415  173 mt  408  170 L
+gs 176 125 281 237 MR c np
+4 W
+415 173 PD
+gr
+
+c8
+ 414  271 mt  408  108 L
+c9
+ 422  271 mt  425  263 L
+gs 176 125 281 237 MR c np
+4 W
+422 271 PD
+gr
+
+ 423  268 mt  422  260 L
+gs 176 125 281 237 MR c np
+4 W
+423 268 PD
+gr
+
+ 425  268 mt  420  262 L
+gs 176 125 281 237 MR c np
+4 W
+425 268 PD
+gr
+
+c8
+ 420  267 mt  437  109 L
+c9
+ 427  264 mt  420  267 L
+gs 176 125 281 237 MR c np
+4 W
+427 264 PD
+gr
+
+ 429  259 mt  427  267 L
+gs 176 125 281 237 MR c np
+4 W
+429 259 PD
+gr
+
+ 433  261 mt  431  268 L
+gs 176 125 281 237 MR c np
+4 W
+433 261 PD
+gr
+
+c8
+ 436  268 mt  345  244 L
+ 400  279 mt  381  105 L
+c9
+ 418  277 mt  422  271 L
+gs 176 125 281 237 MR c np
+4 W
+418 277 PD
+gr
+
+ 417  269 mt  425  268 L
+gs 176 125 281 237 MR c np
+4 W
+417 269 PD
+gr
+
+ 420  267 mt  414  271 L
+gs 176 125 281 237 MR c np
+4 W
+420 267 PD
+gr
+
+c8
+ 422  260 mt  475  355 L
+c9
+ 422  283 mt  423  275 L
+gs 176 125 281 237 MR c np
+4 W
+422 283 PD
+gr
+
+ 424  274 mt  421  281 L
+gs 176 125 281 237 MR c np
+4 W
+424 274 PD
+gr
+
+c8
+ 371  175 mt  408  106 L
+c9
+ 380  280 mt  388  277 L
+gs 176 125 281 237 MR c np
+4 W
+380 280 PD
+gr
+
+ 391  288 mt  390  279 L
+gs 176 125 281 237 MR c np
+4 W
+391 288 PD
+gr
+
+ 394  284 mt  388  289 L
+gs 176 125 281 237 MR c np
+4 W
+394 284 PD
+gr
+
+ 402  285 mt  399  292 L
+gs 176 125 281 237 MR c np
+4 W
+402 285 PD
+gr
+
+ 403  293 mt  409  289 L
+gs 176 125 281 237 MR c np
+4 W
+403 293 PD
+gr
+
+ 406  294 mt  414  291 L
+gs 176 125 281 237 MR c np
+4 W
+406 294 PD
+gr
+
+ 382  294 mt  375  298 L
+gs 176 125 281 237 MR c np
+4 W
+382 294 PD
+gr
+
+ 387  308 mt  393  302 L
+gs 176 125 281 237 MR c np
+4 W
+387 308 PD
+gr
+
+ 390  303 mt  390  295 L
+gs 176 125 281 237 MR c np
+4 W
+390 303 PD
+gr
+
+ 391  303 mt  396  297 L
+gs 176 125 281 237 MR c np
+4 W
+391 303 PD
+gr
+
+ 391  322 mt  397  317 L
+gs 176 125 281 237 MR c np
+4 W
+391 322 PD
+gr
+
+ 390  295 mt  391  288 L
+gs 176 125 281 237 MR c np
+4 W
+390 295 PD
+gr
+
+ 393  302 mt  399  297 L
+gs 176 125 281 237 MR c np
+4 W
+393 302 PD
+gr
+
+ 375  298 mt  369  302 L
+gs 176 125 281 237 MR c np
+4 W
+375 298 PD
+gr
+
+ 379  314 mt  385  309 L
+gs 176 125 281 237 MR c np
+4 W
+379 314 PD
+gr
+
+ 382  314 mt  387  308 L
+gs 176 125 281 237 MR c np
+4 W
+382 314 PD
+gr
+
+ 385  326 mt  391  322 L
+gs 176 125 281 237 MR c np
+4 W
+385 326 PD
+gr
+
+ 330  335 mt  338  334 L
+gs 176 125 281 237 MR c np
+4 W
+330 335 PD
+gr
+
+ 332  338 mt  340  337 L
+gs 176 125 281 237 MR c np
+4 W
+332 338 PD
+gr
+
+ 333  317 mt  326  319 L
+gs 176 125 281 237 MR c np
+4 W
+333 317 PD
+gr
+
+ 334  337 mt  341  335 L
+gs 176 125 281 237 MR c np
+4 W
+334 337 PD
+gr
+
+ 338  334 mt  345  332 L
+gs 176 125 281 237 MR c np
+4 W
+338 334 PD
+gr
+
+ 340  315 mt  333  317 L
+gs 176 125 281 237 MR c np
+4 W
+340 315 PD
+gr
+
+c8
+ 341  336 mt  319  256 L
+c9
+ 341  336 mt  333  336 L
+gs 176 125 281 237 MR c np
+4 W
+341 336 PD
+gr
+
+ 340  337 mt  348  337 L
+gs 176 125 281 237 MR c np
+4 W
+340 337 PD
+gr
+
+ 341  335 mt  349  334 L
+gs 176 125 281 237 MR c np
+4 W
+341 335 PD
+gr
+
+ 348  334 mt  341  336 L
+gs 176 125 281 237 MR c np
+4 W
+348 334 PD
+gr
+
+c8
+ 346  352 mt  319  256 L
+c9
+ 347  312 mt  340  315 L
+gs 176 125 281 237 MR c np
+4 W
+347 312 PD
+gr
+
+c8
+ 347  321 mt  319  256 L
+c9
+ 347  321 mt  350  313 L
+gs 176 125 281 237 MR c np
+4 W
+347 321 PD
+gr
+
+ 349  334 mt  356  332 L
+gs 176 125 281 237 MR c np
+4 W
+349 334 PD
+gr
+
+ 353  330 mt  360  327 L
+gs 176 125 281 237 MR c np
+4 W
+353 330 PD
+gr
+
+ 361  330 mt  354  332 L
+gs 176 125 281 237 MR c np
+4 W
+361 330 PD
+gr
+
+c8
+ 356  333 mt  319  256 L
+c9
+ 355  336 mt  363  335 L
+gs 176 125 281 237 MR c np
+4 W
+355 336 PD
+gr
+
+ 345  332 mt  353  330 L
+gs 176 125 281 237 MR c np
+4 W
+345 332 PD
+gr
+
+ 348  337 mt  355  336 L
+gs 176 125 281 237 MR c np
+4 W
+348 337 PD
+gr
+
+ 354  351 mt  346  352 L
+gs 176 125 281 237 MR c np
+4 W
+354 351 PD
+gr
+
+ 354  332 mt  347  335 L
+gs 176 125 281 237 MR c np
+4 W
+354 332 PD
+gr
+
+ 356  333 mt  348  334 L
+gs 176 125 281 237 MR c np
+4 W
+356 333 PD
+gr
+
+ 361  349 mt  354  351 L
+gs 176 125 281 237 MR c np
+4 W
+361 349 PD
+gr
+
+ 346  352 mt  338  353 L
+gs 176 125 281 237 MR c np
+4 W
+346 352 PD
+gr
+
+ 364  330 mt  356  333 L
+gs 176 125 281 237 MR c np
+4 W
+364 330 PD
+gr
+
+c8
+ 364  329 mt  325  422 L
+ 349  334 mt  325  422 L
+ 363  335 mt  325  422 L
+c9
+ 369  302 mt  361  305 L
+gs 176 125 281 237 MR c np
+4 W
+369 302 PD
+gr
+
+ 373  319 mt  379  314 L
+gs 176 125 281 237 MR c np
+4 W
+373 319 PD
+gr
+
+ 376  319 mt  382  314 L
+gs 176 125 281 237 MR c np
+4 W
+376 319 PD
+gr
+
+c8
+ 380  317 mt  319  256 L
+c9
+ 370  332 mt  378  330 L
+gs 176 125 281 237 MR c np
+4 W
+370 332 PD
+gr
+
+ 374  322 mt  368  326 L
+gs 176 125 281 237 MR c np
+4 W
+374 322 PD
+gr
+
+ 379  324 mt  371  328 L
+gs 176 125 281 237 MR c np
+4 W
+379 324 PD
+gr
+
+c8
+ 383  340 mt  319  256 L
+ 386  312 mt  319  256 L
+c9
+ 385  309 mt  391  303 L
+gs 176 125 281 237 MR c np
+4 W
+385 309 PD
+gr
+
+ 388  311 mt  390  303 L
+gs 176 125 281 237 MR c np
+4 W
+388 311 PD
+gr
+
+ 391  306 mt  386  312 L
+gs 176 125 281 237 MR c np
+4 W
+391 306 PD
+gr
+
+ 396  297 mt  403  293 L
+gs 176 125 281 237 MR c np
+4 W
+396 297 PD
+gr
+
+ 399  292 mt  396  299 L
+gs 176 125 281 237 MR c np
+4 W
+399 292 PD
+gr
+
+ 399  297 mt  406  294 L
+gs 176 125 281 237 MR c np
+4 W
+399 297 PD
+gr
+
+c8
+ 394  284 mt  408  108 L
+c9
+ 400  279 mt  394  284 L
+gs 176 125 281 237 MR c np
+4 W
+400 279 PD
+gr
+
+ 405  278 mt  402  285 L
+gs 176 125 281 237 MR c np
+4 W
+405 278 PD
+gr
+
+ 409  289 mt  414  283 L
+gs 176 125 281 237 MR c np
+4 W
+409 289 PD
+gr
+
+ 414  291 mt  421  287 L
+gs 176 125 281 237 MR c np
+4 W
+414 291 PD
+gr
+
+ 417  288 mt  413  294 L
+gs 176 125 281 237 MR c np
+4 W
+417 288 PD
+gr
+
+ 418  296 mt  421  290 L
+gs 176 125 281 237 MR c np
+4 W
+418 296 PD
+gr
+
+ 419  289 mt  414  294 L
+gs 176 125 281 237 MR c np
+4 W
+419 289 PD
+gr
+
+c8
+ 422  295 mt  320  256 L
+ 417  288 mt  319  256 L
+ 414  294 mt  345  244 L
+c9
+ 413  302 mt  418  296 L
+gs 176 125 281 237 MR c np
+4 W
+413 302 PD
+gr
+
+ 413  294 mt  409  300 L
+gs 176 125 281 237 MR c np
+4 W
+413 294 PD
+gr
+
+ 414  294 mt  408  299 L
+gs 176 125 281 237 MR c np
+4 W
+414 294 PD
+gr
+
+c8
+ 418  301 mt  345  244 L
+ 418  301 mt  320  256 L
+c9
+ 391  271 mt  392  263 L
+gs 176 125 281 237 MR c np
+4 W
+391 271 PD
+gr
+
+ 421  281 mt  417  288 L
+gs 176 125 281 237 MR c np
+4 W
+421 281 PD
+gr
+
+c8
+ 419  289 mt  345  244 L
+c9
+ 414  283 mt  418  277 L
+gs 176 125 281 237 MR c np
+4 W
+414 283 PD
+gr
+
+ 421  287 mt  427  283 L
+gs 176 125 281 237 MR c np
+4 W
+421 287 PD
+gr
+
+ 421  290 mt  422  283 L
+gs 176 125 281 237 MR c np
+4 W
+421 290 PD
+gr
+
+ 424  283 mt  419  289 L
+gs 176 125 281 237 MR c np
+4 W
+424 283 PD
+gr
+
+c8
+ 426  288 mt  345  244 L
+ 382  294 mt  381  104 L
+c9
+ 383  340 mt  376  343 L
+gs 176 125 281 237 MR c np
+4 W
+383 340 PD
+gr
+
+ 386  312 mt  380  317 L
+gs 176 125 281 237 MR c np
+4 W
+386 312 PD
+gr
+
+ 386  320 mt  379  324 L
+gs 176 125 281 237 MR c np
+4 W
+386 320 PD
+gr
+
+c8
+ 382  314 mt  383  426 L
+c9
+ 408  307 mt  413  302 L
+gs 176 125 281 237 MR c np
+4 W
+408 307 PD
+gr
+
+ 408  299 mt  402  303 L
+gs 176 125 281 237 MR c np
+4 W
+408 299 PD
+gr
+
+ 409  300 mt  404  306 L
+gs 176 125 281 237 MR c np
+4 W
+409 300 PD
+gr
+
+c8
+ 414  308 mt  319  256 L
+ 375  298 mt  358  104 L
+c9
+ 389  336 mt  383  340 L
+gs 176 125 281 237 MR c np
+4 W
+389 336 PD
+gr
+
+c8
+ 391  306 mt  319  256 L
+c9
+ 392  316 mt  386  320 L
+gs 176 125 281 237 MR c np
+4 W
+392 316 PD
+gr
+
+ 380  317 mt  374  322 L
+gs 176 125 281 237 MR c np
+4 W
+380 317 PD
+gr
+
+c8
+ 379  314 mt  383  426 L
+c9
+ 368  347 mt  361  349 L
+gs 176 125 281 237 MR c np
+4 W
+368 347 PD
+gr
+
+c8
+ 370  332 mt  325  422 L
+c9
+ 371  328 mt  364  330 L
+gs 176 125 281 237 MR c np
+4 W
+371 328 PD
+gr
+
+c8
+ 373  319 mt  354  425 L
+c9
+ 376  343 mt  368  347 L
+gs 176 125 281 237 MR c np
+4 W
+376 343 PD
+gr
+
+c8
+ 373  319 mt  383  426 L
+ 376  319 mt  354  424 L
+ 370  325 mt  354  424 L
+ 376  319 mt  384  426 L
+ 379  314 mt  354  424 L
+ 395  331 mt  319  256 L
+c9
+ 395  307 mt  388  311 L
+gs 176 125 281 237 MR c np
+4 W
+395 307 PD
+gr
+
+c8
+ 391  303 mt  383  426 L
+c9
+ 396  299 mt  391  306 L
+gs 176 125 281 237 MR c np
+4 W
+396 299 PD
+gr
+
+c8
+ 395  307 mt  319  256 L
+ 401  326 mt  319  256 L
+ 386  320 mt  340  254 L
+ 414  294 mt  319  256 L
+ 382  294 mt  358  102 L
+ 402  303 mt  319  256 L
+ 408  299 mt  319  256 L
+ 388  311 mt  319  256 L
+ 354  307 mt  340  254 L
+ 350  313 mt  340  254 L
+ 360  327 mt  354  424 L
+ 370  332 mt  354  424 L
+ 378  330 mt  354  424 L
+ 363  335 mt  354  424 L
+ 368  347 mt  319  256 L
+ 364  329 mt  354  424 L
+ 356  332 mt  354  424 L
+ 360  327 mt  325  422 L
+ 353  330 mt  325  422 L
+ 356  332 mt  325  422 L
+ 361  349 mt  319  256 L
+ 367  323 mt  325  422 L
+ 376  343 mt  319  256 L
+ 347  312 mt  340  254 L
+ 361  330 mt  319  256 L
+ 340  315 mt  340  254 L
+ 340  315 mt  319  256 L
+c9
+ 344  328 mt  347  321 L
+gs 176 125 281 237 MR c np
+4 W
+344 328 PD
+gr
+
+c8
+ 354  351 mt  319  256 L
+ 338  353 mt  319  256 L
+c9
+ 338  353 mt  331  353 L
+gs 176 125 281 237 MR c np
+4 W
+338 353 PD
+gr
+
+c8
+ 341  335 mt  325  422 L
+ 348  337 mt  325  422 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  354  424 PO
+0 sg
+   6    6  354  424 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 385  326 mt  354  425 L
+ 385  309 mt  383  426 L
+ 387  308 mt  383  426 L
+c9
+ 395  331 mt  389  336 L
+gs 176 125 281 237 MR c np
+4 W
+395 331 PD
+gr
+
+ 398  311 mt  392  316 L
+gs 176 125 281 237 MR c np
+4 W
+398 311 PD
+gr
+
+ 397  317 mt  402  312 L
+gs 176 125 281 237 MR c np
+4 W
+397 317 PD
+gr
+
+c8
+ 407  320 mt  340  254 L
+ 401  326 mt  340  254 L
+c9
+ 401  326 mt  395  331 L
+gs 176 125 281 237 MR c np
+4 W
+401 326 PD
+gr
+
+c8
+ 402  312 mt  383  426 L
+ 397  317 mt  383  426 L
+ 391  322 mt  384  426 L
+ 385  326 mt  383  426 L
+ 391  322 mt  354  424 L
+ 395  331 mt  340  254 L
+c9
+ 402  303 mt  395  307 L
+gs 176 125 281 237 MR c np
+4 W
+402 303 PD
+gr
+
+c8
+ 396  297 mt  383  426 L
+ 402  303 mt  345  244 L
+ 374  284 mt  380  105 L
+ 399  292 mt  319  256 L
+ 375  298 mt  381  104 L
+ 392  316 mt  340  254 L
+ 393  302 mt  383  426 L
+c9
+ 402  312 mt  408  307 L
+gs 176 125 281 237 MR c np
+4 W
+402 312 PD
+gr
+
+ 404  306 mt  398  311 L
+gs 176 125 281 237 MR c np
+4 W
+404 306 PD
+gr
+
+c8
+ 411  314 mt  319  256 L
+ 413  294 mt  319  256 L
+ 388  289 mt  408  108 L
+ 408  299 mt  345  244 L
+ 374  284 mt  408  106 L
+ 390  279 mt  359  101 L
+ 374  284 mt  437  109 L
+c9
+ 377  154 mt  385  157 L
+gs 176 125 281 237 MR c np
+4 W
+377 154 PD
+gr
+
+c8
+ 396  186 mt  543  156 L
+ 402  201 mt  543  156 L
+ 406  216 mt  544  156 L
+ 407  224 mt  543  156 L
+ 414  229 mt  535  285 L
+ 420  244 mt  532  321 L
+ 425  263 mt  475  356 L
+c9
+ 432  187 mt  427  181 L
+gs 176 125 281 237 MR c np
+4 W
+432 187 PD
+gr
+
+c8
+ 427  264 mt  436  110 L
+ 430  248 mt  475  356 L
+c9
+ 432  277 mt  436  271 L
+gs 176 125 281 237 MR c np
+4 W
+432 277 PD
+gr
+
+ 434  261 mt  427  264 L
+gs 176 125 281 237 MR c np
+4 W
+434 261 PD
+gr
+
+ 436  268 mt  433  275 L
+gs 176 125 281 237 MR c np
+4 W
+436 268 PD
+gr
+
+c8
+ 440  265 mt  475  356 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  475  356 PO
+0 sg
+   6    6  475  356 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 422  271 mt  475  355 L
+c9
+ 423  275 mt  423  268 L
+gs 176 125 281 237 MR c np
+4 W
+423 275 PD
+gr
+
+ 427  267 mt  424  274 L
+gs 176 125 281 237 MR c np
+4 W
+427 267 PD
+gr
+
+ 431  268 mt  428  275 L
+gs 176 125 281 237 MR c np
+4 W
+431 268 PD
+gr
+
+c8
+ 433  275 mt  345  244 L
+ 394  284 mt  437  108 L
+ 422  295 mt  345  244 L
+ 380  280 mt  407  108 L
+c9
+ 403  273 mt  410  271 L
+gs 176 125 281 237 MR c np
+4 W
+403 273 PD
+gr
+
+ 414  271 mt  407  276 L
+gs 176 125 281 237 MR c np
+4 W
+414 271 PD
+gr
+
+ 427  283 mt  432  277 L
+gs 176 125 281 237 MR c np
+4 W
+427 283 PD
+gr
+
+ 428  275 mt  424  283 L
+gs 176 125 281 237 MR c np
+4 W
+428 275 PD
+gr
+
+c8
+ 430  282 mt  345  244 L
+ 394  284 mt  381  104 L
+ 382  294 mt  408  105 L
+ 396  299 mt  319  256 L
+ 369  302 mt  380  105 L
+ 394  284 mt  358  101 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  359  103 PO
+0 sg
+   6    6  359  103 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 392  263 mt  358  101 L
+ 380  280 mt  437  108 L
+ 402  285 mt  319  256 L
+ 367  289 mt  380  106 L
+ 391  271 mt  358  101 L
+ 388  289 mt  381  103 L
+ 394  254 mt  381  103 L
+c9
+ 408  242 mt  409  249 L
+gs 176 125 281 237 MR c np
+4 W
+408 242 PD
+gr
+
+ 413  247 mt  410  240 L
+gs 176 125 281 237 MR c np
+4 W
+413 247 PD
+gr
+
+ 428  239 mt  429  247 L
+gs 176 125 281 237 MR c np
+4 W
+428 239 PD
+gr
+
+ 430  248 mt  431  241 L
+gs 176 125 281 237 MR c np
+4 W
+430 248 PD
+gr
+
+ 432  244 mt  431  251 L
+gs 176 125 281 237 MR c np
+4 W
+432 244 PD
+gr
+
+c8
+ 438  245 mt  345  244 L
+ 414  229 mt  532  321 L
+c9
+ 417  237 mt  414  229 L
+gs 176 125 281 237 MR c np
+4 W
+417 237 PD
+gr
+
+ 430  233 mt  429  226 L
+gs 176 125 281 237 MR c np
+4 W
+430 233 PD
+gr
+
+ 431  228 mt  431  236 L
+gs 176 125 281 237 MR c np
+4 W
+431 228 PD
+gr
+
+ 435  230 mt  436  237 L
+gs 176 125 281 237 MR c np
+4 W
+435 230 PD
+gr
+
+c8
+ 438  230 mt  346  244 L
+ 394  254 mt  408  108 L
+ 429  259 mt  345  244 L
+ 400  279 mt  408  108 L
+ 400  239 mt  408  108 L
+ 407  276 mt  381  103 L
+ 400  279 mt  437  109 L
+ 400  239 mt  437  108 L
+ 431  236 mt  346  244 L
+ 410  222 mt  532  321 L
+c9
+ 429  221 mt  431  228 L
+gs 176 125 281 237 MR c np
+4 W
+429 221 PD
+gr
+
+ 433  222 mt  435  230 L
+gs 176 125 281 237 MR c np
+4 W
+433 222 PD
+gr
+
+c8
+ 437  221 mt  345  244 L
+ 425  193 mt  345  244 L
+ 403  219 mt  345  244 L
+ 400  212 mt  345  244 L
+ 367  289 mt  409  102 L
+ 395  307 mt  346  244 L
+ 367  289 mt  358  105 L
+ 397  205 mt  337  236 L
+ 412  192 mt  543  157 L
+c9
+ 415  189 mt  419  195 L
+gs 176 125 281 237 MR c np
+4 W
+415 189 PD
+gr
+
+ 421  190 mt  416  184 L
+gs 176 125 281 237 MR c np
+4 W
+421 190 PD
+gr
+
+c8
+ 421  187 mt  345  244 L
+ 397  187 mt  540  214 L
+ 410  183 mt  345  244 L
+ 395  188 mt  544  157 L
+ 401  183 mt  478  123 L
+c9
+ 401  176 mt  407  182 L
+gs 176 125 281 237 MR c np
+4 W
+401 176 PD
+gr
+
+c8
+ 411  174 mt  345  244 L
+ 388  183 mt  544  156 L
+ 401  176 mt  324  235 L
+ 385  179 mt  542  156 L
+ 395  171 mt  336  235 L
+ 392  161 mt  336  236 L
+ 362  295 mt  381  105 L
+ 388  289 mt  359  102 L
+ 367  289 mt  437  109 L
+ 388  311 mt  345  244 L
+ 362  295 mt  409  104 L
+ 369  302 mt  358  102 L
+ 362  295 mt  358  103 L
+ 397  205 mt  324  235 L
+ 363  153 mt  336  235 L
+ 350  168 mt  408  107 L
+ 350  168 mt  381  104 L
+c9
+ 350  152 mt  357  154 L
+gs 176 125 281 237 MR c np
+4 W
+350 152 PD
+gr
+
+ 351  157 mt  357  161 L
+gs 176 125 281 237 MR c np
+4 W
+351 157 PD
+gr
+
+ 354  171 mt  347  170 L
+gs 176 125 281 237 MR c np
+4 W
+354 171 PD
+gr
+
+c8
+ 355  148 mt  336  236 L
+ 395  171 mt  324  235 L
+ 333  144 mt  336  235 L
+ 336  146 mt  336  235 L
+ 363  153 mt  324  235 L
+ 357  301 mt  359  104 L
+ 404  178 mt  336  236 L
+ 389  182 mt  543  157 L
+c9
+ 399  173 mt  404  178 L
+gs 176 125 281 237 MR c np
+4 W
+399 173 PD
+gr
+
+c8
+ 405  169 mt  345  244 L
+ 389  192 mt  336  236 L
+ 401  176 mt  346  244 L
+ 393  199 mt  324  235 L
+ 407  182 mt  345  244 L
+ 391  183 mt  540  214 L
+ 404  178 mt  345  244 L
+ 385  179 mt  539  214 L
+ 399  173 mt  345  244 L
+ 383  178 mt  543  157 L
+ 399  165 mt  345  244 L
+ 393  199 mt  345  244 L
+ 392  161 mt  345  244 L
+ 389  192 mt  324  235 L
+ 370  152 mt  336  236 L
+ 384  186 mt  324  235 L
+ 385  157 mt  336  236 L
+ 380  180 mt  336  236 L
+ 361  305 mt  380  103 L
+ 379  324 mt  319  256 L
+ 354  309 mt  380  104 L
+ 417  194 mt  336  236 L
+ 405  234 mt  436  108 L
+c9
+ 405  234 mt  410  228 L
+gs 176 125 281 237 MR c np
+4 W
+405 234 PD
+gr
+
+c8
+ 431  228 mt  345  244 L
+ 407  216 mt  535  285 L
+c9
+ 424  207 mt  427  214 L
+gs 176 125 281 237 MR c np
+4 W
+424 207 PD
+gr
+
+ 424  212 mt  420  205 L
+gs 176 125 281 237 MR c np
+4 W
+424 212 PD
+gr
+
+c8
+ 427  208 mt  346  244 L
+ 405  209 mt  534  285 L
+ 421  200 mt  346  244 L
+ 404  202 mt  538  214 L
+ 417  194 mt  345  244 L
+ 401  195 mt  539  214 L
+ 412  188 mt  345  244 L
+ 380  180 mt  346  244 L
+ 393  168 mt  345  244 L
+ 377  173 mt  543  157 L
+ 389  166 mt  324  235 L
+ 370  155 mt  336  236 L
+ 374  175 mt  336  236 L
+ 377  154 mt  336  235 L
+ 359  175 mt  437  109 L
+ 373  157 mt  324  235 L
+ 364  165 mt  436  109 L
+ 370  155 mt  324  235 L
+ 380  180 mt  324  235 L
+ 383  162 mt  336  236 L
+ 371  175 mt  437  109 L
+ 380  160 mt  336  236 L
+ 369  170 mt  336  236 L
+ 393  168 mt  336  236 L
+ 370  173 mt  545  156 L
+ 377  154 mt  346  244 L
+ 395  171 mt  345  244 L
+ 381  181 mt  542  156 L
+ 389  166 mt  345  244 L
+ 378  176 mt  544  156 L
+ 387  164 mt  346  244 L
+ 374  179 mt  544  157 L
+ 385  157 mt  346  244 L
+ 362  172 mt  542  156 L
+ 369  170 mt  324  235 L
+ 363  165 mt  336  236 L
+ 356  171 mt  437  109 L
+ 365  155 mt  324  235 L
+ 363  165 mt  324  235 L
+ 340  146 mt  336  235 L
+c9
+ 355  150 mt  363  153 L
+gs 176 125 281 237 MR c np
+4 W
+355 150 PD
+gr
+
+c8
+ 362  150 mt  336  236 L
+ 347  170 mt  408  107 L
+ 355  148 mt  324  235 L
+ 331  168 mt  437  109 L
+c9
+ 336  146 mt  342  149 L
+gs 176 125 281 237 MR c np
+4 W
+336 146 PD
+gr
+
+c8
+ 336  161 mt  381  104 L
+ 340  146 mt  324  235 L
+ 329  144 mt  324  235 L
+ 338  149 mt  324  235 L
+ 329  168 mt  381  104 L
+c9
+ 329  144 mt  336  146 L
+gs 176 125 281 237 MR c np
+4 W
+329 144 PD
+gr
+
+c8
+ 330  156 mt  381  104 L
+ 333  144 mt  324  235 L
+ 327  151 mt  408  107 L
+ 327  151 mt  359  103 L
+ 330  156 mt  359  103 L
+ 354  309 mt  340  254 L
+ 361  305 mt  340  254 L
+ 404  306 mt  340  254 L
+ 390  303 mt  340  254 L
+ 398  311 mt  340  254 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  383  426 PO
+0 sg
+   6    6  383  426 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 350  152 mt  324  235 L
+ 343  165 mt  381  104 L
+ 348  147 mt  336  236 L
+ 342  155 mt  437  109 L
+ 348  147 mt  324  235 L
+ 329  168 mt  408  107 L
+ 332  145 mt  324  235 L
+ 329  144 mt  336  235 L
+ 362  150 mt  324  234 L
+ 349  158 mt  437  109 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  437  109 PO
+0 sg
+   6    6  437  109 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 365  155 mt  346  244 L
+ 354  171 mt  437  109 L
+ 365  155 mt  336  236 L
+ 352  173 mt  437  109 L
+ 357  161 mt  336  235 L
+ 347  170 mt  437  109 L
+ 357  154 mt  336  236 L
+ 344  172 mt  408  107 L
+ 355  150 mt  336  236 L
+ 343  165 mt  408  107 L
+ 350  152 mt  336  236 L
+ 338  170 mt  408  107 L
+ 342  155 mt  408  107 L
+ 342  149 mt  336  236 L
+ 355  150 mt  324  235 L
+ 336  171 mt  408  107 L
+ 348  149 mt  324  235 L
+ 326  143 mt  336  235 L
+ 357  161 mt  324  235 L
+ 344  172 mt  437  109 L
+ 357  154 mt  324  234 L
+ 336  171 mt  437  109 L
+ 344  153 mt  324  235 L
+ 329  168 mt  437  109 L
+ 340  147 mt  324  235 L
+ 326  143 mt  324  235 L
+ 351  157 mt  324  235 L
+ 338  170 mt  437  109 L
+ 348  149 mt  336  235 L
+ 374  175 mt  324  235 L
+ 357  301 mt  382  101 L
+c9
+ 378  330 mt  385  326 L
+gs 176 125 281 237 MR c np
+4 W
+378 330 PD
+gr
+
+c8
+ 389  336 mt  319  256 L
+ 374  322 mt  319  256 L
+ 354  307 mt  381  106 L
+ 371  328 mt  319  256 L
+ 350  313 mt  319  256 L
+ 368  326 mt  319  256 L
+ 367  323 mt  354  425 L
+ 424  212 mt  532  321 L
+ 427  219 mt  532  321 L
+ 428  256 mt  475  356 L
+ 429  226 mt  532  321 L
+ 430  233 mt  532  321 L
+ 444  258 mt  475  356 L
+ 446  250 mt  475  356 L
+ 446  213 mt  533  322 L
+ 448  221 mt  532  321 L
+ 449  229 mt  532  321 L
+ 449  236 mt  532  321 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  535  285 PO
+0 sg
+   6    6  535  285 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 526 276 19 19 MR c np
+4 W
+c8
+535 285 PD
+gr
+
+c8
+gs 526 276 19 19 MR c np
+4 W
+535 285 PD
+gr
+
+gs 526 276 19 19 MR c np
+4 W
+535 285 PD
+gr
+
+gs 525 276 19 19 MR c np
+4 W
+534 285 PD
+gr
+
+gs 525 276 19 19 MR c np
+4 W
+534 285 PD
+gr
+
+gs 524 313 19 19 MR c np
+4 W
+533 322 PD
+gr
+
+gs 523 313 19 19 MR c np
+4 W
+532 322 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 313 19 19 MR c np
+4 W
+532 322 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 523 312 19 19 MR c np
+4 W
+532 321 PD
+gr
+
+gs 470 113 19 19 MR c np
+4 W
+479 122 PD
+gr
+
+gs 470 114 19 19 MR c np
+4 W
+479 123 PD
+gr
+
+gs 470 114 19 19 MR c np
+4 W
+479 123 PD
+gr
+
+gs 470 114 19 19 MR c np
+4 W
+479 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  478  123 PO
+0 sg
+   6    6  478  123 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 469 115 19 19 MR c np
+4 W
+c8
+478 124 PD
+gr
+
+c8
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 113 19 19 MR c np
+4 W
+478 122 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 469 115 19 19 MR c np
+4 W
+478 124 PD
+gr
+
+gs 469 114 19 19 MR c np
+4 W
+478 123 PD
+gr
+
+gs 468 114 19 19 MR c np
+4 W
+477 123 PD
+gr
+
+gs 468 114 19 19 MR c np
+4 W
+477 123 PD
+gr
+
+gs 466 347 19 19 MR c np
+4 W
+475 356 PD
+gr
+
+gs 466 347 19 19 MR c np
+4 W
+475 356 PD
+gr
+
+gs 466 347 19 19 MR c np
+4 W
+475 356 PD
+gr
+
+gs 466 347 19 19 MR c np
+4 W
+475 356 PD
+gr
+
+gs 466 347 19 19 MR c np
+4 W
+475 356 PD
+gr
+
+gs 466 347 19 19 MR c np
+4 W
+475 356 PD
+gr
+
+gs 466 347 19 19 MR c np
+4 W
+475 356 PD
+gr
+
+gs 466 346 19 19 MR c np
+4 W
+475 355 PD
+gr
+
+gs 466 346 19 19 MR c np
+4 W
+475 355 PD
+gr
+
+gs 466 347 19 19 MR c np
+4 W
+475 356 PD
+gr
+
+gs 466 346 19 19 MR c np
+4 W
+475 355 PD
+gr
+
+c9
+ 449  236 mt  449  229 L
+gs 176 125 281 237 MR c np
+4 W
+449 236 PD
+gr
+
+ 449  229 mt  448  221 L
+gs 176 125 281 237 MR c np
+4 W
+449 229 PD
+gr
+
+ 448  243 mt  449  236 L
+gs 176 125 281 237 MR c np
+4 W
+448 243 PD
+gr
+
+ 448  221 mt  446  213 L
+gs 176 125 281 237 MR c np
+4 W
+448 221 PD
+gr
+
+c8
+ 448  221 mt  535  285 L
+c9
+ 446  213 mt  444  205 L
+gs 176 125 281 237 MR c np
+4 W
+446 213 PD
+gr
+
+c8
+ 446  213 mt  534  285 L
+c9
+ 446  250 mt  448  243 L
+gs 176 125 281 237 MR c np
+4 W
+446 250 PD
+gr
+
+ 444  205 mt  441  199 L
+gs 176 125 281 237 MR c np
+4 W
+444 205 PD
+gr
+
+c8
+ 444  205 mt  535  285 L
+c9
+ 444  258 mt  446  250 L
+gs 176 125 281 237 MR c np
+4 W
+444 258 PD
+gr
+
+ 441  199 mt  437  192 L
+gs 176 125 281 237 MR c np
+4 W
+441 199 PD
+gr
+
+ 440  265 mt  444  258 L
+gs 176 125 281 237 MR c np
+4 W
+440 265 PD
+gr
+
+ 439  214 mt  435  207 L
+gs 176 125 281 237 MR c np
+4 W
+439 214 PD
+gr
+
+c8
+ 439  214 mt  543  157 L
+c9
+ 438  237 mt  438  245 L
+gs 176 125 281 237 MR c np
+4 W
+438 237 PD
+gr
+
+ 438  245 mt  438  253 L
+gs 176 125 281 237 MR c np
+4 W
+438 245 PD
+gr
+
+ 438  253 mt  438  260 L
+gs 176 125 281 237 MR c np
+4 W
+438 253 PD
+gr
+
+ 438  230 mt  438  237 L
+gs 176 125 281 237 MR c np
+4 W
+438 230 PD
+gr
+
+ 438  260 mt  436  268 L
+gs 176 125 281 237 MR c np
+4 W
+438 260 PD
+gr
+
+gs 428 99 19 19 MR c np
+4 W
+c8
+437 108 PD
+gr
+
+c8
+c9
+ 437  221 mt  438  230 L
+gs 176 125 281 237 MR c np
+4 W
+437 221 PD
+gr
+
+gs 428 99 19 19 MR c np
+4 W
+c8
+437 108 PD
+gr
+
+c8
+gs 428 99 19 19 MR c np
+4 W
+437 108 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 99 19 19 MR c np
+4 W
+437 108 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+c9
+ 437  192 mt  432  187 L
+gs 176 125 281 237 MR c np
+4 W
+437 192 PD
+gr
+
+c8
+ 437  192 mt  539  214 L
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 428 100 19 19 MR c np
+4 W
+437 109 PD
+gr
+
+gs 427 99 19 19 MR c np
+4 W
+436 108 PD
+gr
+
+gs 427 100 19 19 MR c np
+4 W
+436 109 PD
+gr
+
+c9
+ 436  271 mt  440  265 L
+gs 176 125 281 237 MR c np
+4 W
+436 271 PD
+gr
+
+c8
+ 436  271 mt  475  356 L
+gs 427 101 19 19 MR c np
+4 W
+436 110 PD
+gr
+
+gs 427 100 19 19 MR c np
+4 W
+436 109 PD
+gr
+
+gs 427 100 19 19 MR c np
+4 W
+436 109 PD
+gr
+
+c9
+ 435  214 mt  437  221 L
+gs 176 125 281 237 MR c np
+4 W
+435 214 PD
+gr
+
+ 435  207 mt  429  202 L
+gs 176 125 281 237 MR c np
+4 W
+435 207 PD
+gr
+
+c8
+ 435  207 mt  543  156 L
+c9
+ 433  275 mt  430  282 L
+gs 176 125 281 237 MR c np
+4 W
+433 275 PD
+gr
+
+ 433  207 mt  435  214 L
+gs 176 125 281 237 MR c np
+4 W
+433 207 PD
+gr
+
+c8
+ 432  187 mt  539  213 L
+c9
+ 431  216 mt  439  214 L
+gs 176 125 281 237 MR c np
+4 W
+431 216 PD
+gr
+
+c8
+ 431  216 mt  543  157 L
+c9
+ 431  215 mt  433  222 L
+gs 176 125 281 237 MR c np
+4 W
+431 215 PD
+gr
+
+ 430  282 mt  426  288 L
+gs 176 125 281 237 MR c np
+4 W
+430 282 PD
+gr
+
+ 429  202 mt  424  197 L
+gs 176 125 281 237 MR c np
+4 W
+429 202 PD
+gr
+
+ 429  200 mt  433  207 L
+gs 176 125 281 237 MR c np
+4 W
+429 200 PD
+gr
+
+c8
+ 429  202 mt  543  156 L
+ 429  215 mt  543  156 L
+ 429  223 mt  543  157 L
+c9
+ 428  208 mt  429  215 L
+gs 176 125 281 237 MR c np
+4 W
+428 208 PD
+gr
+
+c8
+ 428  208 mt  543  157 L
+ 428  231 mt  544  156 L
+ 427  219 mt  535  285 L
+c9
+ 427  181 mt  421  177 L
+gs 176 125 281 237 MR c np
+4 W
+427 181 PD
+gr
+
+c8
+ 427  181 mt  540  214 L
+c9
+ 426  288 mt  422  295 L
+gs 176 125 281 237 MR c np
+4 W
+426 288 PD
+gr
+
+ 425  193 mt  429  200 L
+gs 176 125 281 237 MR c np
+4 W
+425 193 PD
+gr
+
+ 425  201 mt  428  208 L
+gs 176 125 281 237 MR c np
+4 W
+425 201 PD
+gr
+
+c8
+ 425  201 mt  543  156 L
+ 424  212 mt  535  285 L
+ 424  197 mt  544  156 L
+ 418  301 mt  340  254 L
+ 408  299 mt  340  254 L
+ 413  294 mt  340  254 L
+ 417  288 mt  340  254 L
+ 424  283 mt  340  254 L
+c9
+ 423  219 mt  431  216 L
+gs 176 125 281 237 MR c np
+4 W
+423 219 PD
+gr
+
+ 423  201 mt  427  208 L
+gs 176 125 281 237 MR c np
+4 W
+423 201 PD
+gr
+
+c8
+ 423  275 mt  475  355 L
+ 423  268 mt  475  356 L
+c9
+ 422  295 mt  418  301 L
+gs 176 125 281 237 MR c np
+4 W
+422 295 PD
+gr
+
+ 421  187 mt  425  193 L
+gs 176 125 281 237 MR c np
+4 W
+421 187 PD
+gr
+
+ 421  177 mt  415  173 L
+gs 176 125 281 237 MR c np
+4 W
+421 177 PD
+gr
+
+c8
+ 421  177 mt  539  214 L
+ 421  190 mt  543  157 L
+ 420  205 mt  535  285 L
+ 420  196 mt  543  157 L
+ 419  289 mt  340  254 L
+c9
+ 418  301 mt  414  308 L
+gs 176 125 281 237 MR c np
+4 W
+418 301 PD
+gr
+
+ 417  180 mt  421  187 L
+gs 176 125 281 237 MR c np
+4 W
+417 180 PD
+gr
+
+c8
+ 416  184 mt  543  157 L
+c9
+ 416  223 mt  423  219 L
+gs 176 125 281 237 MR c np
+4 W
+416 223 PD
+gr
+
+c8
+ 415  173 mt  543  157 L
+c9
+ 414  308 mt  411  314 L
+gs 176 125 281 237 MR c np
+4 W
+414 308 PD
+gr
+
+c8
+ 409  300 mt  340  254 L
+ 402  303 mt  340  254 L
+ 411  314 mt  340  254 L
+ 414  308 mt  340  254 L
+ 388  311 mt  340  254 L
+ 395  307 mt  340  254 L
+ 414  294 mt  340  254 L
+c9
+ 411  174 mt  417  180 L
+gs 176 125 281 237 MR c np
+4 W
+411 174 PD
+gr
+
+ 411  314 mt  407  320 L
+gs 176 125 281 237 MR c np
+4 W
+411 314 PD
+gr
+
+gs 400 93 19 19 MR c np
+4 W
+c8
+409 102 PD
+gr
+
+c8
+gs 400 95 19 19 MR c np
+4 W
+409 104 PD
+gr
+
+gs 399 96 19 19 MR c np
+4 W
+408 105 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 99 19 19 MR c np
+4 W
+408 108 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 97 19 19 MR c np
+4 W
+408 106 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  408  107 PO
+0 sg
+   6    6  408  107 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 399 98 19 19 MR c np
+4 W
+c8
+408 107 PD
+gr
+
+c8
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 97 19 19 MR c np
+4 W
+408 106 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 99 19 19 MR c np
+4 W
+408 108 PD
+gr
+
+gs 399 99 19 19 MR c np
+4 W
+408 108 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 99 19 19 MR c np
+4 W
+408 108 PD
+gr
+
+gs 399 99 19 19 MR c np
+4 W
+408 108 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 98 19 19 MR c np
+4 W
+408 107 PD
+gr
+
+gs 399 99 19 19 MR c np
+4 W
+408 108 PD
+gr
+
+gs 398 99 19 19 MR c np
+4 W
+407 108 PD
+gr
+
+c9
+ 407  320 mt  401  326 L
+gs 176 125 281 237 MR c np
+4 W
+407 320 PD
+gr
+
+c8
+ 406  188 mt  478  123 L
+c9
+ 405  169 mt  411  174 L
+gs 176 125 281 237 MR c np
+4 W
+405 169 PD
+gr
+
+c8
+ 402  178 mt  478  123 L
+ 400  168 mt  543  156 L
+c9
+ 399  165 mt  405  169 L
+gs 176 125 281 237 MR c np
+4 W
+399 165 PD
+gr
+
+c8
+ 393  166 mt  478  123 L
+c9
+ 392  161 mt  399  165 L
+gs 176 125 281 237 MR c np
+4 W
+392 161 PD
+gr
+
+gr
+
+0.666667 w
+c9
+gs 375 417 19 19 MR c np
+4 W
+c8
+384 426 PD
+gr
+
+c8
+gs 83 36 496 391 MR c np
+gr
+
+gs 375 417 19 19 MR c np
+4 W
+384 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 374 417 19 19 MR c np
+4 W
+383 426 PD
+gr
+
+gs 83 36 496 391 MR c np
+gs 373 92 19 19 MR c np
+4 W
+382 101 PD
+gr
+
+gs 372 97 19 19 MR c np
+4 W
+381 106 PD
+gr
+
+gs 372 96 19 19 MR c np
+4 W
+381 105 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 94 19 19 MR c np
+4 W
+381 103 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 94 19 19 MR c np
+4 W
+381 103 PD
+gr
+
+gs 372 96 19 19 MR c np
+4 W
+381 105 PD
+gr
+
+gs 372 94 19 19 MR c np
+4 W
+381 103 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 97 19 19 MR c np
+4 W
+381 106 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+2 w
+gr
+
+2 w
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  381  104 PO
+0 sg
+   6    6  381  104 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 372 95 19 19 MR c np
+4 W
+c8
+381 104 PD
+gr
+
+c8
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 96 19 19 MR c np
+4 W
+381 105 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 372 95 19 19 MR c np
+4 W
+381 104 PD
+gr
+
+gs 371 96 19 19 MR c np
+4 W
+380 105 PD
+gr
+
+gs 371 96 19 19 MR c np
+4 W
+380 105 PD
+gr
+
+gs 371 94 19 19 MR c np
+4 W
+380 103 PD
+gr
+
+gs 371 97 19 19 MR c np
+4 W
+380 106 PD
+gr
+
+gs 371 95 19 19 MR c np
+4 W
+380 104 PD
+gr
+
+c9
+ 370  152 mt  377  154 L
+gs 176 125 281 237 MR c np
+4 W
+370 152 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+c8
+359 103 PD
+gr
+
+c8
+gs 350 95 19 19 MR c np
+4 W
+359 104 PD
+gr
+
+gs 350 92 19 19 MR c np
+4 W
+359 101 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 93 19 19 MR c np
+4 W
+359 102 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 350 94 19 19 MR c np
+4 W
+359 103 PD
+gr
+
+gs 349 94 19 19 MR c np
+4 W
+358 103 PD
+gr
+
+gs 349 94 19 19 MR c np
+4 W
+358 103 PD
+gr
+
+gs 349 92 19 19 MR c np
+4 W
+358 101 PD
+gr
+
+gs 349 95 19 19 MR c np
+4 W
+358 104 PD
+gr
+
+gs 349 92 19 19 MR c np
+4 W
+358 101 PD
+gr
+
+gs 349 93 19 19 MR c np
+4 W
+358 102 PD
+gr
+
+gs 349 93 19 19 MR c np
+4 W
+358 102 PD
+gr
+
+gs 349 92 19 19 MR c np
+4 W
+358 101 PD
+gr
+
+gs 349 96 19 19 MR c np
+4 W
+358 105 PD
+gr
+
+c9
+ 355  148 mt  362  150 L
+gs 176 125 281 237 MR c np
+4 W
+355 148 PD
+gr
+
+c8
+ 355  336 mt  325  422 L
+gr
+
+0.666667 w
+c8
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 416 19 19 MR c np
+4 W
+354 425 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 415 19 19 MR c np
+4 W
+354 424 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 416 19 19 MR c np
+4 W
+354 425 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 345 416 19 19 MR c np
+4 W
+354 425 PD
+gr
+
+gs 83 36 496 391 MR c np
+ 348  334 mt  319  256 L
+c9
+ 348  147 mt  355  148 L
+gs 176 125 281 237 MR c np
+4 W
+348 147 PD
+gr
+
+ 347  335 mt  344  328 L
+gs 176 125 281 237 MR c np
+4 W
+347 335 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+c8
+346 244 PD
+gr
+
+c8
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 337 235 19 19 MR c np
+4 W
+346 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+2 w
+gr
+
+2 w
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  345  244 PO
+0 sg
+   6    6  345  244 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 336 235 19 19 MR c np
+4 W
+c8
+345 244 PD
+gr
+
+c8
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+ 345  332 mt  325  422 L
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 336 235 19 19 MR c np
+4 W
+345 244 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+c9
+ 340  146 mt  348  147 L
+gs 176 125 281 237 MR c np
+4 W
+340 146 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+c8
+340 254 PD
+gr
+
+c8
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  340  254 PO
+0 sg
+   6    6  340  254 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 331 245 19 19 MR c np
+4 W
+c8
+340 254 PD
+gr
+
+c8
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+c9
+ 312  347 mt  319  344 L
+gs 176 125 281 237 MR c np
+4 W
+312 347 PD
+gr
+
+ 316  354 mt  308  353 L
+gs 176 125 281 237 MR c np
+4 W
+316 354 PD
+gr
+
+ 308  353 mt  301  352 L
+gs 176 125 281 237 MR c np
+4 W
+308 353 PD
+gr
+
+c8
+ 305  349 mt  257  418 L
+ 316  354 mt  319  256 L
+ 319  344 mt  257  418 L
+ 323  354 mt  319  256 L
+c9
+ 323  354 mt  316  354 L
+gs 176 125 281 237 MR c np
+4 W
+323 354 PD
+gr
+
+c8
+ 327  340 mt  286  420 L
+c9
+ 321  336 mt  330  335 L
+gs 176 125 281 237 MR c np
+4 W
+321 336 PD
+gr
+
+ 324  337 mt  332  338 L
+gs 176 125 281 237 MR c np
+4 W
+324 337 PD
+gr
+
+ 326  319 mt  319  322 L
+gs 176 125 281 237 MR c np
+4 W
+326 319 PD
+gr
+
+c8
+ 325  337 mt  319  256 L
+ 326  319 mt  319  256 L
+c9
+ 327  340 mt  334  337 L
+gs 176 125 281 237 MR c np
+4 W
+327 340 PD
+gr
+
+ 333  336 mt  325  337 L
+gs 176 125 281 237 MR c np
+4 W
+333 336 PD
+gr
+
+c8
+ 330  335 mt  286  420 L
+ 331  353 mt  319  256 L
+c9
+ 331  353 mt  323  354 L
+gs 176 125 281 237 MR c np
+4 W
+331 353 PD
+gr
+
+c8
+ 334  337 mt  286  420 L
+ 319  344 mt  287  419 L
+c9
+ 319  344 mt  327  340 L
+gs 176 125 281 237 MR c np
+4 W
+319 344 PD
+gr
+
+c8
+ 324  337 mt  286  420 L
+c9
+ 275  349 mt  282  350 L
+gs 176 125 281 237 MR c np
+4 W
+275 349 PD
+gr
+
+ 285  348 mt  278  345 L
+gs 176 125 281 237 MR c np
+4 W
+285 348 PD
+gr
+
+c8
+ 284  344 mt  192  413 L
+c9
+ 268  346 mt  275  349 L
+gs 176 125 281 237 MR c np
+4 W
+268 346 PD
+gr
+
+c8
+ 277  346 mt  192  413 L
+ 290  351 mt  192  413 L
+ 275  349 mt  192  413 L
+ 282  350 mt  192  413 L
+ 284  344 mt  224  416 L
+ 290  351 mt  224  416 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  257  417 PO
+0 sg
+   6    6  257  417 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c9
+ 282  350 mt  290  351 L
+gs 176 125 281 237 MR c np
+4 W
+282 350 PD
+gr
+
+ 293  351 mt  285  348 L
+gs 176 125 281 237 MR c np
+4 W
+293 351 PD
+gr
+
+ 301  352 mt  293  351 L
+gs 176 125 281 237 MR c np
+4 W
+301 352 PD
+gr
+
+c8
+ 297  350 mt  224  415 L
+ 292  342 mt  224  416 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  325  422 PO
+0 sg
+   6    6  325  422 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 316  337 mt  286  420 L
+ 338  334 mt  286  420 L
+ 340  337 mt  286  419 L
+ 338  334 mt  325  422 L
+ 340  337 mt  325  422 L
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 331 245 19 19 MR c np
+4 W
+340 254 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 226 19 19 MR c np
+4 W
+337 235 PD
+gr
+
+gs 328 226 19 19 MR c np
+4 W
+337 235 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 328 226 19 19 MR c np
+4 W
+337 235 PD
+gr
+
+gs 328 227 19 19 MR c np
+4 W
+337 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  336  236 PO
+0 sg
+   6    6  336  236 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 327 227 19 19 MR c np
+4 W
+c8
+336 236 PD
+gr
+
+c8
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 227 19 19 MR c np
+4 W
+336 236 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+gs 327 226 19 19 MR c np
+4 W
+336 235 PD
+gr
+
+ 333  317 mt  319  256 L
+c9
+ 333  144 mt  340  146 L
+gs 176 125 281 237 MR c np
+4 W
+333 144 PD
+gr
+
+c8
+ 333  336 mt  319  256 L
+ 332  338 mt  286  420 L
+gr
+
+0.666667 w
+c8
+0 sg
+%%IncludeResource: font Helvetica-Bold
+/Helvetica-Bold /WindowsLatin1Encoding 13.3333 FMSR
+
+ 234   27 mt 
+(Result: after joint optimization) s
+%%IncludeResource: font Helvetica
+/Helvetica /WindowsLatin1Encoding 13.3333 FMSR
+
+ 307  458 mt 
+(X \(mm\)) s
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+c8
+325 422 PD
+gr
+
+c8
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+c9
+ 325  337 mt  317  336 L
+gs 176 125 281 237 MR c np
+4 W
+325 337 PD
+gr
+
+gr
+
+c9
+gs 316 413 19 19 MR c np
+4 W
+c8
+325 422 PD
+gr
+
+c8
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 316 413 19 19 MR c np
+4 W
+325 422 PD
+gr
+
+gs 83 36 496 391 MR c np
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+ 204  235 mt  136  156 L
+ 203  219 mt  136  156 L
+ 205  227 mt  136  156 L
+ 192  245 mt  136  156 L
+ 199  240 mt  136  156 L
+ 203  219 mt  140   97 L
+ 201  212 mt  140   97 L
+ 186  188 mt  140   97 L
+ 200  205 mt  140   97 L
+c9
+ 195  217 mt  195  225 L
+gs 176 125 281 237 MR c np
+4 W
+195 217 PD
+gr
+
+ 199  231 mt  199  224 L
+gs 176 125 281 237 MR c np
+4 W
+199 231 PD
+gr
+
+c8
+ 204  235 mt  138  123 L
+ 184  257 mt  136  156 L
+ 186  251 mt  136  156 L
+c9
+ 195  225 mt  196  232 L
+gs 176 125 281 237 MR c np
+4 W
+195 225 PD
+gr
+
+c8
+ 196  232 mt  136  156 L
+ 204  235 mt  134  186 L
+c9
+ 201  247 mt  200  239 L
+gs 176 125 281 237 MR c np
+4 W
+201 247 PD
+gr
+
+ 204  235 mt  199  240 L
+gs 176 125 281 237 MR c np
+4 W
+204 235 PD
+gr
+
+ 205  230 mt  207  239 L
+gs 176 125 281 237 MR c np
+4 W
+205 230 PD
+gr
+
+ 205  230 mt  205  238 L
+gs 176 125 281 237 MR c np
+4 W
+205 230 PD
+gr
+
+c8
+ 207  239 mt  136  155 L
+2 w
+gr
+
+2 w
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  140   97 PO
+0 sg
+   6    6  140   97 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 186  180 mt  140   97 L
+ 187  196 mt  140   97 L
+c9
+ 189  165 mt  187  173 L
+gs 176 125 281 237 MR c np
+4 W
+189 165 PD
+gr
+
+ 200  187 mt  197  195 L
+gs 176 125 281 237 MR c np
+4 W
+200 187 PD
+gr
+
+c8
+ 200  197 mt  199   36 L
+ 202  190 mt  199   36 L
+ 200  205 mt  199   36 L
+c9
+ 202  201 mt  205  194 L
+gs 176 125 281 237 MR c np
+4 W
+202 201 PD
+gr
+
+ 202  190 mt  200  197 L
+gs 176 125 281 237 MR c np
+4 W
+202 190 PD
+gr
+
+c8
+ 206  201 mt  140   97 L
+ 189  203 mt  140   97 L
+ 195  225 mt  136  156 L
+ 193  210 mt  136  156 L
+c9
+ 195  210 mt  195  217 L
+gs 176 125 281 237 MR c np
+4 W
+195 210 PD
+gr
+
+c8
+ 197  217 mt  136  156 L
+ 189  203 mt  136  156 L
+c9
+ 187  173 mt  186  180 L
+gs 176 125 281 237 MR c np
+4 W
+187 173 PD
+gr
+
+c8
+ 197  195 mt  140   97 L
+ 195  217 mt  140   98 L
+c9
+ 186  188 mt  187  196 L
+gs 176 125 281 237 MR c np
+4 W
+186 188 PD
+gr
+
+ 196  203 mt  195  210 L
+gs 176 125 281 237 MR c np
+4 W
+196 203 PD
+gr
+
+ 199  216 mt  200  209 L
+gs 176 125 281 237 MR c np
+4 W
+199 216 PD
+gr
+
+ 187  196 mt  189  203 L
+gs 176 125 281 237 MR c np
+4 W
+187 196 PD
+gr
+
+c8
+ 203  219 mt  138  123 L
+c9
+ 199  224 mt  199  216 L
+gs 176 125 281 237 MR c np
+4 W
+199 224 PD
+gr
+
+ 205  222 mt  205  230 L
+gs 176 125 281 237 MR c np
+4 W
+205 222 PD
+gr
+
+c8
+ 205  227 mt  138  124 L
+ 201  212 mt  138  124 L
+ 186  188 mt  138  124 L
+ 195  217 mt  136  156 L
+ 195  225 mt  138  124 L
+ 187  196 mt  138  123 L
+c9
+ 186  180 mt  186  188 L
+gs 176 125 281 237 MR c np
+4 W
+186 180 PD
+gr
+
+ 197  195 mt  196  203 L
+gs 176 125 281 237 MR c np
+4 W
+197 195 PD
+gr
+
+ 200  197 mt  200  205 L
+gs 176 125 281 237 MR c np
+4 W
+200 197 PD
+gr
+
+ 200  209 mt  202  201 L
+gs 176 125 281 237 MR c np
+4 W
+200 209 PD
+gr
+
+c8
+ 205  208 mt  140   97 L
+ 196  203 mt  140   97 L
+ 189  203 mt  138  124 L
+c9
+ 200  205 mt  201  212 L
+gs 176 125 281 237 MR c np
+4 W
+200 205 PD
+gr
+
+c8
+ 204  215 mt  140   97 L
+c9
+ 201  212 mt  203  219 L
+gs 176 125 281 237 MR c np
+4 W
+201 212 PD
+gr
+
+c8
+ 205  222 mt  140   97 L
+ 205  208 mt  138  123 L
+ 195  217 mt  138  123 L
+ 196  203 mt  138  124 L
+c9
+ 202  147 mt  197  152 L
+gs 176 125 281 237 MR c np
+4 W
+202 147 PD
+gr
+
+c8
+ 207  184 mt  199   37 L
+ 207  184 mt  251   40 L
+ 202  147 mt  252   40 L
+c9
+ 209  144 mt  202  147 L
+gs 176 125 281 237 MR c np
+4 W
+209 144 PD
+gr
+
+c8
+ 207  174 mt  199   36 L
+ 211  168 mt  252   40 L
+ 213  179 mt  252   39 L
+c9
+ 224  138 mt  217  141 L
+gs 176 125 281 237 MR c np
+4 W
+224 138 PD
+gr
+
+c8
+ 217  163 mt  251   40 L
+ 222  158 mt  252   40 L
+ 229  154 mt  252   40 L
+c9
+ 238  151 mt  244  146 L
+gs 176 125 281 237 MR c np
+4 W
+238 151 PD
+gr
+
+ 243  148 mt  236  150 L
+gs 176 125 281 237 MR c np
+4 W
+243 148 PD
+gr
+
+ 247  134 mt  240  135 L
+gs 176 125 281 237 MR c np
+4 W
+247 134 PD
+gr
+
+c8
+ 242  152 mt  251   40 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  312   44 PO
+0 sg
+   6    6  312   44 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 209  144 mt  252   40 L
+c9
+ 211  180 mt  216  173 L
+gs 176 125 281 237 MR c np
+4 W
+211 180 PD
+gr
+
+ 217  141 mt  209  144 L
+gs 176 125 281 237 MR c np
+4 W
+217 141 PD
+gr
+
+ 217  163 mt  211  168 L
+gs 176 125 281 237 MR c np
+4 W
+217 163 PD
+gr
+
+c8
+ 213  179 mt  199   37 L
+ 200  187 mt  199   37 L
+c9
+ 203  180 mt  200  187 L
+gs 176 125 281 237 MR c np
+4 W
+203 180 PD
+gr
+
+ 207  184 mt  202  190 L
+gs 176 125 281 237 MR c np
+4 W
+207 184 PD
+gr
+
+c8
+ 207  187 mt  324  234 L
+ 207  187 mt  337  236 L
+c9
+ 207  187 mt  211  180 L
+gs 176 125 281 237 MR c np
+4 W
+207 187 PD
+gr
+
+c8
+ 207  187 mt  315  245 L
+c9
+ 211  168 mt  207  174 L
+gs 176 125 281 237 MR c np
+4 W
+211 168 PD
+gr
+
+c8
+ 211  180 mt  315  244 L
+c9
+ 213  179 mt  207  184 L
+gs 176 125 281 237 MR c np
+4 W
+213 179 PD
+gr
+
+c8
+ 208  193 mt  199   38 L
+c9
+ 211  186 mt  208  193 L
+gs 176 125 281 237 MR c np
+4 W
+211 186 PD
+gr
+
+c8
+ 215  203 mt  336  235 L
+ 216  173 mt  315  244 L
+ 217  196 mt  337  236 L
+c9
+ 217  196 mt  221  190 L
+gs 176 125 281 237 MR c np
+4 W
+217 196 PD
+gr
+
+c8
+ 220  167 mt  315  245 L
+ 225  162 mt  315  244 L
+ 228  203 mt  336  235 L
+ 230  178 mt  336  236 L
+ 231  196 mt  337  236 L
+ 230  178 mt  324  235 L
+ 231  196 mt  324  235 L
+c9
+ 231  196 mt  234  189 L
+gs 176 125 281 237 MR c np
+4 W
+231 196 PD
+gr
+
+c8
+ 232  156 mt  315  244 L
+ 234  189 mt  315  245 L
+ 235  172 mt  315  245 L
+ 237  181 mt  315  245 L
+ 238  151 mt  315  244 L
+ 241  317 mt  315  244 L
+ 241  167 mt  315  245 L
+ 241  175 mt  315  245 L
+ 244  146 mt  315  244 L
+ 246  323 mt  315  244 L
+ 246  163 mt  315  245 L
+ 251  142 mt  315  244 L
+ 253  158 mt  315  245 L
+ 257  139 mt  315  245 L
+ 259  155 mt  315  244 L
+ 265  136 mt  315  244 L
+ 267  152 mt  315  245 L
+ 272  134 mt  315  244 L
+ 274  149 mt  315  244 L
+ 280  133 mt  315  244 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  324  235 PO
+0 sg
+   6    6  324  235 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 315 226 19 19 MR c np
+4 W
+c8
+324 235 PD
+gr
+
+c8
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 226 19 19 MR c np
+4 W
+324 235 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 315 225 19 19 MR c np
+4 W
+324 234 PD
+gr
+
+gs 314 225 19 19 MR c np
+4 W
+323 234 PD
+gr
+
+gs 314 225 19 19 MR c np
+4 W
+323 234 PD
+gr
+
+gs 314 225 19 19 MR c np
+4 W
+323 234 PD
+gr
+
+c9
+ 323  166 mt  315  165 L
+gs 176 125 281 237 MR c np
+4 W
+323 166 PD
+gr
+
+ 319  149 mt  312  148 L
+gs 176 125 281 237 MR c np
+4 W
+319 149 PD
+gr
+
+ 323  152 mt  316  148 L
+gs 176 125 281 237 MR c np
+4 W
+323 152 PD
+gr
+
+c8
+ 323  152 mt  359  103 L
+c9
+ 322  165 mt  316  160 L
+gs 176 125 281 237 MR c np
+4 W
+322 165 PD
+gr
+
+ 316  337 mt  324  337 L
+gs 176 125 281 237 MR c np
+4 W
+316 337 PD
+gr
+
+c8
+ 321  336 mt  286  420 L
+c9
+ 277  346 mt  284  344 L
+gs 176 125 281 237 MR c np
+4 W
+277 346 PD
+gr
+
+ 293  334 mt  285  333 L
+gs 176 125 281 237 MR c np
+4 W
+293 334 PD
+gr
+
+c8
+ 285  348 mt  319  256 L
+ 292  342 mt  192  413 L
+c9
+ 260  343 mt  268  346 L
+gs 176 125 281 237 MR c np
+4 W
+260 343 PD
+gr
+
+ 262  346 mt  269  347 L
+gs 176 125 281 237 MR c np
+4 W
+262 346 PD
+gr
+
+2 w
+gr
+
+c9
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  124  344 PO
+0 sg
+   6    6  124  344 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c9
+ 219  348 mt  226  350 L
+gs 176 125 281 237 MR c np
+4 W
+219 348 PD
+gr
+
+c8
+ 253  345 mt  124  344 L
+ 246  342 mt  115  377 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  116  377 PO
+0 sg
+   6    6  116  377 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c9
+ 212  345 mt  219  348 L
+gs 176 125 281 237 MR c np
+4 W
+212 345 PD
+gr
+
+c8
+ 246  342 mt  124  344 L
+ 239  338 mt  124  344 L
+ 247  335 mt  124  344 L
+ 254  340 mt  124  344 L
+ 206  340 mt  124  344 L
+ 212  345 mt  124  344 L
+ 219  348 mt  123  344 L
+c9
+ 233  334 mt  239  338 L
+gs 176 125 281 237 MR c np
+4 W
+233 334 PD
+gr
+
+ 197  328 mt  201  335 L
+gs 176 125 281 237 MR c np
+4 W
+197 328 PD
+gr
+
+ 201  335 mt  206  340 L
+gs 176 125 281 237 MR c np
+4 W
+201 335 PD
+gr
+
+c8
+ 233  334 mt  124  344 L
+c9
+ 223  322 mt  228  328 L
+gs 176 125 281 237 MR c np
+4 W
+223 322 PD
+gr
+
+c8
+ 206  340 mt  125  314 L
+ 201  335 mt  125  314 L
+c9
+ 228  328 mt  233  334 L
+gs 176 125 281 237 MR c np
+4 W
+228 328 PD
+gr
+
+c8
+ 241  330 mt  123  344 L
+ 235  324 mt  124  344 L
+ 239  338 mt  125  314 L
+c9
+ 226  350 mt  234  351 L
+gs 176 125 281 237 MR c np
+4 W
+226 350 PD
+gr
+
+c8
+ 253  345 mt  115  377 L
+c9
+ 239  338 mt  246  342 L
+gs 176 125 281 237 MR c np
+4 W
+239 338 PD
+gr
+
+c8
+ 254  340 mt  115  377 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  134  186 PO
+0 sg
+   6    6  134  186 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 242  350 mt  115  377 L
+c9
+ 234  351 mt  242  350 L
+gs 176 125 281 237 MR c np
+4 W
+234 351 PD
+gr
+
+c8
+ 253  345 mt  140  393 L
+ 242  350 mt  140  393 L
+c9
+ 242  350 mt  249  349 L
+gs 176 125 281 237 MR c np
+4 W
+242 350 PD
+gr
+
+ 253  345 mt  262  346 L
+gs 176 125 281 237 MR c np
+4 W
+253 345 PD
+gr
+
+c8
+ 256  347 mt  192  413 L
+ 263  344 mt  192  413 L
+ 269  347 mt  192  413 L
+c9
+ 271  342 mt  264  337 L
+gs 176 125 281 237 MR c np
+4 W
+271 342 PD
+gr
+
+c8
+ 270  341 mt  192  413 L
+ 275  349 mt  116  377 L
+ 260  343 mt  141  392 L
+ 249  349 mt  140  393 L
+ 269  347 mt  116  377 L
+ 226  350 mt  116  377 L
+ 234  351 mt  117  377 L
+c9
+ 246  342 mt  253  345 L
+gs 176 125 281 237 MR c np
+4 W
+246 342 PD
+gr
+
+c8
+ 260  343 mt  115  377 L
+ 254  340 mt  140  393 L
+ 234  351 mt  140  393 L
+c9
+ 249  349 mt  256  347 L
+gs 176 125 281 237 MR c np
+4 W
+249 349 PD
+gr
+
+c8
+ 262  346 mt  115  377 L
+ 247  335 mt  116  377 L
+ 219  348 mt  116  377 L
+ 268  346 mt  115  377 L
+ 301  352 mt  319  256 L
+ 305  349 mt  224  415 L
+c9
+ 312  324 mt  304  325 L
+gs 176 125 281 237 MR c np
+4 W
+312 324 PD
+gr
+
+c8
+ 308  353 mt  319  256 L
+ 312  347 mt  224  416 L
+ 270  341 mt  224  415 L
+c9
+ 269  347 mt  277  346 L
+gs 176 125 281 237 MR c np
+4 W
+269 347 PD
+gr
+
+ 278  345 mt  271  342 L
+gs 176 125 281 237 MR c np
+4 W
+278 345 PD
+gr
+
+c8
+ 278  338 mt  224  416 L
+ 285  337 mt  224  415 L
+c9
+ 292  342 mt  299  340 L
+gs 176 125 281 237 MR c np
+4 W
+292 342 PD
+gr
+
+c8
+ 293  351 mt  319  256 L
+ 299  340 mt  224  416 L
+c9
+ 290  351 mt  297  350 L
+gs 176 125 281 237 MR c np
+4 W
+290 351 PD
+gr
+
+ 305  349 mt  312  347 L
+gs 176 125 281 237 MR c np
+4 W
+305 349 PD
+gr
+
+c8
+ 316  337 mt  257  417 L
+ 299  340 mt  257  417 L
+ 306  338 mt  224  415 L
+ 285  337 mt  257  417 L
+ 312  347 mt  257  417 L
+ 321  336 mt  257  418 L
+c9
+ 321  141 mt  329  144 L
+gs 176 125 281 237 MR c np
+4 W
+321 141 PD
+gr
+
+c8
+ 321  141 mt  336  236 L
+ 321  141 mt  324  234 L
+gs 311 247 19 19 MR c np
+4 W
+320 256 PD
+gr
+
+gs 311 247 19 19 MR c np
+4 W
+320 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+ 319  149 mt  359  103 L
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  319  256 PO
+0 sg
+   6    6  319  256 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 310 247 19 19 MR c np
+4 W
+c8
+319 256 PD
+gr
+
+c8
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+gs 310 247 19 19 MR c np
+4 W
+319 256 PD
+gr
+
+c9
+ 319  322 mt  312  324 L
+gs 176 125 281 237 MR c np
+4 W
+319 322 PD
+gr
+
+c8
+ 319  322 mt  319  256 L
+c9
+ 318  141 mt  326  143 L
+gs 176 125 281 237 MR c np
+4 W
+318 141 PD
+gr
+
+c8
+ 318  141 mt  336  236 L
+ 318  141 mt  324  234 L
+c9
+ 317  139 mt  325  142 L
+gs 176 125 281 237 MR c np
+4 W
+317 139 PD
+gr
+
+c8
+ 317  139 mt  324  234 L
+c9
+ 317  336 mt  309  336 L
+gs 176 125 281 237 MR c np
+4 W
+317 336 PD
+gr
+
+c8
+ 317  336 mt  319  256 L
+c9
+ 316  148 mt  310  144 L
+gs 176 125 281 237 MR c np
+4 W
+316 148 PD
+gr
+
+c8
+ 316  148 mt  359  103 L
+c9
+ 316  160 mt  310  155 L
+gs 176 125 281 237 MR c np
+4 W
+316 160 PD
+gr
+
+c8
+ 316  160 mt  359  103 L
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+c9
+ 315  165 mt  307  165 L
+gs 176 125 281 237 MR c np
+4 W
+315 165 PD
+gr
+
+c8
+ 315  165 mt  358  103 L
+ 315  165 mt  381  104 L
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  315  244 PO
+0 sg
+   6    6  315  244 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 306 236 19 19 MR c np
+4 W
+c8
+315 245 PD
+gr
+
+c8
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 236 19 19 MR c np
+4 W
+315 245 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+gs 306 235 19 19 MR c np
+4 W
+315 244 PD
+gr
+
+c9
+ 314  337 mt  321  336 L
+gs 176 125 281 237 MR c np
+4 W
+314 337 PD
+gr
+
+ 309  337 mt  316  337 L
+gs 176 125 281 237 MR c np
+4 W
+309 337 PD
+gr
+
+c8
+ 314  337 mt  286  420 L
+c9
+ 284  344 mt  292  342 L
+gs 176 125 281 237 MR c np
+4 W
+284 344 PD
+gr
+
+c8
+ 293  336 mt  257  418 L
+c9
+ 297  350 mt  305  349 L
+gs 176 125 281 237 MR c np
+4 W
+297 350 PD
+gr
+
+c8
+ 306  338 mt  257  418 L
+c9
+ 306  338 mt  314  337 L
+gs 176 125 281 237 MR c np
+4 W
+306 338 PD
+gr
+
+c8
+ 309  337 mt  286  420 L
+ 314  337 mt  257  417 L
+c9
+ 313  140 mt  321  141 L
+gs 176 125 281 237 MR c np
+4 W
+313 140 PD
+gr
+
+c8
+ 313  140 mt  336  236 L
+ 313  140 mt  324  234 L
+gr
+
+0.666667 w
+c8
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gs 303 36 19 19 MR c np
+4 W
+312 45 PD
+gr
+
+gr
+
+gs 303 35 19 19 MR c np
+4 W
+312 44 PD
+gr
+
+gs 83 36 496 391 MR c np
+gs 303 36 19 19 MR c np
+4 W
+312 45 PD
+gr
+
+c9
+ 312  148 mt  304  147 L
+gs 176 125 281 237 MR c np
+4 W
+312 148 PD
+gr
+
+c8
+ 312  148 mt  359  103 L
+gs 302 36 19 19 MR c np
+4 W
+311 45 PD
+gr
+
+gs 302 36 19 19 MR c np
+4 W
+311 45 PD
+gr
+
+c9
+ 310  141 mt  318  141 L
+gs 176 125 281 237 MR c np
+4 W
+310 141 PD
+gr
+
+c8
+ 310  141 mt  336  236 L
+ 310  141 mt  324  234 L
+c9
+ 310  136 mt  317  139 L
+gs 176 125 281 237 MR c np
+4 W
+310 136 PD
+gr
+
+c8
+ 310  136 mt  336  236 L
+ 310  136 mt  324  235 L
+c9
+ 310  155 mt  304  150 L
+gs 176 125 281 237 MR c np
+4 W
+310 155 PD
+gr
+
+c8
+ 310  155 mt  359  103 L
+ 310  155 mt  381  104 L
+c9
+ 310  144 mt  302  140 L
+gs 176 125 281 237 MR c np
+4 W
+310 144 PD
+gr
+
+c8
+ 310  144 mt  359  103 L
+c9
+ 309  336 mt  301  335 L
+gs 176 125 281 237 MR c np
+4 W
+309 336 PD
+gr
+
+c8
+ 309  336 mt  319  256 L
+ 309  337 mt  257  417 L
+c9
+ 307  165 mt  299  165 L
+gs 176 125 281 237 MR c np
+4 W
+307 165 PD
+gr
+
+c8
+ 307  165 mt  359  103 L
+ 307  165 mt  381  104 L
+c9
+ 305  139 mt  313  140 L
+gs 176 125 281 237 MR c np
+4 W
+305 139 PD
+gr
+
+c8
+ 305  139 mt  336  236 L
+ 305  139 mt  324  234 L
+c9
+ 304  147 mt  297  146 L
+gs 176 125 281 237 MR c np
+4 W
+304 147 PD
+gr
+
+c8
+ 304  147 mt  359  103 L
+c9
+ 304  325 mt  296  325 L
+gs 176 125 281 237 MR c np
+4 W
+304 325 PD
+gr
+
+ 304  150 mt  297  146 L
+gs 176 125 281 237 MR c np
+4 W
+304 150 PD
+gr
+
+c8
+ 304  150 mt  359  103 L
+ 304  150 mt  381  104 L
+c9
+ 302  140 mt  310  141 L
+gs 176 125 281 237 MR c np
+4 W
+302 140 PD
+gr
+
+c8
+ 302  140 mt  337  236 L
+ 302  140 mt  324  235 L
+c9
+ 295  141 mt  302  140 L
+gs 176 125 281 237 MR c np
+4 W
+295 141 PD
+gr
+
+ 302  140 mt  294  138 L
+gs 176 125 281 237 MR c np
+4 W
+302 140 PD
+gr
+
+ 302  134 mt  310  136 L
+gs 176 125 281 237 MR c np
+4 W
+302 134 PD
+gr
+
+c8
+ 302  134 mt  336  235 L
+ 302  134 mt  324  235 L
+c9
+ 301  335 mt  293  334 L
+gs 176 125 281 237 MR c np
+4 W
+301 335 PD
+gr
+
+c8
+ 301  335 mt  319  256 L
+c9
+ 301  336 mt  309  337 L
+gs 176 125 281 237 MR c np
+4 W
+301 336 PD
+gr
+
+2 w
+gr
+
+2 w
+c9
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  192  413 PO
+0 sg
+   6    6  192  413 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+gr
+
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  286  420 PO
+0 sg
+   6    6  286  420 FO
+gr
+
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 301  336 mt  257  417 L
+c9
+ 299  165 mt  292  164 L
+gs 176 125 281 237 MR c np
+4 W
+299 165 PD
+gr
+
+c8
+ 299  165 mt  359  103 L
+c9
+ 299  340 mt  306  338 L
+gs 176 125 281 237 MR c np
+4 W
+299 340 PD
+gr
+
+ 298  139 mt  305  139 L
+gs 176 125 281 237 MR c np
+4 W
+298 139 PD
+gr
+
+c8
+ 298  139 mt  337  236 L
+ 298  139 mt  324  234 L
+c9
+ 297  146 mt  289  146 L
+gs 176 125 281 237 MR c np
+4 W
+297 146 PD
+gr
+
+ 297  146 mt  290  143 L
+gs 176 125 281 237 MR c np
+4 W
+297 146 PD
+gr
+
+c8
+ 297  146 mt  359  103 L
+ 297  146 mt  381  104 L
+c9
+ 296  325 mt  288  324 L
+gs 176 125 281 237 MR c np
+4 W
+296 325 PD
+gr
+
+c8
+ 296  325 mt  315  244 L
+ 295  141 mt  336  236 L
+ 295  141 mt  324  234 L
+c9
+ 294  138 mt  287  138 L
+gs 176 125 281 237 MR c np
+4 W
+294 138 PD
+gr
+
+ 294  133 mt  302  134 L
+gs 176 125 281 237 MR c np
+4 W
+294 133 PD
+gr
+
+c8
+ 294  133 mt  336  236 L
+ 294  133 mt  324  235 L
+c9
+ 293  336 mt  301  336 L
+gs 176 125 281 237 MR c np
+4 W
+293 336 PD
+gr
+
+ 292  164 mt  284  164 L
+gs 176 125 281 237 MR c np
+4 W
+292 164 PD
+gr
+
+ 287  142 mt  295  141 L
+gs 176 125 281 237 MR c np
+4 W
+287 142 PD
+gr
+
+ 290  143 mt  284  140 L
+gs 176 125 281 237 MR c np
+4 W
+290 143 PD
+gr
+
+ 290  140 mt  298  139 L
+gs 176 125 281 237 MR c np
+4 W
+290 140 PD
+gr
+
+c8
+ 290  143 mt  359  103 L
+ 290  140 mt  336  236 L
+ 290  140 mt  324  235 L
+c9
+ 289  146 mt  281  145 L
+gs 176 125 281 237 MR c np
+4 W
+289 146 PD
+gr
+
+c8
+ 285  333 mt  315  244 L
+c9
+ 288  324 mt  281  322 L
+gs 176 125 281 237 MR c np
+4 W
+288 324 PD
+gr
+
+c8
+ 287  142 mt  337  236 L
+ 287  142 mt  324  234 L
+c9
+ 287  138 mt  280  138 L
+gs 176 125 281 237 MR c np
+4 W
+287 138 PD
+gr
+
+ 287  133 mt  294  133 L
+gs 176 125 281 237 MR c np
+4 W
+287 133 PD
+gr
+
+c8
+ 287  133 mt  336  236 L
+ 287  133 mt  324  235 L
+gr
+
+0.666667 w
+c8
+gs 278 410 19 19 MR c np
+4 W
+287 419 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 410 19 19 MR c np
+4 W
+286 419 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 277 411 19 19 MR c np
+4 W
+286 420 PD
+gr
+
+gs 83 36 496 391 MR c np
+ 278  345 mt  315  245 L
+c9
+ 285  333 mt  277  331 L
+gs 176 125 281 237 MR c np
+4 W
+285 333 PD
+gr
+
+ 285  337 mt  293  336 L
+gs 176 125 281 237 MR c np
+4 W
+285 337 PD
+gr
+
+ 284  164 mt  277  163 L
+gs 176 125 281 237 MR c np
+4 W
+284 164 PD
+gr
+
+gr
+
+c9
+gs 275 32 19 19 MR c np
+4 W
+c8
+284 41 PD
+gr
+
+c8
+gs 83 36 496 391 MR c np
+gr
+
+gs 275 33 19 19 MR c np
+4 W
+284 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 275 33 19 19 MR c np
+4 W
+284 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 275 33 19 19 MR c np
+4 W
+284 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+c9
+ 280  138 mt  272  140 L
+gs 176 125 281 237 MR c np
+4 W
+280 138 PD
+gr
+
+ 284  140 mt  276  138 L
+gs 176 125 281 237 MR c np
+4 W
+284 140 PD
+gr
+
+gr
+
+c9
+gs 275 32 19 19 MR c np
+4 W
+c8
+284 41 PD
+gr
+
+c8
+gs 83 36 496 391 MR c np
+gr
+
+gs 275 33 19 19 MR c np
+4 W
+284 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 275 33 19 19 MR c np
+4 W
+284 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+ 189  165 mt  199   37 L
+ 192  158 mt  199   37 L
+2 w
+gr
+
+2 w
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  136  156 PO
+0 sg
+   6    6  136  156 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 184  265 mt  132  217 L
+ 184  265 mt  134  186 L
+ 184  257 mt  132  217 L
+ 186  251 mt  134  186 L
+ 192  245 mt  134  186 L
+c9
+ 200  239 mt  199  231 L
+gs 176 125 281 237 MR c np
+4 W
+200 239 PD
+gr
+
+c8
+ 207  239 mt  134  186 L
+ 198  239 mt  134  186 L
+c9
+ 198  239 mt  201  246 L
+gs 176 125 281 237 MR c np
+4 W
+198 239 PD
+gr
+
+c8
+ 199  240 mt  134  186 L
+c9
+ 199  240 mt  192  245 L
+gs 176 125 281 237 MR c np
+4 W
+199 240 PD
+gr
+
+ 205  227 mt  204  235 L
+gs 176 125 281 237 MR c np
+4 W
+205 227 PD
+gr
+
+c8
+ 205  230 mt  134  186 L
+ 201  224 mt  134  186 L
+c9
+ 196  232 mt  198  239 L
+gs 176 125 281 237 MR c np
+4 W
+196 232 PD
+gr
+
+c8
+ 201  246 mt  134  186 L
+ 205  230 mt  132  217 L
+ 205  238 mt  132  217 L
+c9
+ 205  238 mt  203  246 L
+gs 176 125 281 237 MR c np
+4 W
+205 238 PD
+gr
+
+c8
+ 212  253 mt  134  186 L
+ 196  232 mt  134  186 L
+ 197  217 mt  134  186 L
+ 209  246 mt  134  186 L
+ 184  257 mt  134  185 L
+c9
+ 189  203 mt  193  210 L
+gs 176 125 281 237 MR c np
+4 W
+189 203 PD
+gr
+
+ 201  224 mt  205  230 L
+gs 176 125 281 237 MR c np
+4 W
+201 224 PD
+gr
+
+ 193  210 mt  197  217 L
+gs 176 125 281 237 MR c np
+4 W
+193 210 PD
+gr
+
+ 203  219 mt  205  227 L
+gs 176 125 281 237 MR c np
+4 W
+203 219 PD
+gr
+
+c8
+ 205  222 mt  136  156 L
+ 205  230 mt  138  123 L
+ 204  215 mt  138  123 L
+ 205  222 mt  138  124 L
+ 205  230 mt  136  155 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  199   37 PO
+0 sg
+   6    6  199   37 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c9
+ 186  251 mt  184  257 L
+gs 176 125 281 237 MR c np
+4 W
+186 251 PD
+gr
+
+ 200  261 mt  199  269 L
+gs 176 125 281 237 MR c np
+4 W
+200 261 PD
+gr
+
+ 192  245 mt  186  251 L
+gs 176 125 281 237 MR c np
+4 W
+192 245 PD
+gr
+
+ 201  246 mt  205  254 L
+gs 176 125 281 237 MR c np
+4 W
+201 246 PD
+gr
+
+ 203  246 mt  201  254 L
+gs 176 125 281 237 MR c np
+4 W
+203 246 PD
+gr
+
+ 205  254 mt  209  260 L
+gs 176 125 281 237 MR c np
+4 W
+205 254 PD
+gr
+
+ 206  262 mt  203  254 L
+gs 176 125 281 237 MR c np
+4 W
+206 262 PD
+gr
+
+ 214  262 mt  215  255 L
+gs 176 125 281 237 MR c np
+4 W
+214 262 PD
+gr
+
+c8
+ 215  261 mt  132  217 L
+ 201  246 mt  132  217 L
+c9
+ 201  254 mt  200  261 L
+gs 176 125 281 237 MR c np
+4 W
+201 254 PD
+gr
+
+c8
+ 209  260 mt  132  217 L
+c9
+ 212  276 mt  208  269 L
+gs 176 125 281 237 MR c np
+4 W
+212 276 PD
+gr
+
+ 203  254 mt  201  247 L
+gs 176 125 281 237 MR c np
+4 W
+203 254 PD
+gr
+
+c8
+ 212  253 mt  132  217 L
+c9
+ 208  269 mt  206  262 L
+gs 176 125 281 237 MR c np
+4 W
+208 269 PD
+gr
+
+ 184  257 mt  184  265 L
+gs 176 125 281 237 MR c np
+4 W
+184 257 PD
+gr
+
+ 197  277 mt  196  284 L
+gs 176 125 281 237 MR c np
+4 W
+197 277 PD
+gr
+
+c8
+ 197  152 mt  199   37 L
+ 201  254 mt  132  217 L
+ 205  254 mt  132  217 L
+ 203  246 mt  132  217 L
+ 203  180 mt  199   37 L
+ 205  230 mt  134  186 L
+ 211  168 mt  198   37 L
+ 211  186 mt  199   37 L
+c9
+ 218  174 mt  214  180 L
+gs 176 125 281 237 MR c np
+4 W
+218 174 PD
+gr
+
+ 218  174 mt  213  179 L
+gs 176 125 281 237 MR c np
+4 W
+218 174 PD
+gr
+
+c8
+ 214  180 mt  199   36 L
+c9
+ 216  173 mt  220  167 L
+gs 176 125 281 237 MR c np
+4 W
+216 173 PD
+gr
+
+ 222  158 mt  217  163 L
+gs 176 125 281 237 MR c np
+4 W
+222 158 PD
+gr
+
+c8
+ 217  141 mt  251   40 L
+ 217  141 mt  284   42 L
+c9
+ 220  167 mt  225  162 L
+gs 176 125 281 237 MR c np
+4 W
+220 167 PD
+gr
+
+c8
+ 223  167 mt  199   36 L
+ 218  174 mt  199   36 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  252   40 PO
+0 sg
+   6    6  252   40 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 195  291 mt  130  249 L
+ 196  284 mt  130  249 L
+c9
+ 215  276 mt  216  284 L
+gs 176 125 281 237 MR c np
+4 W
+215 276 PD
+gr
+
+ 216  282 mt  212  276 L
+gs 176 125 281 237 MR c np
+4 W
+216 282 PD
+gr
+
+ 196  284 mt  195  291 L
+gs 176 125 281 237 MR c np
+4 W
+196 284 PD
+gr
+
+ 216  284 mt  216  292 L
+gs 176 125 281 237 MR c np
+4 W
+216 284 PD
+gr
+
+c8
+ 218  289 mt  127  279 L
+c9
+ 193  307 mt  192  314 L
+gs 176 125 281 237 MR c np
+4 W
+193 307 PD
+gr
+
+c8
+ 216  292 mt  127  279 L
+ 195  291 mt  127  279 L
+ 223  322 mt  127  279 L
+ 217  282 mt  128  279 L
+ 216  292 mt  129  249 L
+ 218  289 mt  130  249 L
+ 213  266 mt  130  249 L
+c9
+ 213  266 mt  216  274 L
+gs 176 125 281 237 MR c np
+4 W
+213 266 PD
+gr
+
+c8
+ 215  268 mt  132  217 L
+ 215  276 mt  132  217 L
+ 200  261 mt  132  217 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  138  123 PO
+0 sg
+   6    6  138  123 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c8
+ 195  210 mt  138  124 L
+c9
+ 223  167 mt  218  174 L
+gs 176 125 281 237 MR c np
+4 W
+223 167 PD
+gr
+
+c8
+ 218  174 mt  252   40 L
+c9
+ 229  154 mt  222  158 L
+gs 176 125 281 237 MR c np
+4 W
+229 154 PD
+gr
+
+c8
+ 223  167 mt  252   41 L
+ 224  138 mt  252   40 L
+c9
+ 229  161 mt  223  167 L
+gs 176 125 281 237 MR c np
+4 W
+229 161 PD
+gr
+
+c8
+ 225  171 mt  252   40 L
+c9
+ 236  150 mt  229  154 L
+gs 176 125 281 237 MR c np
+4 W
+236 150 PD
+gr
+
+c8
+ 229  161 mt  252   40 L
+c9
+ 235  156 mt  229  161 L
+gs 176 125 281 237 MR c np
+4 W
+235 156 PD
+gr
+
+c8
+ 231  167 mt  251   40 L
+c9
+ 240  135 mt  232  136 L
+gs 176 125 281 237 MR c np
+4 W
+240 135 PD
+gr
+
+c8
+ 235  156 mt  251   40 L
+ 236  150 mt  251   41 L
+ 243  148 mt  284   41 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  283   42 PO
+0 sg
+   6    6  283   42 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gr
+
+0.666667 w
+gs 274 33 19 19 MR c np
+4 W
+c8
+283 42 PD
+gr
+
+c8
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 33 19 19 MR c np
+4 W
+283 42 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 274 34 19 19 MR c np
+4 W
+283 43 PD
+gr
+
+gs 83 36 496 391 MR c np
+c9
+ 282  142 mt  290  140 L
+gs 176 125 281 237 MR c np
+4 W
+282 142 PD
+gr
+
+c8
+ 282  142 mt  336  236 L
+ 282  142 mt  324  234 L
+c9
+ 281  145 mt  274  145 L
+gs 176 125 281 237 MR c np
+4 W
+281 145 PD
+gr
+
+ 281  322 mt  274  320 L
+gs 176 125 281 237 MR c np
+4 W
+281 322 PD
+gr
+
+ 281  147 mt  287  142 L
+gs 176 125 281 237 MR c np
+4 W
+281 147 PD
+gr
+
+c8
+ 281  147 mt  337  236 L
+ 281  147 mt  324  234 L
+c9
+ 280  133 mt  287  133 L
+gs 176 125 281 237 MR c np
+4 W
+280 133 PD
+gr
+
+c8
+ 280  133 mt  337  236 L
+ 280  133 mt  324  234 L
+c9
+ 278  338 mt  285  337 L
+gs 176 125 281 237 MR c np
+4 W
+278 338 PD
+gr
+
+c8
+ 278  345 mt  319  256 L
+ 271  342 mt  319  256 L
+ 271  342 mt  315  244 L
+c9
+ 277  331 mt  270  328 L
+gs 176 125 281 237 MR c np
+4 W
+277 331 PD
+gr
+
+c8
+ 277  331 mt  315  244 L
+c9
+ 277  163 mt  269  163 L
+gs 176 125 281 237 MR c np
+4 W
+277 163 PD
+gr
+
+ 276  138 mt  269  136 L
+gs 176 125 281 237 MR c np
+4 W
+276 138 PD
+gr
+
+ 275  145 mt  282  142 L
+gs 176 125 281 237 MR c np
+4 W
+275 145 PD
+gr
+
+ 274  149 mt  281  147 L
+gs 176 125 281 237 MR c np
+4 W
+274 149 PD
+gr
+
+c8
+ 275  145 mt  336  235 L
+ 274  149 mt  336  236 L
+ 275  145 mt  324  235 L
+ 274  149 mt  324  235 L
+c9
+ 274  320 mt  267  317 L
+gs 176 125 281 237 MR c np
+4 W
+274 320 PD
+gr
+
+ 274  145 mt  266  145 L
+gs 176 125 281 237 MR c np
+4 W
+274 145 PD
+gr
+
+ 272  134 mt  280  133 L
+gs 176 125 281 237 MR c np
+4 W
+272 134 PD
+gr
+
+c8
+ 274  145 mt  312   45 L
+ 272  134 mt  336  236 L
+ 272  134 mt  324  234 L
+c9
+ 272  140 mt  264  142 L
+gs 176 125 281 237 MR c np
+4 W
+272 140 PD
+gr
+
+c8
+ 272  140 mt  312   44 L
+c9
+ 270  341 mt  278  338 L
+gs 176 125 281 237 MR c np
+4 W
+270 341 PD
+gr
+
+c8
+ 264  337 mt  315  244 L
+c9
+ 270  328 mt  262  325 L
+gs 176 125 281 237 MR c np
+4 W
+270 328 PD
+gr
+
+c8
+ 270  328 mt  315  244 L
+c9
+ 269  163 mt  262  164 L
+gs 176 125 281 237 MR c np
+4 W
+269 163 PD
+gr
+
+c8
+ 269  163 mt  312   44 L
+c9
+ 265  136 mt  272  134 L
+gs 176 125 281 237 MR c np
+4 W
+265 136 PD
+gr
+
+ 269  136 mt  261  135 L
+gs 176 125 281 237 MR c np
+4 W
+269 136 PD
+gr
+
+ 268  148 mt  275  145 L
+gs 176 125 281 237 MR c np
+4 W
+268 148 PD
+gr
+
+c8
+ 268  148 mt  337  236 L
+ 268  148 mt  324  234 L
+c9
+ 267  317 mt  260  313 L
+gs 176 125 281 237 MR c np
+4 W
+267 317 PD
+gr
+
+ 267  152 mt  274  149 L
+gs 176 125 281 237 MR c np
+4 W
+267 152 PD
+gr
+
+c8
+ 267  152 mt  337  236 L
+ 267  152 mt  324  234 L
+c9
+ 266  145 mt  258  146 L
+gs 176 125 281 237 MR c np
+4 W
+266 145 PD
+gr
+
+c8
+ 266  145 mt  312   44 L
+ 265  136 mt  336  236 L
+ 265  136 mt  324  234 L
+c9
+ 264  337 mt  258  332 L
+gs 176 125 281 237 MR c np
+4 W
+264 337 PD
+gr
+
+c8
+ 264  337 mt  319  256 L
+c9
+ 264  142 mt  257  144 L
+gs 176 125 281 237 MR c np
+4 W
+264 142 PD
+gr
+
+c8
+ 264  142 mt  312   44 L
+c9
+ 263  344 mt  270  341 L
+gs 176 125 281 237 MR c np
+4 W
+263 344 PD
+gr
+
+ 262  325 mt  255  321 L
+gs 176 125 281 237 MR c np
+4 W
+262 325 PD
+gr
+
+c8
+ 262  325 mt  315  244 L
+c9
+ 262  164 mt  254  164 L
+gs 176 125 281 237 MR c np
+4 W
+262 164 PD
+gr
+
+c8
+ 262  164 mt  312   44 L
+c9
+ 262  152 mt  268  148 L
+gs 176 125 281 237 MR c np
+4 W
+262 152 PD
+gr
+
+c8
+ 262  152 mt  336  236 L
+ 262  152 mt  324  235 L
+c9
+ 261  135 mt  254  134 L
+gs 176 125 281 237 MR c np
+4 W
+261 135 PD
+gr
+
+c8
+ 261  135 mt  312   44 L
+c9
+ 260  313 mt  254  309 L
+gs 176 125 281 237 MR c np
+4 W
+260 313 PD
+gr
+
+ 259  155 mt  267  152 L
+gs 176 125 281 237 MR c np
+4 W
+259 155 PD
+gr
+
+c8
+ 259  155 mt  337  236 L
+ 259  155 mt  324  235 L
+c9
+ 258  332 mt  252  328 L
+gs 176 125 281 237 MR c np
+4 W
+258 332 PD
+gr
+
+c8
+ 258  332 mt  315  245 L
+ 258  332 mt  319  256 L
+c9
+ 257  144 mt  249  148 L
+gs 176 125 281 237 MR c np
+4 W
+257 144 PD
+gr
+
+ 258  146 mt  251  147 L
+gs 176 125 281 237 MR c np
+4 W
+258 146 PD
+gr
+
+c8
+ 258  146 mt  312   44 L
+gs 248 408 19 19 MR c np
+4 W
+257 417 PD
+gr
+
+gr
+
+gs 248 409 19 19 MR c np
+4 W
+257 418 PD
+gr
+
+gs 83 36 496 391 MR c np
+gs 248 408 19 19 MR c np
+4 W
+257 417 PD
+gr
+
+gs 248 408 19 19 MR c np
+4 W
+257 417 PD
+gr
+
+gs 248 408 19 19 MR c np
+4 W
+257 417 PD
+gr
+
+c9
+ 257  139 mt  265  136 L
+gs 176 125 281 237 MR c np
+4 W
+257 139 PD
+gr
+
+c8
+ 257  139 mt  337  236 L
+ 257  139 mt  324  234 L
+gr
+
+gs 248 409 19 19 MR c np
+4 W
+257 418 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 248 409 19 19 MR c np
+4 W
+257 418 PD
+gr
+
+gs 83 36 496 391 MR c np
+gs 248 408 19 19 MR c np
+4 W
+257 417 PD
+gr
+
+gs 248 408 19 19 MR c np
+4 W
+257 417 PD
+gr
+
+gs 248 408 19 19 MR c np
+4 W
+257 417 PD
+gr
+
+gr
+
+gs 248 409 19 19 MR c np
+4 W
+257 418 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 248 409 19 19 MR c np
+4 W
+257 418 PD
+gr
+
+gs 83 36 496 391 MR c np
+ 257  144 mt  283   42 L
+ 257  144 mt  312   44 L
+c9
+ 256  347 mt  263  344 L
+gs 176 125 281 237 MR c np
+4 W
+256 347 PD
+gr
+
+ 256  157 mt  262  152 L
+gs 176 125 281 237 MR c np
+4 W
+256 157 PD
+gr
+
+c8
+ 256  157 mt  336  236 L
+ 256  157 mt  324  234 L
+c9
+ 255  321 mt  248  316 L
+gs 176 125 281 237 MR c np
+4 W
+255 321 PD
+gr
+
+ 254  309 mt  248  304 L
+gs 176 125 281 237 MR c np
+4 W
+254 309 PD
+gr
+
+ 254  134 mt  247  134 L
+gs 176 125 281 237 MR c np
+4 W
+254 134 PD
+gr
+
+c8
+ 254  134 mt  312   44 L
+c9
+ 254  164 mt  246  165 L
+gs 176 125 281 237 MR c np
+4 W
+254 164 PD
+gr
+
+c8
+ 254  164 mt  283   42 L
+ 254  164 mt  312   44 L
+c9
+ 254  340 mt  260  343 L
+gs 176 125 281 237 MR c np
+4 W
+254 340 PD
+gr
+
+ 253  158 mt  259  155 L
+gs 176 125 281 237 MR c np
+4 W
+253 158 PD
+gr
+
+c8
+ 253  158 mt  336  236 L
+ 253  158 mt  324  234 L
+c9
+ 252  328 mt  246  323 L
+gs 176 125 281 237 MR c np
+4 W
+252 328 PD
+gr
+
+c8
+ 252  328 mt  315  244 L
+ 252  328 mt  319  256 L
+gr
+
+gs 243 30 19 19 MR c np
+4 W
+252 39 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 32 19 19 MR c np
+4 W
+252 41 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 243 31 19 19 MR c np
+4 W
+252 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 242 31 19 19 MR c np
+4 W
+251 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 242 31 19 19 MR c np
+4 W
+251 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 242 31 19 19 MR c np
+4 W
+251 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 242 31 19 19 MR c np
+4 W
+251 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 242 31 19 19 MR c np
+4 W
+251 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 242 31 19 19 MR c np
+4 W
+251 40 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 242 32 19 19 MR c np
+4 W
+251 41 PD
+gr
+
+gs 83 36 496 391 MR c np
+c9
+ 251  142 mt  257  139 L
+gs 176 125 281 237 MR c np
+4 W
+251 142 PD
+gr
+
+c8
+ 251  142 mt  337  236 L
+ 251  142 mt  324  234 L
+c9
+ 251  147 mt  243  148 L
+gs 176 125 281 237 MR c np
+4 W
+251 147 PD
+gr
+
+c8
+ 251  147 mt  284   42 L
+ 251  147 mt  312   44 L
+c9
+ 250  162 mt  256  157 L
+gs 176 125 281 237 MR c np
+4 W
+250 162 PD
+gr
+
+c8
+ 250  162 mt  337  236 L
+ 250  162 mt  324  234 L
+c9
+ 249  148 mt  242  152 L
+gs 176 125 281 237 MR c np
+4 W
+249 148 PD
+gr
+
+c8
+ 249  148 mt  283   42 L
+ 249  148 mt  312   44 L
+c9
+ 248  304 mt  243  299 L
+gs 176 125 281 237 MR c np
+4 W
+248 304 PD
+gr
+
+ 248  316 mt  241  311 L
+gs 176 125 281 237 MR c np
+4 W
+248 316 PD
+gr
+
+ 247  335 mt  254  340 L
+gs 176 125 281 237 MR c np
+4 W
+247 335 PD
+gr
+
+c8
+ 247  134 mt  283   42 L
+ 247  134 mt  312   44 L
+c9
+ 246  323 mt  241  317 L
+gs 176 125 281 237 MR c np
+4 W
+246 323 PD
+gr
+
+c8
+ 246  323 mt  319  256 L
+c9
+ 246  163 mt  253  158 L
+gs 176 125 281 237 MR c np
+4 W
+246 163 PD
+gr
+
+c8
+ 246  163 mt  337  236 L
+ 246  163 mt  324  235 L
+c9
+ 241  167 mt  246  163 L
+gs 176 125 281 237 MR c np
+4 W
+241 167 PD
+gr
+
+ 246  165 mt  238  166 L
+gs 176 125 281 237 MR c np
+4 W
+246 165 PD
+gr
+
+c8
+ 246  165 mt  283   42 L
+ 246  165 mt  312   44 L
+c9
+ 246  168 mt  250  162 L
+gs 176 125 281 237 MR c np
+4 W
+246 168 PD
+gr
+
+c8
+ 244  146 mt  337  236 L
+ 246  168 mt  336  235 L
+ 246  168 mt  324  235 L
+c9
+ 244  146 mt  251  142 L
+gs 176 125 281 237 MR c np
+4 W
+244 146 PD
+gr
+
+c8
+ 244  146 mt  324  234 L
+ 243  148 mt  311   45 L
+c9
+ 243  299 mt  238  293 L
+gs 176 125 281 237 MR c np
+4 W
+243 299 PD
+gr
+
+ 242  152 mt  235  156 L
+gs 176 125 281 237 MR c np
+4 W
+242 152 PD
+gr
+
+c8
+ 242  152 mt  283   42 L
+ 236  311 mt  319  256 L
+ 236  311 mt  315  244 L
+c9
+ 241  311 mt  235  306 L
+gs 176 125 281 237 MR c np
+4 W
+241 311 PD
+gr
+
+ 241  330 mt  247  335 L
+gs 176 125 281 237 MR c np
+4 W
+241 330 PD
+gr
+
+ 194  321 mt  197  328 L
+gs 176 125 281 237 MR c np
+4 W
+194 321 PD
+gr
+
+c8
+ 241  330 mt  125  314 L
+c9
+ 241  175 mt  246  168 L
+gs 176 125 281 237 MR c np
+4 W
+241 175 PD
+gr
+
+c8
+ 241  175 mt  337  236 L
+ 241  175 mt  324  235 L
+c9
+ 241  317 mt  236  311 L
+gs 176 125 281 237 MR c np
+4 W
+241 317 PD
+gr
+
+c8
+ 241  317 mt  319  256 L
+ 241  167 mt  336  235 L
+ 241  167 mt  324  234 L
+ 240  135 mt  283   42 L
+ 240  135 mt  312   45 L
+c9
+ 238  166 mt  231  167 L
+gs 176 125 281 237 MR c np
+4 W
+238 166 PD
+gr
+
+c8
+ 238  166 mt  312   44 L
+ 238  151 mt  324  234 L
+ 238  151 mt  337  236 L
+ 238  166 mt  283   42 L
+c9
+ 238  293 mt  233  287 L
+gs 176 125 281 237 MR c np
+4 W
+238 293 PD
+gr
+
+ 237  181 mt  241  175 L
+gs 176 125 281 237 MR c np
+4 W
+237 181 PD
+gr
+
+c8
+ 237  181 mt  337  236 L
+ 237  181 mt  324  234 L
+ 236  150 mt  283   42 L
+c9
+ 236  311 mt  231  305 L
+gs 176 125 281 237 MR c np
+4 W
+236 311 PD
+gr
+
+c8
+ 231  305 mt  315  244 L
+c9
+ 235  306 mt  230  300 L
+gs 176 125 281 237 MR c np
+4 W
+235 306 PD
+gr
+
+ 235  324 mt  241  330 L
+gs 176 125 281 237 MR c np
+4 W
+235 324 PD
+gr
+
+ 192  314 mt  194  321 L
+gs 176 125 281 237 MR c np
+4 W
+192 314 PD
+gr
+
+ 195  291 mt  194  299 L
+gs 176 125 281 237 MR c np
+4 W
+195 291 PD
+gr
+
+c8
+ 217  300 mt  127  279 L
+ 194  321 mt  127  279 L
+ 197  328 mt  125  314 L
+ 233  334 mt  125  314 L
+ 235  324 mt  125  314 L
+ 235  156 mt  284   42 L
+c9
+ 235  172 mt  241  167 L
+gs 176 125 281 237 MR c np
+4 W
+235 172 PD
+gr
+
+c8
+ 235  172 mt  337  236 L
+ 235  172 mt  324  235 L
+c9
+ 234  189 mt  237  181 L
+gs 176 125 281 237 MR c np
+4 W
+234 189 PD
+gr
+
+c8
+ 234  189 mt  336  236 L
+ 234  189 mt  323  234 L
+c9
+ 233  287 mt  229  280 L
+gs 176 125 281 237 MR c np
+4 W
+233 287 PD
+gr
+
+ 232  136 mt  224  138 L
+gs 176 125 281 237 MR c np
+4 W
+232 136 PD
+gr
+
+c8
+ 232  136 mt  284   42 L
+ 232  136 mt  312   44 L
+c9
+ 232  156 mt  238  151 L
+gs 176 125 281 237 MR c np
+4 W
+232 156 PD
+gr
+
+c8
+ 232  156 mt  337  236 L
+ 232  156 mt  323  234 L
+c9
+ 231  167 mt  225  171 L
+gs 176 125 281 237 MR c np
+4 W
+231 167 PD
+gr
+
+c8
+ 231  167 mt  284   41 L
+ 231  167 mt  311   45 L
+c9
+ 231  305 mt  227  298 L
+gs 176 125 281 237 MR c np
+4 W
+231 305 PD
+gr
+
+c8
+ 231  305 mt  319  256 L
+c9
+ 231  318 mt  235  324 L
+gs 176 125 281 237 MR c np
+4 W
+231 318 PD
+gr
+
+ 219  315 mt  223  322 L
+gs 176 125 281 237 MR c np
+4 W
+219 315 PD
+gr
+
+c8
+ 231  318 mt  125  314 L
+ 231  196 mt  315  244 L
+c9
+ 230  178 mt  235  172 L
+gs 176 125 281 237 MR c np
+4 W
+230 178 PD
+gr
+
+c8
+ 227  298 mt  315  244 L
+c9
+ 227  298 mt  223  292 L
+gs 176 125 281 237 MR c np
+4 W
+227 298 PD
+gr
+
+ 230  300 mt  225  294 L
+gs 176 125 281 237 MR c np
+4 W
+230 300 PD
+gr
+
+c8
+ 229  154 mt  284   42 L
+c9
+ 229  280 mt  224  274 L
+gs 176 125 281 237 MR c np
+4 W
+229 280 PD
+gr
+
+c8
+ 223  322 mt  125  314 L
+c9
+ 216  292 mt  217  300 L
+gs 176 125 281 237 MR c np
+4 W
+216 292 PD
+gr
+
+ 217  300 mt  218  308 L
+gs 176 125 281 237 MR c np
+4 W
+217 300 PD
+gr
+
+ 194  299 mt  193  307 L
+gs 176 125 281 237 MR c np
+4 W
+194 299 PD
+gr
+
+ 218  308 mt  219  315 L
+gs 176 125 281 237 MR c np
+4 W
+218 308 PD
+gr
+
+c8
+ 227  311 mt  127  279 L
+ 223  305 mt  127  279 L
+ 220  297 mt  127  279 L
+ 192  314 mt  127  279 L
+ 194  299 mt  127  279 L
+ 219  315 mt  127  279 L
+ 227  311 mt  125  314 L
+ 228  328 mt  125  314 L
+c9
+ 228  203 mt  231  196 L
+gs 176 125 281 237 MR c np
+4 W
+228 203 PD
+gr
+
+c8
+ 228  203 mt  315  245 L
+ 228  203 mt  324  234 L
+c9
+ 227  311 mt  231  318 L
+gs 176 125 281 237 MR c np
+4 W
+227 311 PD
+gr
+
+c8
+ 227  298 mt  319  256 L
+c9
+ 225  184 mt  230  178 L
+gs 176 125 281 237 MR c np
+4 W
+225 184 PD
+gr
+
+c8
+ 225  184 mt  324  235 L
+c9
+ 225  162 mt  232  156 L
+gs 176 125 281 237 MR c np
+4 W
+225 162 PD
+gr
+
+c8
+ 225  162 mt  337  236 L
+ 225  162 mt  324  235 L
+c9
+ 225  294 mt  220  288 L
+gs 176 125 281 237 MR c np
+4 W
+225 294 PD
+gr
+
+ 225  171 mt  218  174 L
+gs 176 125 281 237 MR c np
+4 W
+225 171 PD
+gr
+
+c8
+ 225  171 mt  283   42 L
+c9
+ 224  274 mt  221  267 L
+gs 176 125 281 237 MR c np
+4 W
+224 274 PD
+gr
+
+gs 215 406 19 19 MR c np
+4 W
+c8
+224 415 PD
+gr
+
+c8
+gs 215 406 19 19 MR c np
+4 W
+224 415 PD
+gr
+
+gs 215 406 19 19 MR c np
+4 W
+224 415 PD
+gr
+
+gs 215 406 19 19 MR c np
+4 W
+224 415 PD
+gr
+
+gs 215 407 19 19 MR c np
+4 W
+224 416 PD
+gr
+
+ 224  138 mt  283   42 L
+c9
+ 224  209 mt  228  203 L
+gs 176 125 281 237 MR c np
+4 W
+224 209 PD
+gr
+
+c8
+ 224  209 mt  315  245 L
+2 w
+gr
+
+2 w
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  224  415 PO
+0 sg
+   6    6  224  415 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 215 407 19 19 MR c np
+4 W
+c8
+224 416 PD
+gr
+
+c8
+gs 215 407 19 19 MR c np
+4 W
+224 416 PD
+gr
+
+gs 215 407 19 19 MR c np
+4 W
+224 416 PD
+gr
+
+gs 215 407 19 19 MR c np
+4 W
+224 416 PD
+gr
+
+gs 215 407 19 19 MR c np
+4 W
+224 416 PD
+gr
+
+gs 215 406 19 19 MR c np
+4 W
+224 415 PD
+gr
+
+c9
+ 223  305 mt  227  311 L
+gs 176 125 281 237 MR c np
+4 W
+223 305 PD
+gr
+
+ 223  292 mt  220  285 L
+gs 176 125 281 237 MR c np
+4 W
+223 292 PD
+gr
+
+c8
+ 223  292 mt  315  245 L
+c9
+ 221  190 mt  225  184 L
+gs 176 125 281 237 MR c np
+4 W
+221 190 PD
+gr
+
+c8
+ 221  190 mt  323  234 L
+c9
+ 221  217 mt  224  209 L
+gs 176 125 281 237 MR c np
+4 W
+221 217 PD
+gr
+
+c8
+ 221  217 mt  315  244 L
+c9
+ 221  267 mt  217  261 L
+gs 176 125 281 237 MR c np
+4 W
+221 267 PD
+gr
+
+c8
+ 220  167 mt  337  236 L
+c9
+ 220  297 mt  223  305 L
+gs 176 125 281 237 MR c np
+4 W
+220 297 PD
+gr
+
+ 217  282 mt  218  289 L
+gs 176 125 281 237 MR c np
+4 W
+217 282 PD
+gr
+
+ 220  288 mt  216  282 L
+gs 176 125 281 237 MR c np
+4 W
+220 288 PD
+gr
+
+ 220  285 mt  217  278 L
+gs 176 125 281 237 MR c np
+4 W
+220 285 PD
+gr
+
+c8
+ 220  285 mt  315  244 L
+c9
+ 219  225 mt  221  217 L
+gs 176 125 281 237 MR c np
+4 W
+219 225 PD
+gr
+
+c8
+ 219  225 mt  315  244 L
+ 218  174 mt  283   43 L
+c9
+ 218  289 mt  220  297 L
+gs 176 125 281 237 MR c np
+4 W
+218 289 PD
+gr
+
+c8
+ 218  308 mt  127  279 L
+ 215  255 mt  315  244 L
+c9
+ 215  255 mt  216  247 L
+gs 176 125 281 237 MR c np
+4 W
+215 255 PD
+gr
+
+ 217  261 mt  215  254 L
+gs 176 125 281 237 MR c np
+4 W
+217 261 PD
+gr
+
+ 217  278 mt  216  270 L
+gs 176 125 281 237 MR c np
+4 W
+217 278 PD
+gr
+
+c8
+ 217  278 mt  315  244 L
+c9
+ 217  232 mt  219  225 L
+gs 176 125 281 237 MR c np
+4 W
+217 232 PD
+gr
+
+c8
+ 217  232 mt  315  245 L
+ 217  300 mt  130  249 L
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  130  249 PO
+0 sg
+   6    6  130  249 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+c9
+ 199  269 mt  197  277 L
+gs 176 125 281 237 MR c np
+4 W
+199 269 PD
+gr
+
+ 215  268 mt  215  276 L
+gs 176 125 281 237 MR c np
+4 W
+215 268 PD
+gr
+
+c8
+ 216  274 mt  130  249 L
+ 215  268 mt  130  249 L
+ 217  282 mt  130  249 L
+c9
+ 216  239 mt  217  232 L
+gs 176 125 281 237 MR c np
+4 W
+216 239 PD
+gr
+
+c8
+ 216  239 mt  315  244 L
+ 197  277 mt  130  249 L
+ 216  284 mt  130  249 L
+ 216  173 mt  336  235 L
+ 216  173 mt  324  235 L
+c9
+ 216  274 mt  217  282 L
+gs 176 125 281 237 MR c np
+4 W
+216 274 PD
+gr
+
+ 216  247 mt  216  239 L
+gs 176 125 281 237 MR c np
+4 W
+216 247 PD
+gr
+
+c8
+ 216  247 mt  315  244 L
+c9
+ 215  261 mt  215  268 L
+gs 176 125 281 237 MR c np
+4 W
+215 261 PD
+gr
+
+ 216  270 mt  214  262 L
+gs 176 125 281 237 MR c np
+4 W
+216 270 PD
+gr
+
+c8
+ 216  270 mt  315  245 L
+ 199  269 mt  130  249 L
+ 209  260 mt  130  249 L
+ 215  276 mt  129  249 L
+c9
+ 215  254 mt  213  247 L
+gs 176 125 281 237 MR c np
+4 W
+215 254 PD
+gr
+
+ 215  203 mt  217  196 L
+gs 176 125 281 237 MR c np
+4 W
+215 203 PD
+gr
+
+c8
+ 215  203 mt  324  235 L
+ 214  262 mt  315  244 L
+c9
+ 214  180 mt  211  186 L
+gs 176 125 281 237 MR c np
+4 W
+214 180 PD
+gr
+
+ 213  247 mt  212  239 L
+gs 176 125 281 237 MR c np
+4 W
+213 247 PD
+gr
+
+ 213  211 mt  215  203 L
+gs 176 125 281 237 MR c np
+4 W
+213 211 PD
+gr
+
+ 212  253 mt  215  261 L
+gs 176 125 281 237 MR c np
+4 W
+212 253 PD
+gr
+
+ 212  218 mt  213  211 L
+gs 176 125 281 237 MR c np
+4 W
+212 218 PD
+gr
+
+ 212  239 mt  211  232 L
+gs 176 125 281 237 MR c np
+4 W
+212 239 PD
+gr
+
+ 212  225 mt  212  218 L
+gs 176 125 281 237 MR c np
+4 W
+212 225 PD
+gr
+
+ 211  232 mt  212  225 L
+gs 176 125 281 237 MR c np
+4 W
+211 232 PD
+gr
+
+c8
+ 211  180 mt  336  235 L
+ 211  180 mt  324  235 L
+c9
+ 209  246 mt  212  253 L
+gs 176 125 281 237 MR c np
+4 W
+209 246 PD
+gr
+
+ 209  260 mt  213  266 L
+gs 176 125 281 237 MR c np
+4 W
+209 260 PD
+gr
+
+ 208  193 mt  206  201 L
+gs 176 125 281 237 MR c np
+4 W
+208 193 PD
+gr
+
+ 207  239 mt  209  246 L
+gs 176 125 281 237 MR c np
+4 W
+207 239 PD
+gr
+
+ 207  174 mt  203  180 L
+gs 176 125 281 237 MR c np
+4 W
+207 174 PD
+gr
+
+ 206  201 mt  205  208 L
+gs 176 125 281 237 MR c np
+4 W
+206 201 PD
+gr
+
+ 206  340 mt  212  345 L
+gs 176 125 281 237 MR c np
+4 W
+206 340 PD
+gr
+
+ 205  208 mt  204  215 L
+gs 176 125 281 237 MR c np
+4 W
+205 208 PD
+gr
+
+ 205  194 mt  207  187 L
+gs 176 125 281 237 MR c np
+4 W
+205 194 PD
+gr
+
+ 204  215 mt  205  222 L
+gs 176 125 281 237 MR c np
+4 W
+204 215 PD
+gr
+
+gr
+
+0.666667 w
+c9
+gs 190 27 19 19 MR c np
+4 W
+c8
+199 36 PD
+gr
+
+c8
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 28 19 19 MR c np
+4 W
+199 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 27 19 19 MR c np
+4 W
+199 36 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 27 19 19 MR c np
+4 W
+199 36 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 28 19 19 MR c np
+4 W
+199 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 27 19 19 MR c np
+4 W
+199 36 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 28 19 19 MR c np
+4 W
+199 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 27 19 19 MR c np
+4 W
+199 36 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 27 19 19 MR c np
+4 W
+199 36 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 28 19 19 MR c np
+4 W
+199 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 28 19 19 MR c np
+4 W
+199 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 28 19 19 MR c np
+4 W
+199 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 28 19 19 MR c np
+4 W
+199 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 29 19 19 MR c np
+4 W
+199 38 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 27 19 19 MR c np
+4 W
+199 36 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 190 28 19 19 MR c np
+4 W
+199 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+gr
+
+gs 189 28 19 19 MR c np
+4 W
+198 37 PD
+gr
+
+gs 83 36 496 391 MR c np
+c9
+ 197  152 mt  192  158 L
+gs 176 125 281 237 MR c np
+4 W
+197 152 PD
+gr
+
+ 197  217 mt  201  224 L
+gs 176 125 281 237 MR c np
+4 W
+197 217 PD
+gr
+
+c8
+ 193  307 mt  127  279 L
+c9
+ 192  158 mt  189  165 L
+gs 176 125 281 237 MR c np
+4 W
+192 158 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+c8
+192 413 PD
+gr
+
+c8
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 183 404 19 19 MR c np
+4 W
+192 413 PD
+gr
+
+gs 176 125 281 237 MR c np
+4 W
+c9
+184 265 PD
+gr
+
+c9
+gs 132 383 19 19 MR c np
+4 W
+c8
+141 392 PD
+gr
+
+c8
+gs 131 384 19 19 MR c np
+4 W
+140 393 PD
+gr
+
+gs 131 89 19 19 MR c np
+4 W
+140 98 PD
+gr
+
+gs 131 384 19 19 MR c np
+4 W
+140 393 PD
+gr
+
+2 w
+gr
+
+2 w
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  140  393 PO
+0 sg
+   6    6  140  393 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 131 384 19 19 MR c np
+4 W
+c8
+140 393 PD
+gr
+
+c8
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 384 19 19 MR c np
+4 W
+140 393 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 131 384 19 19 MR c np
+4 W
+140 393 PD
+gr
+
+gs 131 88 19 19 MR c np
+4 W
+140 97 PD
+gr
+
+gs 129 115 19 19 MR c np
+4 W
+138 124 PD
+gr
+
+gs 129 114 19 19 MR c np
+4 W
+138 123 PD
+gr
+
+gs 129 115 19 19 MR c np
+4 W
+138 124 PD
+gr
+
+gs 129 115 19 19 MR c np
+4 W
+138 124 PD
+gr
+
+gs 129 115 19 19 MR c np
+4 W
+138 124 PD
+gr
+
+gs 129 115 19 19 MR c np
+4 W
+138 124 PD
+gr
+
+gs 129 114 19 19 MR c np
+4 W
+138 123 PD
+gr
+
+gs 129 114 19 19 MR c np
+4 W
+138 123 PD
+gr
+
+gs 129 114 19 19 MR c np
+4 W
+138 123 PD
+gr
+
+gs 129 115 19 19 MR c np
+4 W
+138 124 PD
+gr
+
+gs 129 115 19 19 MR c np
+4 W
+138 124 PD
+gr
+
+gs 129 115 19 19 MR c np
+4 W
+138 124 PD
+gr
+
+gs 129 114 19 19 MR c np
+4 W
+138 123 PD
+gr
+
+gs 129 114 19 19 MR c np
+4 W
+138 123 PD
+gr
+
+gs 129 114 19 19 MR c np
+4 W
+138 123 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 146 19 19 MR c np
+4 W
+136 155 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 127 146 19 19 MR c np
+4 W
+136 155 PD
+gr
+
+gs 127 147 19 19 MR c np
+4 W
+136 156 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 125 176 19 19 MR c np
+4 W
+134 185 PD
+gr
+
+gs 125 177 19 19 MR c np
+4 W
+134 186 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  132  217 PO
+0 sg
+   6    6  132  217 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 123 208 19 19 MR c np
+4 W
+c8
+132 217 PD
+gr
+
+c8
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 123 208 19 19 MR c np
+4 W
+132 217 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 121 240 19 19 MR c np
+4 W
+130 249 PD
+gr
+
+gs 120 240 19 19 MR c np
+4 W
+129 249 PD
+gr
+
+gs 120 240 19 19 MR c np
+4 W
+129 249 PD
+gr
+
+gs 119 270 19 19 MR c np
+4 W
+128 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  127  279 PO
+0 sg
+   6    6  127  279 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 118 270 19 19 MR c np
+4 W
+c8
+127 279 PD
+gr
+
+c8
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 118 270 19 19 MR c np
+4 W
+127 279 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+2 w
+gr
+
+c8
+gs 98 19 463 425 MR c np
+1 sg
+   6    6  125  314 PO
+0 sg
+   6    6  125  314 FO
+gr
+
+0 sg
+gs 83 36 496 391 MR c np
+0.666667 w
+gs 116 305 19 19 MR c np
+4 W
+c8
+125 314 PD
+gr
+
+c8
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 116 305 19 19 MR c np
+4 W
+125 314 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 115 335 19 19 MR c np
+4 W
+124 344 PD
+gr
+
+gs 114 335 19 19 MR c np
+4 W
+123 344 PD
+gr
+
+gs 114 335 19 19 MR c np
+4 W
+123 344 PD
+gr
+
+gs 108 368 19 19 MR c np
+4 W
+117 377 PD
+gr
+
+gs 107 368 19 19 MR c np
+4 W
+116 377 PD
+gr
+
+gs 107 368 19 19 MR c np
+4 W
+116 377 PD
+gr
+
+gs 107 368 19 19 MR c np
+4 W
+116 377 PD
+gr
+
+gs 107 368 19 19 MR c np
+4 W
+116 377 PD
+gr
+
+gs 107 368 19 19 MR c np
+4 W
+116 377 PD
+gr
+
+gs 106 368 19 19 MR c np
+4 W
+115 377 PD
+gr
+
+gs 106 368 19 19 MR c np
+4 W
+115 377 PD
+gr
+
+gs 106 368 19 19 MR c np
+4 W
+115 377 PD
+gr
+
+gs 106 368 19 19 MR c np
+4 W
+115 377 PD
+gr
+
+gs 106 368 19 19 MR c np
+4 W
+115 377 PD
+gr
+
+gs 106 368 19 19 MR c np
+4 W
+115 377 PD
+gr
+
+gs 106 368 19 19 MR c np
+4 W
+115 377 PD
+gr
+
+gr
+
+0.666667 w
+c8
+0 sg
+  32  254 mt  -90 rotate
+(Y \(mm\)) s
+90 rotate
+
+end %%Color Dict
+
+eplot
+%%EndObject
+
+epage
+end
+
+showpage
+
+%%Trailer
+%%EOF

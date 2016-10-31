@@ -23,27 +23,39 @@ classdef ClassSolver
             end
         end
         
-        % solver step 1: estimate ground plane in camera frame
+        %% solver step 1: estimate ground plane in camera frame
         % to obtain pvec_g_c and dist_g_c
         SolveGrndPlane(this, measure, calib);
         cost = CostGrndPlane(this, q, mk);
         DrawResGrndPlane(this, measure, calib);
+        % solve ground plane from linear constraints
+        SolveGrndPlaneLin(this, measure, calib);
         
-        % solve step 2: generate initial guess of full calibration problem,
+        %% solve step 2: generate initial guess of full calibration problem,
         % according to local observation, no initial guess needed in this
         % step.
-        % to be done...
         SolveLocalOpt(this, measure, calib);
         [ vecCost, matJacobian ] = CostLocalOpt(this, q, measure, calib);
-        
-        % solver step 3: solve full calibration by joint optimization
-        SolveJointOpt(this, measure, calib, map);
-        [vecCost, matJacobian] = CostJointOpt(this, q, mk, odo, calib);
         
         % alternative solution of step 2: local optimization with loop
         % closing info, but no slam
         SolveLocalLoopOpt(this, measure, calib);
         [ vecCost, matJacobian ] = CostLocalLoopOpt(this, q, measure, calib);
+        
+        % another solution of step 2: with linear constraints, no iterative
+        % optimization.
+        SolveYawXY(this, measure, calib);
+        
+        
+        %% solver step 3: solve full calibration by joint optimization
+        SolveJointOpt(this, measure, calib, map);
+        [vecCost, matJacobian] = CostJointOpt(this, q, mk, odo, calib);
+        
+        % new solver to joint optimization, consider 5 dof in calib
+        SolveJointOpt2(this, measure, calib, map);
+        [vecCost, matJacobian] = CostJointOpt2(this, q, mk, odo, calib);
+        
+        
         
     end
     

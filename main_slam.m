@@ -1,15 +1,15 @@
 %% init: create class objs and load data
-clear;
+% clear;
 
-settingFile = 'C:\Workspace\Data\sim\sim-sqrmap-inout-2016.1.18\config\setting-simcalibmap3d-slam.xml';
+[FileName,PathName] = uigetfile('*.xml', 'Select the setting file', 'C:\Workspace\Data\');
+settingFile = [PathName, FileName];
+% settingFile = 'C:\Workspace\Data\sim\sim-sqrmap-inout-2016.1.18\config\setting-simcalibmap3d-slam.xml';
+% settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-slam.xml';
+
 configXml = readXml_slam(settingFile);
 
 % measure
-PathFold = configXml.PathFold;
-NameMk = configXml.NameMk;
-NameOdo = configXml.NameOdo;
-
-measure = ClassMeasure(PathFold, NameMk, NameOdo);
+measure = ClassMeasure(configXml.PathFold, configXml.NameMk, configXml.NameOdo);
 measure.ReadRecData;
 measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
 
@@ -34,44 +34,43 @@ calib.SetVecbc(rveccbInit, pt3cbInit);
 
 %% init map
 map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib);
-calib.DispPs2dbcg;
+map.DrawMapWithMeasure(measure, calib, true, 'Result: init');
+calib.DispCalib;
 
 %% solve step 1: estimate ground
-solver.SolveGrndPlane(measure, calib);
+solver.SolveGrndPlaneLin(measure, calib);
+% solver.SolveGrndPlane(measure, calib);
 map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib);
-calib.DispPs2dbcg;
+map.DrawMapWithMeasure(measure, calib, true, 'Result: with ground estimated');
+calib.DispCalib;
+
+%% solve step 2: estimate yaw and XY
+solver.SolveYawXY(measure, calib);
+map.InitMap(measure, calib);
+map.DrawMapWithMeasure(measure, calib, true, 'Result: with yaw and translation estimated');
+calib.DispCalib;
 
 %% solve step 2: local optimization
-solver.SolveLocalOpt(measure, calib);
-map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib);
-calib.DispPs2dbcg;
+% solver.SolveLocalOpt(measure, calib);
+% map.InitMap(measure, calib);
+% map.DrawMapWithMeasure(measure, calib);
+% calib.DispPs2dbcg;
 
 %% solve step 2: by local opt with loop closing
-solver.SolveLocalLoopOpt(measure, calib);
-map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib);
-calib.DispPs2dbcg;
+% solver.SolveLocalLoopOpt(measure, calib);
+% map.InitMap(measure, calib);
+% map.DrawMapWithMeasure(measure, calib);
+% calib.DispPs2dbcg;
 
 %% solve step 3: joint optimization
-solver.SolveJointOpt(measure, calib, map);
-calib.DispPs2dbcg;
+% solver.SolveJointOpt(measure, calib, map);
+solver.SolveJointOpt2(measure, calib, map);
+calib.DispCalib;
 
 %% draw final SLAM results
-map.DrawMapWithMeasure(measure, calib);
-set(gcf, 'Position', [1,1,480,360]);
-ax = gca;
-ax.XTick = (-10000:2000:10000);
-ax.YTick = (-10000:2000:10000);
-ax.XLim = [-10000 10000];
-ax.YLim = [-9000 8000];
-strTitle = 'Joint SLAM & Calibration: Simulation Dataset';
-title(strTitle, 'FontWeight','bold');
-xlabel('X (mm)');
-ylabel('Y (mm)');
-box on;
+strTitle = 'Result: after joint optimization';
+map.DrawMapWithMeasure(measure, calib, true, strTitle);
+% save figure ...
 set(gcf, 'PaperPositionMode', 'auto');
 fileNameFigOutput = '.\temp\slam';
 print(fileNameFigOutput, '-depsc', '-r0');

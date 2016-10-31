@@ -68,6 +68,35 @@ classdef ClassCalib < handle
                 num2str(ps2d_b_cg(2)), ' ', num2str(ps2d_b_cg(3)), ' ']);
             disp(' ');
         end
+        
+        % display all vec
+        function DispCalib(this)            
+            rvec_b_c = this.rvec_b_c;
+            disp(['Current estimated rvec_b_c: ', num2str(rvec_b_c(1)), ' ', ...
+                num2str(rvec_b_c(2)), ' ', num2str(rvec_b_c(3)), ' ']);
+            
+            tvec_b_c = this.tvec_b_c;
+            disp(['Current estimated tvec_b_c: ', num2str(tvec_b_c(1)), ' ', ...
+                num2str(tvec_b_c(2)), ' ', num2str(tvec_b_c(3)), ' ']);
+            
+            rvec_b_cg = this.rvec_b_cg;
+            disp(['Current estimated rvec_b_cg: ', num2str(rvec_b_cg(1)), ' ', ...
+                num2str(rvec_b_cg(2)), ' ', num2str(rvec_b_cg(3)), ' ']);
+            
+            tvec_b_cg = this.tvec_b_cg;
+            disp(['Current estimated tvec_b_cg: ', num2str(tvec_b_cg(1)), ' ', ...
+                num2str(tvec_b_cg(2)), ' ', num2str(tvec_b_cg(3)), ' ']);
+            
+            rvec_cg_c = this.rvec_cg_c;
+            disp(['Current estimated rvec_cg_c: ', num2str(rvec_cg_c(1)), ' ', ...
+                num2str(rvec_cg_c(2)), ' ', num2str(rvec_cg_c(3)), ' ']);
+            
+            tvec_cg_c = this.tvec_cg_c;
+            disp(['Current estimated tvec_cg_c: ', num2str(tvec_cg_c(1)), ' ', ...
+                num2str(tvec_cg_c(2)), ' ', num2str(tvec_cg_c(3)), ' ']);
+            
+            disp(' ');
+        end
     end
 end
 
