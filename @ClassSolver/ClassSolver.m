@@ -48,14 +48,17 @@ classdef ClassSolver
         
         
         %% solver step 3: solve full calibration by joint optimization
+        % consider 3 dof extrinsic in ground plane ps2d_b_cg
         SolveJointOpt(this, measure, calib, map);
         [vecCost, matJacobian] = CostJointOpt(this, q, mk, odo, calib);
         
-        % new solver to joint optimization, consider 5 dof in calib
+        % consider 5 dof extrinsic except z_b_c = 0
         SolveJointOpt2(this, measure, calib, map);
         [vecCost, matJacobian] = CostJointOpt2(this, q, mk, odo, calib);
         
-        
+        % consider 5 dof extrinsic and 1 dof time delay
+        SolveJointOpt3(this, measure, calib, map);
+        [vecCost, matJacobian] = CostJointOpt3(this, q, mk, odo, time, calib);
         
     end
     

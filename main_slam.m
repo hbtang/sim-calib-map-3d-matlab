@@ -11,6 +11,12 @@ configXml = readXml_slam(settingFile);
 % measure
 measure = ClassMeasure(configXml.PathFold, configXml.NameMk, configXml.NameOdo);
 measure.ReadRecData;
+
+% due to that agv odo time is not correct!
+measure.time.t_odo = GenTimeEqualOffset(measure.time.t_odo); 
+
+measure_raw = ClassMeasure();
+measure.CopyTo(measure_raw);
 measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
 
 % solver
@@ -32,6 +38,10 @@ RcbInit = quat2rot(qcbInit);
 rveccbInit = rodrigues(RcbInit);
 calib.SetVecbc(rveccbInit, pt3cbInit);
 
+%% debug
+measure.odo = FuncInterOdo(measure.odo, measure_raw.odo, measure_raw.time);
+measure_raw.odo = FuncInterOdo(measure_raw.odo, measure_raw.odo, measure_raw.time);
+
 %% init map
 map.InitMap(measure, calib);
 map.DrawMapWithMeasure(measure, calib, true, 'Result: init');
@@ -41,34 +51,30 @@ calib.DispCalib;
 solver.SolveGrndPlaneLin(measure, calib);
 % solver.SolveGrndPlane(measure, calib);
 map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib, true, 'Result: with ground estimated');
+map.DrawMapWithMeasure(measure, calib, true, 'Result: ground estimated');
 calib.DispCalib;
 
 %% solve step 2: estimate yaw and XY
 solver.SolveYawXY(measure, calib);
 map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib, true, 'Result: with yaw and translation estimated');
+map.DrawMapWithMeasure(measure, calib, true, 'Result: yaw and translation estimated');
 calib.DispCalib;
 
-%% solve step 2: local optimization
+%% solve step 3: local optimization
 % solver.SolveLocalOpt(measure, calib);
-% map.InitMap(measure, calib);
-% map.DrawMapWithMeasure(measure, calib);
-% calib.DispPs2dbcg;
-
-%% solve step 2: by local opt with loop closing
 % solver.SolveLocalLoopOpt(measure, calib);
 % map.InitMap(measure, calib);
-% map.DrawMapWithMeasure(measure, calib);
-% calib.DispPs2dbcg;
+% map.DrawMapWithMeasure(measure, calib, true, 'Result: local optimization');
+% calib.DispCalib;
 
-%% solve step 3: joint optimization
+%% solve step 4: joint optimization
 % solver.SolveJointOpt(measure, calib, map);
-solver.SolveJointOpt2(measure, calib, map);
+% solver.SolveJointOpt2(measure, calib, map);
+solver.SolveJointOpt3(measure, calib, map);
 calib.DispCalib;
 
 %% draw final SLAM results
-strTitle = 'Result: after joint optimization';
+strTitle = 'Result: joint optimization';
 map.DrawMapWithMeasure(measure, calib, true, strTitle);
 % save figure ...
 set(gcf, 'PaperPositionMode', 'auto');

@@ -63,5 +63,19 @@ this.mk = mk_new;
 disp(['Marker observation info prunning is done, ', num2str(mk_new.num), ' records remained.'])
 disp(' ');
 
+%% prune time data
+time_new = struct('lp',[],'t_odo',[],'t_mk',[]);
+for i = 1:numel(this.time.lp)
+    tmp = find(odo_new.lp == this.time.lp(i), 1);
+    if ~isempty(tmp)
+        time_new.lp = [time_new.lp; this.time.lp(i)];
+        time_new.t_odo = [time_new.t_odo; this.time.t_odo(i)];
+        time_new.t_mk = [time_new.t_mk; this.time.t_mk(i)];
+    end
+end
+this.time = time_new;
+disp(['Time info prunning is done, ', num2str(numel(this.time.lp)), ' records remained.'])
+disp(' ');
+
 end
 

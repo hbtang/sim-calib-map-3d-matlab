@@ -14,6 +14,8 @@ classdef ClassCalib < handle
         pvec_g_c;
         % distance from ground to camera, positive if camera above ground
         dist_g_c;
+        % time delay between odo and camera, positive if camera is late
+        dt;
     end
     
     methods
@@ -24,8 +26,10 @@ classdef ClassCalib < handle
             RefreshByTbc(this);
             
             % init as camera point right with u point upward
-%             this.T3d_b_c = [0 1 0 0; 0 0 -1 0; -1 0 0 0; 0 0 0 1];
-%             RefreshByTbc(this);
+            %             this.T3d_b_c = [0 1 0 0; 0 0 -1 0; -1 0 0 0; 0 0 0 1];
+            %             RefreshByTbc(this);
+            
+            this.dt = 0;
             
         end
         
@@ -57,7 +61,7 @@ classdef ClassCalib < handle
         % set T_b_c by rodrigues vec and translational vec
         function SetVecbc(this, rvec_b_c, tvec_b_c)
             this.rvec_b_c = rvec_b_c;
-            this.tvec_b_c = tvec_b_c;            
+            this.tvec_b_c = tvec_b_c;
             RefreshByVecbc(this);
         end
         
@@ -70,7 +74,7 @@ classdef ClassCalib < handle
         end
         
         % display all vec
-        function DispCalib(this)            
+        function DispCalib(this)
             rvec_b_c = this.rvec_b_c;
             disp(['Current estimated rvec_b_c: ', num2str(rvec_b_c(1)), ' ', ...
                 num2str(rvec_b_c(2)), ' ', num2str(rvec_b_c(3)), ' ']);
@@ -94,6 +98,9 @@ classdef ClassCalib < handle
             tvec_cg_c = this.tvec_cg_c;
             disp(['Current estimated tvec_cg_c: ', num2str(tvec_cg_c(1)), ' ', ...
                 num2str(tvec_cg_c(2)), ' ', num2str(tvec_cg_c(3)), ' ']);
+            
+            dt = this.dt;
+            disp(['Current estimated dt: ', num2str(dt), ' ']);
             
             disp(' ');
         end

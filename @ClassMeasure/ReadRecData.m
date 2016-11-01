@@ -17,20 +17,7 @@ while ~feof(markFileId)
     if lineTmp(2) == 1023
         continue;
     end
-    
-    % debug
-    % for rec_p1_right_clock_mk120_2016031509
-%     id_vec_ref = [62;71;67;64;69;49;53;55;51;47;43;57;45;41;59];
-    % for rec_p1_right_anticlock_mk120_2016031422
-%     id_vec_ref = [0;1;2;3;4;5;6;8;15;16;17;18;19;20;21;22;24;25;26;27;28;29;30;31;32;33;34;35;36;37;38;39;40;42;44;46;48;50];
-%     if  isempty(find(id_vec_ref == lineTmp(2),1))
-%         continue;
-%     end
-%     if lineTmp(1) < 6000
-%         continue;
-%     end
-    % debug end    
-    
+        
     this.mk.lp = [this.mk.lp; lineTmp(1)];
     this.mk.id = [this.mk.id; lineTmp(2)];
     this.mk.rvec = [this.mk.rvec; lineTmp(3:5)];
@@ -47,6 +34,7 @@ disp(' ');
 disp(['Reading odometry record data from "', this.InputOdoFilePath, '"...']);
 odoFileId = fopen(this.InputOdoFilePath, 'r');
 this.odo = struct('lp',[], 'x',[],'y',[],'theta',[], 'num', []);
+this.time = struct('lp',[],'t_odo',[],'t_mk',[]);
 
 % read loop
 while ~feof(odoFileId)
@@ -56,10 +44,17 @@ while ~feof(odoFileId)
     end
     lineTmp = str2num(lineTmp);
     
+    % read odometry measurements
     this.odo.lp = [this.odo.lp; lineTmp(1)];
     this.odo.x = [this.odo.x; lineTmp(4)];
     this.odo.y = [this.odo.y; lineTmp(5)];
     this.odo.theta = [this.odo.theta; lineTmp(6)];
+    
+    % read time offset measurements
+    this.time.lp = [this.time.lp; lineTmp(1)];
+    this.time.t_odo = [this.time.t_odo; lineTmp(2)];
+    this.time.t_mk = [this.time.t_mk; lineTmp(3)];    
+    
     %     if (mod(lineTmp(1),100) == 0)
     %         disp(['odometry info loaded before lp: ', num2str(lineTmp(1))]);
     %     end

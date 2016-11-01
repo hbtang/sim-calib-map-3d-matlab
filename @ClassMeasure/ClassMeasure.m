@@ -8,6 +8,7 @@ classdef ClassMeasure < handle
         % measurement data
         odo;
         mk;
+        time;
         
     end
     
@@ -19,6 +20,7 @@ classdef ClassMeasure < handle
                 'numMkId', [], 'vecMkId', []);
             this.odo = struct('lp',[], 'x',[],'y',[],'theta',[], ...
                 'num', []);
+            this.time = struct('lp',[],'t_odo',[],'t_mk',[]);
             if nargin == 1
                 this.InputFolderPath = PathFold;
                 this.InputMkFilePath = [PathFold, '/rec/Mk.rec'];
@@ -28,6 +30,15 @@ classdef ClassMeasure < handle
                 this.InputMkFilePath = [PathFold, '/rec/', NameMk];
                 this.InputOdoFilePath = [PathFold, '/rec/', NameOdo];                   
             end
+        end
+        
+        function CopyTo(this, copy)
+            copy.mk = this.mk;
+            copy.odo = this.odo;
+            copy.time = this.time;
+            copy.InputFolderPath = this.InputFolderPath;
+            copy.InputMkFilePath = this.InputMkFilePath;
+            copy.InputOdoFilePath = this.InputOdoFilePath;            
         end
         
         % function read input file
