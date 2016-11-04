@@ -60,6 +60,10 @@ classdef ClassSolver
         SolveJointOpt3(this, measure, calib, map);
         [vecCost, matJacobian] = CostJointOpt3(this, q, mk, odo, time, calib);
         
+        %% solve SLAM only, fixed on given calib
+        SolveSlam(this, measure, calib, map);
+        [vecCost, matJacobian] = CostSlam(this, q, mk, odo, time, calib);
+        
     end
     
 end

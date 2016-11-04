@@ -1,4 +1,4 @@
-function [ time_out ] = GenTimeEqualOffset( time_in )
+function [ time_out ] = TimeOdo_EqualOffset( time_in )
 % to create new time data, with average offsets between frames
 
 t_st = time_in(1);

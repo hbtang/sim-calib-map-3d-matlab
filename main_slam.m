@@ -12,8 +12,12 @@ configXml = readXml_slam(settingFile);
 measure = ClassMeasure(configXml.PathFold, configXml.NameMk, configXml.NameOdo);
 measure.ReadRecData;
 
-% due to that agv odo time is not correct!
-measure.time.t_odo = GenTimeEqualOffset(measure.time.t_odo); 
+%%%%%%%% Debug %%%%%%%%
+% AGV odo time data is not correct!!!
+% measure.time.t_odo = TimeOdo_ConstVel(measure.time.t_odo);
+% measure.time.t_odo = TimeOdo_EqualOffset(measure.time.t_odo, measure.odo);
+measure.time.t_odo = measure.time.t_mk;
+%%%%%%%% Debug %%%%%%%%
 
 measure_raw = ClassMeasure();
 measure.CopyTo(measure_raw);
@@ -22,6 +26,8 @@ measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
 % solver
 errConfig.stdErrRatioOdoLin = configXml.SolverConfig_StdErrRatioOdoLin;
 errConfig.stdErrRatioOdoRot = configXml.SolverConfig_StdErrRatioOdoRot;
+errConfig.MinStdErrOdoLin = configXml.SolverConfig_MinStdErrOdoLin;
+errConfig.MinStdErrOdoRot = configXml.SolverConfig_MinStdErrOdoRot;
 errConfig.stdErrRatioMkX = configXml.SolverConfig_StdErrRatioMkX;
 errConfig.stdErrRatioMkY = configXml.SolverConfig_StdErrRatioMkY;
 errConfig.stdErrRatioMkZ = configXml.SolverConfig_StdErrRatioMkZ;
@@ -39,50 +45,64 @@ rveccbInit = rodrigues(RcbInit);
 calib.SetVecbc(rveccbInit, pt3cbInit);
 
 %% debug
-measure.odo = FuncInterOdo(measure.odo, measure_raw.odo, measure_raw.time);
-measure_raw.odo = FuncInterOdo(measure_raw.odo, measure_raw.odo, measure_raw.time);
+measure.odo = Odo_Interpolate(measure.odo, measure_raw.odo, measure_raw.time);
+measure_raw.odo = Odo_Interpolate(measure_raw.odo, measure_raw.odo, measure_raw.time);
 
 %% init map
 map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib, true, 'Result: init');
 calib.DispCalib;
+% map.DrawMapWithMeasure(measure, calib, true, 'Result: init');
 
-%% solve step 1: estimate ground
+%% step 1: estimate ground
 solver.SolveGrndPlaneLin(measure, calib);
 % solver.SolveGrndPlane(measure, calib);
-map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib, true, 'Result: ground estimated');
 calib.DispCalib;
-
-%% solve step 2: estimate yaw and XY
-solver.SolveYawXY(measure, calib);
-map.InitMap(measure, calib);
-map.DrawMapWithMeasure(measure, calib, true, 'Result: yaw and translation estimated');
-calib.DispCalib;
-
-%% solve step 3: local optimization
-% solver.SolveLocalOpt(measure, calib);
-% solver.SolveLocalLoopOpt(measure, calib);
 % map.InitMap(measure, calib);
-% map.DrawMapWithMeasure(measure, calib, true, 'Result: local optimization');
-% calib.DispCalib;
+% map.DrawMapWithMeasure(measure, calib, true, 'Result: ground estimated');
 
-%% solve step 4: joint optimization
-% solver.SolveJointOpt(measure, calib, map);
-% solver.SolveJointOpt2(measure, calib, map);
-solver.SolveJointOpt3(measure, calib, map);
+%% step 2: estimate yaw and XY
+solver.SolveYawXY(measure, calib);
 calib.DispCalib;
-
-%% draw final SLAM results
-strTitle = 'Result: joint optimization';
-map.DrawMapWithMeasure(measure, calib, true, strTitle);
-% save figure ...
-set(gcf, 'PaperPositionMode', 'auto');
-fileNameFigOutput = '.\temp\slam';
-print(fileNameFigOutput, '-depsc', '-r0');
-print(fileNameFigOutput, '-dmeta', '-r0');
-print(fileNameFigOutput, '-djpeg', '-r0');
+% map.InitMap(measure, calib);
+% map.DrawMapWithMeasure(measure, calib, true, 'Result: yaw and translation estimated');
 
 
+%% step 2.5: solve slam after init
+solver.SolveSlam(measure, calib, map);
+[ err_Mk_1, err_Odo_1, err_MkNorm_1, err_OdoNorm_1 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
+calib.DispCalib;
+fileNameFigOut = '.\temp\slam-init';
+map.DrawMapWithMeasure(measure, calib, true, 'Result: with init calib', fileNameFigOut);
+
+%% step 3: joint optimization
+solver.SolveJointOpt2(measure, calib, map);
+[ err_Mk_2, err_Odo_2, err_MkNorm_2, err_OdoNorm_2 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
+calib.DispCalib;
+fileNameFigOut = '.\temp\slam-jointopt';
+map.DrawMapWithMeasure(measure, calib, true, 'Result: joint opt. without temporal calib.', fileNameFigOut);
+
+%% step 3: joint optimization with time delay
+solver.SolveJointOpt3(measure, calib, map);
+[ err_Mk_3, err_Odo_3, err_MkNorm_3, err_OdoNorm_3 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
+calib.DispCalib;
+fileNameFigOut = '.\temp\slam-jointopttime';
+map.DrawMapWithMeasure(measure, calib, true, 'Result: joint opt. with temporal calib.', fileNameFigOut);
+
+%% Draw Error
+cellMat_errMk = {err_Mk_1, err_Mk_2, err_Mk_3};
+cellMat_errOdo = {err_Odo_1, err_Odo_2, err_Odo_3};
+cellMat_mkNorm = {err_MkNorm_1, err_MkNorm_2, err_MkNorm_3};
+cellMat_odoNorm = {err_OdoNorm_1, err_OdoNorm_2, err_OdoNorm_3};
+DrawErr_Slam(cellMat_errMk, cellMat_errOdo, cellMat_mkNorm, cellMat_odoNorm);
+
+disp('Root-Mean-Square Error: Init. Results');
+PrintRmsErr( err_Mk_1, err_Odo_1, err_MkNorm_1, err_OdoNorm_1 );
+disp(' ');
+disp('Root-Mean-Square Error: Joint Opt. Results');
+PrintRmsErr( err_Mk_2, err_Odo_2, err_MkNorm_2, err_OdoNorm_2 );
+disp(' ');
+disp('Root-Mean-Square Error: Joint Opt. Results with Temporal Offset');
+PrintRmsErr( err_Mk_3, err_Odo_3, err_MkNorm_3, err_OdoNorm_3 );
+disp(' ');
 
 

@@ -1,6 +1,5 @@
-function [ vecCost, matJacobian ] = CostJointOpt2( this, q, mk, odo, calib )
-%COSTSTEP2
-
+function [ vecCost, matJacobian ] = CostSlam( this, q, mk, odo, time, calib )
+% Cost funcition for SLAM
 stdErrRatioMkX = this.errConfig.stdErrRatioMkX;
 stdErrRatioMkY = this.errConfig.stdErrRatioMkY;
 stdErrRatioMkZ = this.errConfig.stdErrRatioMkZ;
@@ -14,18 +13,27 @@ vecCost = zeros(3*mk.num + 3*odo.num,1);
 
 %% parse q: rvec_b_c(1:3), tvec_b_c(1:2), vecPt3d_w_m, vecPs2d_w_b
 
-rvec_b_c = q(1:3);
-tvec_b_c = [q(4:5);0];
+rvec_b_c = calib.rvec_b_c;
+tvec_b_c = calib.tvec_b_c;
 [ T3d_b_c, R3d_b_c ] = FunVec2Trans3d( rvec_b_c, tvec_b_c );
+
+dt_b_c = calib.dt;
 
 vecPt3d_w_m = zeros(mk.numMkId, 3);
 vecPs2d_w_b = zeros(odo.num, 3);
+
+idxStMk = 0;
 for i = 1:mk.numMkId
-    vecPt3d_w_m(i,:) = q(5+3*i-2 : 5+3*i).';
+    vecPt3d_w_m(i,:) = q(idxStMk+i*3-2:idxStMk+i*3).';
 end
-idStOdoInput = 5+3*mk.numMkId;
+idxStOdo = idxStMk+3*mk.numMkId;
 for i = 1:odo.num
-    vecPs2d_w_b(i,:) = q(idStOdoInput+3*i-2 : idStOdoInput+3*i).';
+    vecPs2d_w_b(i,:) = q(idxStOdo+3*i-2: idxStOdo+3*i).';
+end
+vecDt = zeros(numel(time.lp), 1);
+for i = 1:numel(time.lp)
+    dtTmp = cnstr2period(time.t_mk(i) - time.t_odo(i), 30, -30);
+    vecDt(i,1) = dtTmp;
 end
 
 
@@ -66,7 +74,7 @@ end
 
 % odometry part
 idStOdoOutput = 3*mk.num;
-for i = 1:odo.num
+for i = 1:odo.num    
     if i == 1
         x_w_b1 = 0; y_w_b1 = 0; theta_w_b1 = 0;
         ps2d_b1_b2_odo = [0;0;0];
@@ -74,9 +82,19 @@ for i = 1:odo.num
         x_w_b1 = vecPs2d_w_b(i-1,1);
         y_w_b1 = vecPs2d_w_b(i-1,2);
         theta_w_b1 = vecPs2d_w_b(i-1,3);
-        ps2d_b1_b2_odo = FunRelPos2d([odo.x(i-1);odo.y(i-1);odo.theta(i-1)], ...
-            [odo.x(i);odo.y(i);odo.theta(i)]);
-    end
+ 
+        dt_b1_c1 = (vecDt(i-1) + dt_b_c);
+        dt_b2_c2 = (vecDt(i) + dt_b_c);
+        
+        ps2d_w_b1_odo = [odo.x(i-1);odo.y(i-1);odo.theta(i-1)];
+        ps2d_w_b1t_odo = ps2d_w_b1_odo + ...
+            dt_b1_c1*[odo.vx(i-1);odo.vy(i-1);odo.vtheta(i-1)];
+        ps2d_w_b2_odo = [odo.x(i);odo.y(i);odo.theta(i)];
+        ps2d_w_b2t_odo = ps2d_w_b2_odo + ...
+            dt_b2_c2*[odo.vx(i);odo.vy(i);odo.vtheta(i)];        
+        
+        ps2d_b1_b2_odo = FunRelPos2d(ps2d_w_b1t_odo, ps2d_w_b2t_odo);
+    end   
     
     x_w_b2 = vecPs2d_w_b(i,1);
     y_w_b2 = vecPs2d_w_b(i,2);
@@ -88,7 +106,7 @@ for i = 1:odo.num
     ps2d_b1_b2_mod(3) = FunPrdCnst(ps2d_b1_b2_mod(3), ps2d_b1_b2_odo+pi, ps2d_b1_b2_odo-pi);
     
     std_trans = max(norm(ps2d_b1_b2_odo(1:2))*stdErrRatioOdoLin, MinStdErrOdoLin);
-    std_rot = max(abs(ps2d_b1_b2_odo(3))*stdErrRatioOdoRot, MinStdErrOdoRot);
+    std_rot = max(abs(ps2d_b1_b2_odo(3))*stdErrRatioOdoRot, MinStdErrOdoRot);    
     
     mat_std = diag([std_trans;std_trans;std_rot]);
     mats_std_odo{i} = mat_std;
@@ -96,19 +114,11 @@ for i = 1:odo.num
     vecCost(idStOdoOutput+3*i-2:idStOdoOutput+3*i) = inv(mat_std)*(ps2d_b1_b2_mod-ps2d_b1_b2_odo);
 end
 
-% extra code for debugging
-% vecCost(end+1) = 1000000*q(1);
-% vecCost(end+1) = 1000000*q(2);
-
-
 
 %% calculate Jacobian of F
 if nargout > 1
     % allocate J
     matJacobian = zeros(3*mk.num+3*odo.num, numel(q));
-    
-    % compute differentiation of R3d_b_c to rvec_b_c
-    [ d_R3d_rvec_b_c_1, d_R3d_rvec_b_c_2, d_R3d_rvec_b_c_3 ] = DiffRotvec2Rotmat( rvec_b_c );
     
     % calculate J of mark observation
     for i = 1:mk.num
@@ -118,26 +128,14 @@ if nargout > 1
         mkIdOrd = find(mk.vecMkId(:,1) == mkId, 1);
         
         theta_w_b = vecPs2d_w_b(lpOdo,3);
-        R3d_w_b = rodrigues([0;0;theta_w_b]);
-        
-        
+        R3d_w_b = rodrigues([0;0;theta_w_b]); 
         
         tvec_c_m = mk.tvec(i,:).';
         
         mat_std = mats_std_mk{i};
-        
-        % Jacoian on camera extrinsic ps2d_b_cg
-        % todo ...
-        J1 = zeros(3,5);
-        J1(1:3, 1) = -R3d_w_b*d_R3d_rvec_b_c_1*tvec_c_m;
-        J1(1:3, 2) = -R3d_w_b*d_R3d_rvec_b_c_2*tvec_c_m;
-        J1(1:3, 3) = -R3d_w_b*d_R3d_rvec_b_c_3*tvec_c_m;
-        J1(1:3, 4:5) = -R3d_w_b(1:3,1:2);
-        
-        matJacobian(3*i-2:3*i, 1:5) = inv(mat_std)*J1;
-        
+               
         % Jacobian on marker position pt3d_w_m
-        matJacobian(3*i-2:3*i, 3*mkIdOrd+3:3*mkIdOrd+5) = inv(mat_std)*eye(3);
+        matJacobian(3*i-2:3*i, 3*mkIdOrd+idxStMk-2:3*mkIdOrd+idxStMk) = inv(mat_std)*eye(3);
         
         %Jacobian on robot pose ps2d_w_b
         tvec_b_m = T3d_b_c(1:3,1:3)*tvec_c_m + T3d_b_c(1:3,4);
@@ -145,28 +143,27 @@ if nargout > 1
         J3 = zeros(3,3);
         J3(1:2,3) = -R2d_w_b*[-tvec_b_m(2); tvec_b_m(1)];
         J3(1:2,1:2) = -eye(2);
-        matJacobian(3*i-2:3*i, 5+3*mk.numMkId+3*lpOdo-2:5+3*mk.numMkId+3*lpOdo) = inv(mat_std)*J3;
+        matJacobian(3*i-2:3*i, idxStOdo+3*lpOdo-2:idxStOdo+3*lpOdo) = inv(mat_std)*J3;
     end
     
     % calculate J of odometry
     row_st = 3*mk.num;
-    col_st = 5+3*mk.numMkId;
     mat_std = mats_std_odo{1};
-    matJacobian(row_st+1:row_st+3, col_st+1:col_st+3) = inv(mat_std);
+    matJacobian(row_st+1:row_st+3, idxStOdo+1:idxStOdo+3) = inv(mat_std);
     for i = 2:odo.num
         ps_w_b1 = vecPs2d_w_b(i-1,:);
         ps_w_b2 = vecPs2d_w_b(i,:);
         [J1, J2] = FunJacobianRelPs2d(ps_w_b1, ps_w_b2);
         mat_std = mats_std_odo{i};
-        matJacobian(row_st+3*i-2:row_st+3*i, col_st+3*i-5:col_st+3*i-3) = inv(mat_std)*J1;
-        matJacobian(row_st+3*i-2:row_st+3*i, col_st+3*i-2:col_st+3*i) = inv(mat_std)*J2;
-    end
-    
-    % extra code for debuging
-    % matJacobian(end+1,1) = 1000000;
-    % matJacobian(end+1,2) = 1000000;
-    
+        
+        % Jacobian on robot pose
+        matJacobian(row_st+3*i-2:row_st+3*i, idxStOdo+3*i-5:idxStOdo+3*i-3) = inv(mat_std)*J1;
+        matJacobian(row_st+3*i-2:row_st+3*i, idxStOdo+3*i-2:idxStOdo+3*i) = inv(mat_std)*J2;
+                 
+    end   
 end
 
 end
+
+
 

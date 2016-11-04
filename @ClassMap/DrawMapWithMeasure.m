@@ -1,4 +1,4 @@
-function DrawMapWithMeasure( this, measure, calib, bDrawMeasure, strTitle )
+function DrawMapWithMeasure( this, measure, calib, bDrawMeasure, strTitle, fileNameFigOut )
 %DRAWMAPWITHMEASURE Draw current map with mark observation
 %   Detailed explanation goes here
 
@@ -7,7 +7,7 @@ switch nargin
         strTitle = 'Mapping Results';
         bDrawMeasure = false;
     case 4
-        strTitle = 'Mapping Results';       
+        strTitle = 'Mapping Results';
     otherwise        
 end
 
@@ -67,6 +67,16 @@ end
 %% draw marks
 plot3(this.mks.tvec_w_m(:,1), this.mks.tvec_w_m(:,2), this.mks.tvec_w_m(:,3), ...
     'o', 'LineWidth', 1.5, 'MarkerEdgeColor',[0;0;0], 'MarkerFaceColor',[1;1;1], 'MarkerSize', 10);
+
+%% save image
+
+if nargin < 6
+    fileNameFigOut = '.\temp\slam';
+end
+set(gcf, 'PaperPositionMode', 'auto');
+print(fileNameFigOut, '-depsc', '-r0');
+print(fileNameFigOut, '-dmeta', '-r0');
+print(fileNameFigOut, '-djpeg', '-r0');
 
 end
 

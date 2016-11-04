@@ -20,7 +20,7 @@ classdef ClassMap < handle
             this.pts = struct('idMk',[],'idPt',[],'tvec_w_p',[]);            
         end
         % draw current map
-        DrawMap(this); DrawMapWithMeasure(this, measure, calib, bDrawMeasure, strTitle);
+        DrawMap(this); DrawMapWithMeasure(this, measure, calib, bDrawMeasure, strTitle, fileNameFigOut);
         % init map from measurement
         InitMap(this, measure, calib);
         % refresh keyframe by ps2d_w_b

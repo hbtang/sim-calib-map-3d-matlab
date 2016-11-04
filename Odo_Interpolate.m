@@ -1,4 +1,4 @@
-function [ odo_ret ] = FuncInterOdo( odo, odo_raw, time_raw )
+function [ odo_ret ] = Odo_Interpolate( odo, odo_raw, time_raw )
 % do interpolate odo with the raw data odo_raw
 
 %% compute vx, vy, vtheta

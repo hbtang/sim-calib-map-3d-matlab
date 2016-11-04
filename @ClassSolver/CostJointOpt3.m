@@ -6,6 +6,8 @@ stdErrRatioMkY = this.errConfig.stdErrRatioMkY;
 stdErrRatioMkZ = this.errConfig.stdErrRatioMkZ;
 stdErrRatioOdoLin = this.errConfig.stdErrRatioOdoLin;
 stdErrRatioOdoRot = this.errConfig.stdErrRatioOdoRot;
+MinStdErrOdoLin = this.errConfig.MinStdErrOdoLin;
+MinStdErrOdoRot = this.errConfig.MinStdErrOdoRot;
 
 % vecCost: 3*mk.num + 3*odo.num vector of projection error
 vecCost = zeros(3*mk.num + 3*odo.num,1);
@@ -105,8 +107,8 @@ for i = 1:odo.num
     ps2d_b1_b2_mod = FunRelPos2d(ps2d_w_b1, ps2d_w_b2);
     ps2d_b1_b2_mod(3) = FunPrdCnst(ps2d_b1_b2_mod(3), ps2d_b1_b2_odo+pi, ps2d_b1_b2_odo-pi);
     
-    std_trans = max(norm(ps2d_b1_b2_odo(1:2))*stdErrRatioOdoLin, 0.001);
-    std_rot = max(abs(ps2d_b1_b2_odo(3))*stdErrRatioOdoRot, 0.001*pi/180);    
+    std_trans = max(norm(ps2d_b1_b2_odo(1:2))*stdErrRatioOdoLin, MinStdErrOdoLin);
+    std_rot = max(abs(ps2d_b1_b2_odo(3))*stdErrRatioOdoRot, MinStdErrOdoRot);    
     
     mat_std = diag([std_trans;std_trans;std_rot]);
     mats_std_odo{i} = mat_std;
@@ -138,7 +140,6 @@ if nargout > 1
         mat_std = mats_std_mk{i};
         
         % Jacoian on camera extrinsic ps2d_b_cg
-        % todo ...
         J1 = zeros(3,6);
         J1(1:3, 1) = -R3d_w_b*d_R3d_rvec_b_c_1*tvec_c_m;
         J1(1:3, 2) = -R3d_w_b*d_R3d_rvec_b_c_2*tvec_c_m;
