@@ -1,9 +1,9 @@
 %% init: create class objs and load data
 clear;
 
-[FileName,PathName] = uigetfile('*.xml', 'Select the setting file', 'C:\Workspace\Data\');
-settingFile = [PathName, FileName];
-% settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-vmckf.xml';
+% [FileName,PathName] = uigetfile('*.xml', 'Select the setting file', 'C:\Workspace\Data\');
+% settingFile = [PathName, FileName];
+settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-vmckf.xml';
 
 configXml = readXml_vmckf(settingFile);
 
@@ -14,7 +14,6 @@ measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
 
 % init solver
 solverRt = ClassSolverRt;
-
 q_c_b = configXml.qcbInit;
 sigma_q_c_b = configXml.qcbSigmaInit;
 pt3_c_b = configXml.pt3cbInit;
@@ -50,14 +49,15 @@ for i = 1:(numel(vecLp))
     solverRt.RenewMeasRec;
     
     % record
-    rec_mu = [rec_mu; solverRt.x_full.'-mu_x_true.'];
+    %     rec_mu = [rec_mu; solverRt.x_full.'-mu_x_true.'];
+    rec_mu = [rec_mu; solverRt.x_full.'];
     rec_sigma{end+1, 1} = solverRt.sigma_x_full;
     
     % renew odoLast
     odoLast = odoNow;
     
     % display info
-%     disp(['loop: ', num2str(i)]);
+    %     disp(['loop: ', num2str(i)]);
 end
 
 %% draw results

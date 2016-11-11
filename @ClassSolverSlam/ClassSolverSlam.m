@@ -1,4 +1,4 @@
-classdef ClassSolver
+classdef ClassSolverSlam
     %CLASSSOLVER class of solver for calibration and mapping
     
     properties
@@ -11,7 +11,7 @@ classdef ClassSolver
     methods
         
         % constructor function
-        function this = ClassSolver(errConfig)
+        function this = ClassSolverSlam(errConfig)
             if nargin == 0
                 this.errConfig.stdErrRatioOdoLin = 0.01;
                 this.errConfig.stdErrRatioOdoRot = 0.002;
@@ -59,6 +59,10 @@ classdef ClassSolver
         % consider 5 dof extrinsic and 1 dof time delay
         SolveJointOpt3(this, measure, calib, map);
         [vecCost, matJacobian] = CostJointOpt3(this, q, mk, odo, time, calib);
+        
+        % consider 5 dof extrinsic, 1 dof time delay, 2 dof odometric
+        SolveJointOpt4(this, measure, calib, map);
+        [vecCost, matJacobian] = CostJointOpt4(this, q, mk, odo, time, calib);
         
         %% solve SLAM only, fixed on given calib
         SolveSlam(this, measure, calib, map);

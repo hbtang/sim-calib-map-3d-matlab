@@ -18,9 +18,15 @@ classdef ClassSolverRt  < handle
         % full calibration results: 6 dof [qx;qy;qz;qw;x;y]
         x_full; sigma_x_full;
         
+        % for temporal calibration
+        dt; x_full_dt; sigma_x_full_dt;
+        
         % error configure: including error ration of odometry and mark
         % observation
         errConfig;
+        
+        % vec_lp_sw: vector of loop index belong to current sliding window
+        vec_lp_sw;
         
     end
     
@@ -43,12 +49,12 @@ classdef ClassSolverRt  < handle
                 'rvec', [], 'tvec', [], 'num', [], ...
                 'numMkId', [], 'vecMkId', []);
             this.odoNew = struct('lp',[], 'x',[],'y',[],'theta',[], ...
-                'num', []);
+                'num', [], 'vx', [], 'vy', [], 'vtheta', []);
             this.mkRec = struct('lp', [], 'id', [], ...
                 'rvec', [], 'tvec', [], 'num', [], ...
                 'numMkId', [], 'vecMkId', []);
             this.odoRec = struct('lp',[], 'x',[],'y',[],'theta',[], ...
-                'num', []);
+                'num', [], 'vx', [], 'vy', [], 'vtheta', []);
             this.odoRec.sigma = cell(0,1);
             
             % init estimation results of ground plane calibration
@@ -63,11 +69,19 @@ classdef ClassSolverRt  < handle
             this.x_full = [this.q_c_b; this.pt3_c_b(1:2)];
             this.sigma_x_full = blkdiag(this.sigma_q_c_b, this.sigma_pt3_c_b(1:2,1:2));
             
+            % init sliding window
+            this.vec_lp_sw = [];
+            
+            % init temporal data
+            this.dt = 0;
+            this.x_full_dt = [this.q_c_b; this.pt3_c_b(1:2); this.dt];
+            this.sigma_x_full_dt = blkdiag(this.sigma_q_c_b, this.sigma_pt3_c_b(1:2,1:2), 1);
+            
         end
         
         % function renew measurements
         SetMeasNew(this, odo, mk);
-        RenewMeasRec(this);
+        RenewMeasRec(this, bUseVel);
         
         % obtain z according to chi-square, by Hessian H and Covariance C
         [vecMu_z, matSigma_z] = FuncChiSqr(this, H, C);
@@ -106,6 +120,22 @@ classdef ClassSolverRt  < handle
         
         % set initial guess for full calibration
         InitXFull(this, q_c_b, sigma_q_c_b, pt3_c_b, sigma_pt3_c_b);
+        
+        %% for temporal calibration
+        CalibFullDelay(this);
+        
+        [ mu_y, sigma_y, odoinfo ] = CreateYFullDelay( this, rowNew, rowRec );
+        
+        [mu_z, sigma_z, jacobian_z] = CreateZFullDelay(this, mu_x, sigma_x, mu_y, sigma_y, odoinfo);
+        
+        [mu_xy_corr, sigma_xy_corr] = CorrectXYFullDelay(this, ...
+            mu_x, sigma_x, mu_y, sigma_y, mu_z, sigma_z, jacobian_z, odoinfo);
+        
+        
+        %% for sliding window
+        % refresh vec_lp_sw with current measurement
+        RefreshSlidingWindow(this, lp_now, measure);
+        cell_batch = CreateBatch(this, lp_now, measure);
         
     end
     

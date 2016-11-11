@@ -1,6 +1,10 @@
-function RenewMeasRec(this)
+function RenewMeasRec(this, bUseVel)
 %RENEWMEASREC Summary of this function goes here
 %   Detailed explanation goes here
+
+if nargin == 1
+    bUseVel = false;
+end
 
 if isempty(this.mkNew)
     return;
@@ -9,7 +13,7 @@ end
 numMk = numel(this.mkNew.lp);
 
 for i = 1:numMk
-    id = this.mkNew.id(i);    
+    id = this.mkNew.id(i);
     rowRec = find(this.mkRec.id == id);
     
     if isempty(rowRec)
@@ -31,6 +35,11 @@ for i = 1:numMk
             this.odoRec.theta(rowTmp2) = [];
             this.odoRec.num = numel(this.odoRec.lp);
             this.odoRec.sigma(rowTmp2,:) = [];
+            if bUseVel
+                this.odoRec.vx(rowTmp2) = [];
+                this.odoRec.vy(rowTmp2) = [];
+                this.odoRec.vtheta(rowTmp2) = [];
+            end
         end
         
         % delete old record in mkRec
@@ -45,7 +54,7 @@ for i = 1:numMk
         this.mkRec.rvec = [this.mkRec.rvec; this.mkNew.rvec(i,:)];
         this.mkRec.tvec = [this.mkRec.tvec; this.mkNew.tvec(i,:)];
         this.mkRec.num = numel(this.mkRec.lp);
-    end    
+    end
 end
 
 % add new record in odoRec
@@ -55,5 +64,10 @@ this.odoRec.y = [this.odoRec.y; this.odoNew.y];
 this.odoRec.theta = [this.odoRec.theta; this.odoNew.theta];
 this.odoRec.num = numel(this.odoRec.lp);
 this.odoRec.sigma{end+1,1} = this.odoNew.sigma;
+if bUseVel
+    this.odoRec.vx = [this.odoRec.vx; this.odoNew.vx];
+    this.odoRec.vy = [this.odoRec.vy; this.odoNew.vy];
+    this.odoRec.vtheta = [this.odoRec.vtheta; this.odoNew.vtheta];
+end
 end
 

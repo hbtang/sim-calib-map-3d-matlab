@@ -1,4 +1,4 @@
-function [ mu_y, sigma_y, odoinfo ] = CreateYFull( this, rowNew, rowRec )
+function [ mu_y, sigma_y, odoinfo ] = CreateYFullDelay( this, rowNew, rowRec )
 %CREATEYFULL create measurements Y in full calibration
 % y = []
 
@@ -14,8 +14,8 @@ rowOdo1 = find(this.odoRec.lp == lp1);
 
 odoinfo.ps2_o_b1 = [this.odoRec.x(rowOdo1);this.odoRec.y(rowOdo1);this.odoRec.theta(rowOdo1)];
 odoinfo.ps2_o_b2 = [this.odoNew.x; this.odoNew.y; this.odoNew.theta];
-% odoinfo.vps2_o_b1 = [this.odoRec.vx(rowOdo1);this.odoRec.vy(rowOdo1);this.odoRec.vtheta(rowOdo1)];
-% odoinfo.vps2_o_b2 = [this.odoNew.vx; this.odoNew.vy; this.odoNew.vtheta];
+odoinfo.vps2_o_b1 = [this.odoRec.vx(rowOdo1);this.odoRec.vy(rowOdo1);this.odoRec.vtheta(rowOdo1)];
+odoinfo.vps2_o_b2 = [this.odoNew.vx; this.odoNew.vy; this.odoNew.vtheta];
 
 ps2_b2_b1 = FunRelPos2d( odoinfo.ps2_o_b1, odoinfo.ps2_o_b2 );
 

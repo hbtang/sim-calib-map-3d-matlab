@@ -17,7 +17,7 @@ title(text.strTitle, 'FontWeight','bold');
 xlabel(text.strXLabel);
 ylabel(text.strYLabel);
 
-cmdColor = {'b' 'g' 'r'};
+cmdColor = {'b' 'g' 'r' 'k'};
 
 ratioStd = 2;
 
@@ -28,7 +28,7 @@ for i = 1:numel(cell_mat)
     vecEllipse = Ellipse_CovMean( vec_mean, mat_cov, ratioStd);
     
     plot(mat_err(:,1), mat_err(:,2), '.', 'Color', cmdColor{i});
-    plot(vecEllipse(:,1), vecEllipse(:,2), '-', 'Color', cmdColor{i}, 'LineWidth', 2); 
+    plot(vecEllipse(:,1), vecEllipse(:,2), '--', 'Color', cmdColor{i}, 'LineWidth', 1.5); 
 end
 
 end

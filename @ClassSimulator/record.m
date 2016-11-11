@@ -2,7 +2,7 @@ function record( this )
 %RECORD write into record file Odo.rec and Mk.rec
 
 strOdo = [num2str(this.odo.lp), ' '];
-strOdo = [strOdo, '0 0 '];
+strOdo = [strOdo, num2str(this.odo.lp*0.1), ' ', num2str(this.odo.lp*0.1), ' '];
 strOdo = [strOdo, num2str(this.odo.x), ' ',...
     num2str(this.odo.y), ' ', num2str(this.odo.theta), '\n',];
 fprintf(this.OutputFileOdoId, strOdo);

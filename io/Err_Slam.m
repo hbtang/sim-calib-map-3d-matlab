@@ -10,6 +10,8 @@ vecPs2d_w_b = map.kfs.ps2d_w_b;
 
 T3d_b_c = calib.T3d_b_c;
 dt_b_c = calib.dt;
+k_odo_lin = calib.k_odo_lin;
+k_odo_rot = calib.k_odo_rot;
 
 err_Mk = zeros(mk.num, 3);
 err_MkNormal = zeros(mk.num, 3);
@@ -63,8 +65,10 @@ for i = 2:odo.num
         dt_b2_c2*[odo.vx(i);odo.vy(i);odo.vtheta(i)];
     
     ps2d_b1_b2_odo = FunRelPos2d(ps2d_w_b1t_odo, ps2d_w_b2t_odo);
+    ps2d_b1_b2_odo(1:2) = k_odo_lin*ps2d_b1_b2_odo(1:2);
+    ps2d_b1_b2_odo(3) = k_odo_rot*ps2d_b1_b2_odo(3);
     
-        x_w_b1 = vecPs2d_w_b(i-1,1);
+    x_w_b1 = vecPs2d_w_b(i-1,1);
     y_w_b1 = vecPs2d_w_b(i-1,2);
     theta_w_b1 = vecPs2d_w_b(i-1,3);
     

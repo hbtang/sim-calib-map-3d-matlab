@@ -16,6 +16,8 @@ classdef ClassCalib < handle
         dist_g_c;
         % time delay between odo and camera, positive if camera is late
         dt;
+        % odometric parameters
+        k_odo_lin; k_odo_rot;
     end
     
     methods
@@ -30,6 +32,8 @@ classdef ClassCalib < handle
             %             RefreshByTbc(this);
             
             this.dt = 0;
+            this.k_odo_lin = 1;
+            this.k_odo_rot = 1;
             
         end
         
@@ -101,6 +105,12 @@ classdef ClassCalib < handle
             
             dt = this.dt;
             disp(['Current estimated dt: ', num2str(dt), ' ']);
+            
+            k_odo_lin = this.k_odo_lin;
+            disp(['Current estimated k_odo_lin: ', num2str(k_odo_lin), ' ']);
+            
+            k_odo_rot = this.k_odo_rot;
+            disp(['Current estimated k_odo_rot: ', num2str(k_odo_rot), ' ']);
             
             disp(' ');
         end

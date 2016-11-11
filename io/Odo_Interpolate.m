@@ -1,7 +1,11 @@
-function [ odo_ret ] = Odo_Interpolate( odo, odo_raw, time_raw )
+function [ odo_ret ] = Odo_Interpolate( odo, odo_raw, time_raw, span )
 % do interpolate odo with the raw data odo_raw
 
 %% compute vx, vy, vtheta
+
+if nargin < 4
+    span = 10;
+end
 
 odo_ret = odo;
 odo_ret.vx = [];

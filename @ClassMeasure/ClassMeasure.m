@@ -47,7 +47,7 @@ classdef ClassMeasure < handle
         PruneDataByVecLp(this, vecLp);
         
         % function get measurement of lp
-        odoLp = GetOdoLp(this, lp);
+        odoLp = GetOdoLp(this, lp, bUseVel);
         mkLp = GetMkLp(this, lp);
     end
 end
