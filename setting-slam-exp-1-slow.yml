@@ -1,0 +1,54 @@
+# YAML1.0
+# Configuration file for calib-slam solver
+# Path of data
+path:
+  fold: C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520
+  markfilename: Mk.rec
+  odofilename: Odo.rec
+# Prune threshold
+prune:
+  thresh_lin: 200
+  thresh_rot: 0.05
+# Error coefficients
+error:
+  odo:
+    stdratio_lin: 0.001
+    stdratio_rot: 0.002
+    stdmin_lin: 0.01
+    stdmin_rot: 1.745e-4
+  mk:
+    stdratio_x: 0.002
+    stdratio_y: 0.002
+    stdratio_z: 0.01
+# Initial guess
+init:
+  rvec_b_c:
+    - [0.001, 0.001, 1.57]
+  tvec_b_c: 
+    - [0.0, 0.0, 0.0]
+truth:
+  rvec_b_c:
+    - [0.001, 0.001, 0.001]
+  tvec_b_c: 
+    - [0.0, 0.0, 0.0]
+# Camera intrinsics
+camera:
+  image_width: 640
+  image_height: 480
+  camera_matrix:
+    - [1118.51449, 0., 348.10129]
+    - [0., 1120.60939,  195.92066]
+    - [0., 0., 1.]
+  distortion_coefficients:
+    - [ -0.05909, -0.31834, -0.00852, 0.00321, 0.00000 ]
+# Aruco
+aruco:
+  size: 127
+  tvec_m_pt1:
+    - [-63.5, 0, 63.5]
+  tvec_m_pt2:
+    - [-63.5, 0, -63.5]
+  tvec_m_pt3:
+    - [63.5, 0, -63.5]
+  tvec_m_pt4:
+    - [63.5, 0, 63.5]

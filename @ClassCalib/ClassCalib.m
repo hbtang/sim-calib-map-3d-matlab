@@ -18,6 +18,8 @@ classdef ClassCalib < handle
         dt;
         % odometric parameters
         k_odo_lin; k_odo_rot;
+        % camera intrinsic
+        mat_camera; vec_distortion;
     end
     
     methods
@@ -34,11 +36,9 @@ classdef ClassCalib < handle
             this.dt = 0;
             this.k_odo_lin = 1;
             this.k_odo_rot = 1;
-            
         end
         
-        
-        
+        %% write configures ...
         % refresh calibration properties according to _b_c
         RefreshByTbc(this); RefreshByVecbc(this);
         
@@ -47,13 +47,6 @@ classdef ClassCalib < handle
         
         % refresh calibration properties according to pvec_g_c and dist_g_c
         RefreshByGrnd(this);
-        
-        % get ps2d_b_cg
-        function ps2d_b_cg = GetPs2dbcg(this)
-            ps2d_b_cg = zeros(3,1);
-            ps2d_b_cg(3) = this.rvec_b_cg(3);
-            ps2d_b_cg(1:2) = this.tvec_b_cg(1:2);
-        end
         
         % set ps2d_b_cg
         function SetPs2dbcg(this, ps2d_b_cg)
@@ -67,6 +60,32 @@ classdef ClassCalib < handle
             this.rvec_b_c = rvec_b_c;
             this.tvec_b_c = tvec_b_c;
             RefreshByVecbc(this);
+        end
+        
+        % set camera intrinsics
+        function SetCameraIntrinsic(this, mat_camera, vec_distortion)
+            this.mat_camera = mat_camera;
+            this.vec_distortion = vec_distortion;
+        end
+        
+        % set odometry intrinsic
+        function SetOdometryIntrinsic(this, k_odo_lin, k_odo_rot)
+            this.k_odo_lin = k_odo_lin;
+            this.k_odo_rot = k_odo_rot;
+        end
+        
+        % set temporal delay
+        function SetTemporal(this, dt)
+            this.dt = dt;
+        end
+        
+        %% read configures ...
+        
+        % get ps2d_b_cg
+        function ps2d_b_cg = GetPs2dbcg(this)
+            ps2d_b_cg = zeros(3,1);
+            ps2d_b_cg(3) = this.rvec_b_cg(3);
+            ps2d_b_cg(1:2) = this.tvec_b_cg(1:2);
         end
         
         % display ps2d_b_cg

@@ -27,7 +27,7 @@ classdef ClassSolverSlam
         % to obtain pvec_g_c and dist_g_c
         SolveGrndPlane(this, measure, calib);
         cost = CostGrndPlane(this, q, mk);
-        DrawResGrndPlane(this, measure, calib);
+        DrawResGrndPlane(this, measure, calib, vec_ground);
         % solve ground plane from linear constraints
         SolveGrndPlaneLin(this, measure, calib);
         
@@ -63,6 +63,11 @@ classdef ClassSolverSlam
         % consider 5 dof extrinsic, 1 dof time delay, 2 dof odometric
         SolveJointOpt4(this, measure, calib, map);
         [vecCost, matJacobian] = CostJointOpt4(this, q, mk, odo, time, calib);
+        
+        % consider image measurements, 5 dof extrinsic
+        SolveJointOpt5(this, measure, calib, map, setting, flag);
+        [vecCost, matJacobian] = CostJointOpt5(this, q, mk, odo, time, calib, setting, flag);
+        
         
         %% solve SLAM only, fixed on given calib
         SolveSlam(this, measure, calib, map);

@@ -1,6 +1,6 @@
 classdef ClassSolverRt  < handle
-    %CLASSRTSOLVER Summary of this class goes here
-    %   Detailed explanation goes here
+    %CLASSRTSOLVER: online solver based on VMCKF, old version, use
+    %ClassSolverVmckf instead
     
     properties
         % measurement data

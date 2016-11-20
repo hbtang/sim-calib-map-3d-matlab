@@ -1,13 +1,14 @@
 <?xml version="1.0" ?> 
 <root>
 	<!-- String Configure -->
-    <PathFold>C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520</PathFold>
+    <PathFold>C:\Workspace\Data\jingxing-2016.7.29\jx-r1-201-front-4mm-mk211-calib</PathFold>
 	<NameMk>Mk.rec</NameMk>
 	<NameOdo>Odo.rec</NameOdo>
 	
 	<!-- Data Configure -->	
-	<ThreshTransPruneData>200</ThreshTransPruneData>
-	<ThreshRotPruneData>5*pi/180</ThreshRotPruneData>
+	<MuXTrue>[0.1499; 0.1490; 0.6803; -0.7018; 175.5707; -289.4186]</MuXTrue>
+	<ThreshTransPruneData>100</ThreshTransPruneData>
+	<ThreshRotPruneData>2*pi/180</ThreshRotPruneData>
 	
 	<qcbInit>[0;0;1/sqrt(2);-1/sqrt(2)]</qcbInit>	
 	<pt3cbInit>[0;0;0]</pt3cbInit>

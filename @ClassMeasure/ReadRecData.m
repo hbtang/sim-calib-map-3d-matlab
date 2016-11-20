@@ -5,7 +5,8 @@ function ReadRecData(this)
 disp(['Reading mark record data from "', this.InputMkFilePath, '"...']);
 markFileId = fopen(this.InputMkFilePath,'r');
 this.mk = struct('lp', [], 'id', [], 'rvec', [], 'tvec', [], ...
-    'num', [], 'numMkId', [], 'vecMkId', []);
+    'num', [], 'numMkId', [], 'vecMkId', [], ...
+    'pt1', [], 'pt2', [], 'pt3', [], 'pt4', []);
 
 % read loop
 while ~feof(markFileId)
@@ -22,6 +23,14 @@ while ~feof(markFileId)
     this.mk.id = [this.mk.id; lineTmp(2)];
     this.mk.rvec = [this.mk.rvec; lineTmp(3:5)];
     this.mk.tvec = [this.mk.tvec; lineTmp(6:8)];
+    
+    if numel(lineTmp) < 9
+        continue;
+    end    
+    this.mk.pt1 = [this.mk.pt1; lineTmp(9:10)];
+    this.mk.pt2 = [this.mk.pt2; lineTmp(11:12)];
+    this.mk.pt3 = [this.mk.pt3; lineTmp(13:14)];
+    this.mk.pt4 = [this.mk.pt4; lineTmp(15:16)];
 end
 fclose(markFileId);
 this.mk.num = numel(this.mk.lp);
@@ -55,9 +64,6 @@ while ~feof(odoFileId)
     this.time.t_odo = [this.time.t_odo; lineTmp(2)];
     this.time.t_mk = [this.time.t_mk; lineTmp(3)];    
     
-    %     if (mod(lineTmp(1),100) == 0)
-    %         disp(['odometry info loaded before lp: ', num2str(lineTmp(1))]);
-    %     end
 end
 fclose(odoFileId);
 this.odo.num = numel(this.odo.lp);

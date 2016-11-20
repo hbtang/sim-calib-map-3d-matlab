@@ -6,8 +6,9 @@
 	<NameOdo>Odo.rec</NameOdo>
 	
 	<!-- Data Configure -->	
-	<ThreshTransPruneData>200</ThreshTransPruneData>
-	<ThreshRotPruneData>5*pi/180</ThreshRotPruneData>
+	<MuXTrue>[0.1499; 0.1490; 0.6803; -0.7018; 175.5707; -289.4186]</MuXTrue>
+	<ThreshTransPruneData>500</ThreshTransPruneData>
+	<ThreshRotPruneData>10*pi/180</ThreshRotPruneData>
 	
 	<qcbInit>[0;0;1/sqrt(2);-1/sqrt(2)]</qcbInit>	
 	<pt3cbInit>[0;0;0]</pt3cbInit>

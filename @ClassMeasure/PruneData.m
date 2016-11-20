@@ -46,7 +46,8 @@ disp(['Odometry info prunning is done, ', num2str(odo_new.num), ' records remain
 %% prune mark data
 mk_new = struct('lp', [], 'id', [], ...
     'rvec', [], 'tvec', [], 'num', [], ...
-    'numMkId', [], 'vecMkId', []);
+    'numMkId', [], 'vecMkId', [], ...
+    'pt1', [], 'pt2', [], 'pt3', [], 'pt4', []);
 for i = 1:this.mk.num
     tmp = find(odo_new.lp == this.mk.lp(i), 1);
     if numel(tmp) ~= 0
@@ -54,6 +55,10 @@ for i = 1:this.mk.num
         mk_new.id = [mk_new.id; this.mk.id(i)];
         mk_new.rvec = [mk_new.rvec; this.mk.rvec(i,:)];
         mk_new.tvec = [mk_new.tvec; this.mk.tvec(i,:)];
+        mk_new.pt1 = [mk_new.pt1; this.mk.pt1(i,:)];
+        mk_new.pt2 = [mk_new.pt2; this.mk.pt2(i,:)];
+        mk_new.pt3 = [mk_new.pt3; this.mk.pt3(i,:)];
+        mk_new.pt4 = [mk_new.pt4; this.mk.pt4(i,:)];
     end
 end
 mk_new.num = numel(mk_new.lp);

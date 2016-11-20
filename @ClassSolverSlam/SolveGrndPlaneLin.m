@@ -44,7 +44,7 @@ calib.dist_g_c = 0;
 calib.RefreshByGrnd;
 
 %% draw result
-% this.DrawResGrndPlane(measure, calib);
+% this.DrawResGrndPlane(measure, calib, q);
 
 end
 

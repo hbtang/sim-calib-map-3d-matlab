@@ -5,7 +5,7 @@
 % settingFile = [PathName, FileName];
 % settingFile = 'C:\Workspace\Data\sim\sim-sqrmap-inout-2016.1.18\config\setting-simcalibmap3d-slam.xml';
 % settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-slam.xml';
-settingFile = 'setting-slam-exp-1.xml';
+settingFile = 'setting-slam-exp-3.xml';
 configXml = readXml_slam(settingFile);
 
 % measure
@@ -72,28 +72,28 @@ solver.SolveSlam(measure, calib, map);
 [ err_Mk_1, err_Odo_1, err_MkNorm_1, err_OdoNorm_1 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
 calib.DispCalib;
 fileNameFigOut = '.\temp\slam-init';
-map.DrawMapWithMeasure(measure, calib, true, 'Result: with init calib', fileNameFigOut);
+map.DrawMapWithMeasure(measure, calib, true, 'SLAM Result: Initial', fileNameFigOut);
 
 %% step 3: spatio joint optimization
 solver.SolveJointOpt2(measure, calib, map);
 [ err_Mk_2, err_Odo_2, err_MkNorm_2, err_OdoNorm_2 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
 calib.DispCalib;
-fileNameFigOut = '.\temp\slam-jointopt';
-map.DrawMapWithMeasure(measure, calib, true, 'Result: joint opt. spatio calib.', fileNameFigOut);
+fileNameFigOut = '.\temp\slam-spatio';
+map.DrawMapWithMeasure(measure, calib, true, 'SLAM Result: Spatio Calib.', fileNameFigOut);
 
 %% step 3: spatio-temporal joint optimization
 solver.SolveJointOpt3(measure, calib, map);
 [ err_Mk_3, err_Odo_3, err_MkNorm_3, err_OdoNorm_3 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
 calib.DispCalib;
-fileNameFigOut = '.\temp\slam-jointopttime';
-map.DrawMapWithMeasure(measure, calib, true, 'Result: joint opt. temporal-spatio calib.', fileNameFigOut);
+fileNameFigOut = '.\temp\slam-spatio-temporal';
+map.DrawMapWithMeasure(measure, calib, true, 'SLAM Result: Spatio-Temporal Calib.', fileNameFigOut);
 
 %% step 3: spatio-temporal-odometric joint optimization
 solver.SolveJointOpt4(measure, calib, map);
 [ err_Mk_4, err_Odo_4, err_MkNorm_4, err_OdoNorm_4 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
 calib.DispCalib;
-fileNameFigOut = '.\temp\slam-jointopttimeodo';
-map.DrawMapWithMeasure(measure, calib, true, 'Result: joint opt. with temporal-spatio-odo calib.', fileNameFigOut);
+fileNameFigOut = '.\temp\slam-spatio-temporal-odo';
+map.DrawMapWithMeasure(measure, calib, true, 'SLAM Result: Spatio-Temporal-Odometric Calib.', fileNameFigOut);
 
 %% Draw Error
 cellMat_errMk = {err_Mk_1, err_Mk_2, err_Mk_3, err_Mk_4};

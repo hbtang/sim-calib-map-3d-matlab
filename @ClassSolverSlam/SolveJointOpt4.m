@@ -28,8 +28,8 @@ end
 %% solve nonlinear least square, mapping and calibration
 options = optimoptions(@lsqnonlin, 'Algorithm', 'levenberg-marquardt', ...
     'Display', 'iter-detailed', 'Jacobian', 'on', 'MaxIter', 50, 'ScaleProblem', 'Jacobian', 'TolX', 1e-6);
-
-[q,resnorm,residual,exitflag,output,lambda,jacobian] = lsqnonlin(@(x)this.CostJointOpt4(x, mk, odo, time, calib), q, [], [], options);
+[q,resnorm,residual,exitflag,output,lambda,jacobian] = lsqnonlin(...
+    @(x)this.CostJointOpt4(x, mk, odo, time, calib), q, [], [], options);
 
 %% save results
 % refresh calib

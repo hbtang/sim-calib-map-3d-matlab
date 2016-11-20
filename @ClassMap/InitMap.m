@@ -1,10 +1,20 @@
-function InitMap( this, measure, calib )
+function InitMap( this, measure, calib, flag )
 %INITMAP init map from measurement
+
+if nargin < 4
+    flag.bKfsOdo = true;
+    flag.bMksLin = true;
+    flag.bMksRot = true;
+end
+
 odo = measure.odo;
 mk = measure.mk;
 disp('Initializing map...');
+kfs = this.kfs;
+mks = this.mks;
 
 %% init keyframes from odometry
+if flag.bKfsOdo
 kfs = struct('lp',[],'rvec_w_b',[],'tvec_w_b',[],...
     'ps2d_w_b',[],'numKfs',[]);
 for i = 1:odo.num
@@ -18,10 +28,10 @@ for i = 1:odo.num
 end
 kfs.numKfs = odo.num;
 this.kfs = kfs;
+end
 
 %% init marks from mark observation
 T3d_b_c = calib.T3d_b_c;
-mks = struct('id',[],'rvec_w_m',[],'tvec_w_m',[],'numMks',[]);
 for i = 1:mk.numMkId
     mkId = mk.vecMkId(i);
     tmp = find(mk.id == mkId, 1);
@@ -39,8 +49,12 @@ for i = 1:mk.numMkId
     [rvec_w_m, tvec_w_m] = FunTrans2Vec3d(T3d_w_m);
     
     mks.id(i,1) = mkId;
-    mks.rvec_w_m(i,:) = rvec_w_m;
-    mks.tvec_w_m(i,:) = tvec_w_m;    
+    if flag.bMksLin    
+        mks.tvec_w_m(i,:) = tvec_w_m;  
+    end
+    if flag.bMksRot
+        mks.rvec_w_m(i,:) = rvec_w_m;
+    end
 end
 mks.numMks = mk.numMkId;
 this.mks = mks;

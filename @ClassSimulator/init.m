@@ -3,7 +3,7 @@ function init( this )
 if nargin == 2
     simFolderPath = inputPath;
 else
-    simFolderPath = './data/sim/';
+    simFolderPath = './sim/';
 end
 
 this.InputFileMapId = fopen([simFolderPath, 'cfg/Map.cfg'],'r');
