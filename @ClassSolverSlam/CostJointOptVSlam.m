@@ -1,52 +1,79 @@
-function [ vecCost, matJacobian ] = CostJointOpt5( this, q, mk, odo, time, calib, setting, flag )
+function [ vecCost, matJacobian ] = CostJointOptVSlam( this, q, mk, odo, time, calib, setting, options )
 %COST
 
-stdErrRatioMkX = this.errConfig.stdErrRatioMkX;
-stdErrRatioMkY = this.errConfig.stdErrRatioMkY;
-stdErrRatioMkZ = this.errConfig.stdErrRatioMkZ;
+% error configure
 stdErrRatioOdoLin = this.errConfig.stdErrRatioOdoLin;
 stdErrRatioOdoRot = this.errConfig.stdErrRatioOdoRot;
 MinStdErrOdoLin = this.errConfig.MinStdErrOdoLin;
 MinStdErrOdoRot = this.errConfig.MinStdErrOdoRot;
-
-% camera intrinsics
-mat_camera = setting.camera.camera_matrix;
-% vec_distortion = setting.camera.distortion_coefficients;
-vec_distortion = zeros(1,5);
+std_imgu = setting.error.mk.std_imgu;
+std_imgv = setting.error.mk.std_imgv;
 
 % vecCost: 8*mk.num + 3*odo.num vector of projection error
 vecCost = zeros(8*mk.num + 3*odo.num,1);
 
 %% parse q: rvec_b_c(1:3), tvec_b_c(1:2), vecPt3d_w_m, vecPs2d_w_b
-numParam = flag.bCalibExt*5 + flag.bCalibTmp + flag.bCalibOdo*2;
+numParam = options.bCalibExtRot*3 + options.bCalibExtLin*2 ...
+    + options.bCalibTmp + options.bCalibOdo*2 ...
+    + options.bCalibCamMat*4 + options.bCalibCamDist*5 ;
 idxStMk = numParam;
 q_param = q(1:idxStMk);
 count = 1;
-if flag.bCalibExt
+if options.bCalibExtRot
     rvec_b_c = q_param(count:count+2);
-    tvec_b_c = [q_param(count+3:count+4);0];
-    vecrow_ext = count:count+4;
-    count = count+5;
+    vecrow_extrot = count:count+2;
+    count = count+3;
 else
     rvec_b_c = calib.rvec_b_c;
+end
+if options.bCalibExtLin
+    tvec_b_c = [q_param(count:count+1);0];
+    vecrow_extlin = count:count+1;
+    count = count+2;
+else
     tvec_b_c = calib.tvec_b_c;
 end
-if flag.bCalibTmp
+if options.bCalibTmp
     dt_b_c = q_param(count);
     vecrow_tmp = count;
     count = count + 1;
 else
     dt_b_c = calib.dt;
 end
-if flag.bCalibOdo
+if options.bCalibOdo
     k_odo_lin = q_param(count);
     k_odo_rot = q_param(count+1);
     vecrow_odo = count:count+1;
+    count = count + 2;
 else
     k_odo_lin = calib.k_odo_lin;
     k_odo_rot = calib.k_odo_rot;
 end
+if options.bCalibCamMat
+    fx = q_param(count);
+    fy = q_param(count+1);
+    cx = q_param(count+2);
+    cy = q_param(count+3);
+    mat_camera = [fx 0 cx; 0 fy cy; 0 0 1];
+    vecrow_cammat = count:count+3;
+    count = count + 4;
+else
+    mat_camera = calib.mat_camera;
+end
+if options.bCalibCamDist
+    k1 = q_param(count+0);
+    k2 = q_param(count+1);
+    p1 = q_param(count+2);
+    p2 = q_param(count+3);
+    k3 = q_param(count+4);
+    vec_distortion = [k1; k2; p1; p2; k3];
+    vecrow_camdist = count:count+4;
+    count = count + 5;
+else
+    vec_distortion = calib.vec_distortion;
+end
 [ T3d_b_c, R3d_b_c ] = FunVec2Trans3d( rvec_b_c, tvec_b_c );
+T3d_c_b = [R3d_b_c.' -R3d_b_c.'*tvec_b_c; 0 0 0 1];
 
 vec_rvec_w_m = zeros(mk.numMkId, 3);
 vec_tvec_w_m = zeros(mk.numMkId, 3);
@@ -72,6 +99,7 @@ tvec_m_pt4 = setting.aruco.tvec_m_pt4.';
 %% Compute Cost Function
 % mark observation part: image offset between model and undistorted
 % cordinates
+mats_std_mk = cell(mk.num,1);
 for i = 1:mk.num
     lp = mk.lp(i);
     row_odo = find(odo.lp == lp,1);
@@ -80,7 +108,8 @@ for i = 1:mk.num
     theta_w_b = vec_ps2d_w_b(row_odo,3);
     rvec_w_b = [0; 0; theta_w_b];
     tvec_w_b = [x_w_b; y_w_b; 0];
-    T3d_w_b = FunVec2Trans3d(rvec_w_b, tvec_w_b);
+    [T3d_w_b, R3d_w_b] = FunVec2Trans3d(rvec_w_b, tvec_w_b);
+    T3d_b_w = [R3d_w_b.' -R3d_w_b.'*tvec_w_b; 0 0 0 1];
     
     mkId = mk.id(i);
     mkIdOrd = find(mk.vecMkId(:,1) == mkId, 1);
@@ -89,7 +118,8 @@ for i = 1:mk.num
     tvec_w_m = vec_tvec_w_m(mkIdOrd,:).';
     T3d_w_m = FunVec2Trans3d(rvec_w_m, tvec_w_m);
     
-    T3d_c_m = inv(T3d_w_b*T3d_b_c)*T3d_w_m;
+    T3d_c_m = T3d_c_b*T3d_b_w*T3d_w_m;
+    
     [ rvec_c_m, tvec_c_m ] = FunTrans2Vec3d( T3d_c_m );
     
     img_c_pt1_measure = mk.pt1(i,:).';
@@ -109,14 +139,14 @@ for i = 1:mk.num
     
     vec_err_temp = [errimg_c_pt1; errimg_c_pt2; errimg_c_pt3; errimg_c_pt4];
     
-    mat_std = eye(8);
+    mat_std = diag([std_imgu std_imgv std_imgu std_imgv std_imgu std_imgv std_imgu std_imgv]);
     mats_std_mk{i} = mat_std;
     vecCost(8*i-7: 8*i) = inv(mat_std)*(vec_err_temp);
 end
 
 % odometry part
 idStOdoOutput = 8*mk.num;
-
+mats_std_odo = cell(odo.num, 1);
 for i = 1:odo.num
     if i == 1
         x_w_b1 = 0; y_w_b1 = 0; theta_w_b1 = 0;
@@ -178,33 +208,48 @@ if nargout > 1
         tvec_w_b = [vec_ps2d_w_b(row_odo,1); vec_ps2d_w_b(row_odo,2); 0];
         rvec_w_b = [0;0;vec_ps2d_w_b(row_odo,3)];
         
-        [~,J_pt1_bc, J_pt1_wb, J_pt1_wm] = Jacobian_Opt5Mk_Lie( ...
+        [J_pt1_bc, J_pt1_wb, J_pt1_wm, J_pt1_cam] = Jacobian_Opt5Mk_Lie( ...
             rvec_b_c, tvec_b_c, rvec_w_b, tvec_w_b, rvec_w_m, tvec_w_m,...
             tvec_m_pt1, mat_camera, vec_distortion);
-        [~,J_pt2_bc, J_pt2_wb, J_pt2_wm] = Jacobian_Opt5Mk_Lie( ...
+        [J_pt2_bc, J_pt2_wb, J_pt2_wm, J_pt2_cam] = Jacobian_Opt5Mk_Lie( ...
             rvec_b_c, tvec_b_c, rvec_w_b, tvec_w_b, rvec_w_m, tvec_w_m,...
             tvec_m_pt2, mat_camera, vec_distortion);
-        [~,J_pt3_bc, J_pt3_wb, J_pt3_wm] = Jacobian_Opt5Mk_Lie( ...
+        [J_pt3_bc, J_pt3_wb, J_pt3_wm, J_pt3_cam] = Jacobian_Opt5Mk_Lie( ...
             rvec_b_c, tvec_b_c, rvec_w_b, tvec_w_b, rvec_w_m, tvec_w_m,...
             tvec_m_pt3, mat_camera, vec_distortion);
-        [~,J_pt4_bc, J_pt4_wb, J_pt4_wm] = Jacobian_Opt5Mk_Lie( ...
+        [J_pt4_bc, J_pt4_wb, J_pt4_wm, J_pt4_cam] = Jacobian_Opt5Mk_Lie( ...
             rvec_b_c, tvec_b_c, rvec_w_b, tvec_w_b, rvec_w_m, tvec_w_m,...
             tvec_m_pt4, mat_camera, vec_distortion);
         
         J_pt_bc = [J_pt1_bc; J_pt2_bc; J_pt3_bc; J_pt4_bc];
         J_pt_wb = [J_pt1_wb; J_pt2_wb; J_pt3_wb; J_pt4_wb];
         J_pt_wm = [J_pt1_wm; J_pt2_wm; J_pt3_wm; J_pt4_wm];
+        J_pt_cam = [J_pt1_cam; J_pt2_cam; J_pt3_cam; J_pt4_cam];
         
         vecrow_jac = i*8-7:i*8;
         veccol_jac_wb = idxStOdo+3*row_odo-2:idxStOdo+3*row_odo;
         veccol_jac_wm = idxStMk+6*mkIdOrd-5:idxStMk+6*mkIdOrd;
         
-        matJacobian(vecrow_jac, veccol_jac_wb) = J_pt_wb;
-        matJacobian(vecrow_jac, veccol_jac_wm) = J_pt_wm;
+        mat_std = mats_std_mk{i};
         
-        if flag.bCalibExt
-            veccol_jac_bc = vecrow_ext;
-            matJacobian(vecrow_jac, veccol_jac_bc) = J_pt_bc;
+        matJacobian(vecrow_jac, veccol_jac_wb) = inv(mat_std)*J_pt_wb;
+        matJacobian(vecrow_jac, veccol_jac_wm) = inv(mat_std)*J_pt_wm;
+        
+        if options.bCalibExtRot
+            veccol_jac_bcrot = vecrow_extrot;
+            matJacobian(vecrow_jac, veccol_jac_bcrot) = inv(mat_std)*J_pt_bc(:,1:3);
+        end
+        if options.bCalibExtLin
+            veccol_jac_bclin = vecrow_extlin;
+            matJacobian(vecrow_jac, veccol_jac_bclin) = inv(mat_std)*J_pt_bc(:,4:5);
+        end
+        if options.bCalibCamMat
+            veccol_jac_cammat = vecrow_cammat;
+            matJacobian(vecrow_jac, veccol_jac_cammat) = inv(mat_std)*J_pt_cam(:,1:4);
+        end
+        if options.bCalibCamDist
+            veccol_jac_camdist = vecrow_camdist;
+            matJacobian(vecrow_jac, veccol_jac_camdist) = inv(mat_std)*J_pt_cam(:,5:9);
         end
     end
     
@@ -226,7 +271,7 @@ if nargout > 1
         ps_w_b1_odo = [odo.x(i-1); odo.y(i-1); odo.theta(i-1)];
         ps_w_b2_odo = [odo.x(i); odo.y(i); odo.theta(i)];
         ps_b1_b2_odo = FunRelPos2d(ps_w_b1_odo, ps_w_b2_odo);
-        if flag.bCalibTmp
+        if options.bCalibTmp
             [J1_odo, J2_odo] = FunJacobianRelPs2d(ps_w_b1_odo, ps_w_b2_odo);
             J_t = - J1_odo*v_w_b1_odo - J2_odo*v_w_b2_odo;
             matJacobian(row_st+3*i-2:row_st+3*i, vecrow_tmp) = inv(mat_std)*J_t;
@@ -236,7 +281,7 @@ if nargout > 1
         J_odo = zeros(3,2);
         J_odo(1:2,1) = -ps_b1_b2_odo(1:2);
         J_odo(3,2) = -ps_b1_b2_odo(3);
-        if flag.bCalibOdo
+        if options.bCalibOdo
             matJacobian(row_st+3*i-2:row_st+3*i, vecrow_odo) = inv(mat_std)*J_odo;
         end
     end

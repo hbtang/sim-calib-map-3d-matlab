@@ -106,30 +106,42 @@ classdef ClassCalib < handle
             disp(['Current estimated tvec_b_c: ', num2str(tvec_b_c(1)), ' ', ...
                 num2str(tvec_b_c(2)), ' ', num2str(tvec_b_c(3)), ' ']);
             
-            rvec_b_cg = this.rvec_b_cg;
-            disp(['Current estimated rvec_b_cg: ', num2str(rvec_b_cg(1)), ' ', ...
-                num2str(rvec_b_cg(2)), ' ', num2str(rvec_b_cg(3)), ' ']);
-            
-            tvec_b_cg = this.tvec_b_cg;
-            disp(['Current estimated tvec_b_cg: ', num2str(tvec_b_cg(1)), ' ', ...
-                num2str(tvec_b_cg(2)), ' ', num2str(tvec_b_cg(3)), ' ']);
-            
-            rvec_cg_c = this.rvec_cg_c;
-            disp(['Current estimated rvec_cg_c: ', num2str(rvec_cg_c(1)), ' ', ...
-                num2str(rvec_cg_c(2)), ' ', num2str(rvec_cg_c(3)), ' ']);
-            
-            tvec_cg_c = this.tvec_cg_c;
-            disp(['Current estimated tvec_cg_c: ', num2str(tvec_cg_c(1)), ' ', ...
-                num2str(tvec_cg_c(2)), ' ', num2str(tvec_cg_c(3)), ' ']);
+            %             rvec_b_cg = this.rvec_b_cg;
+            %             disp(['Current estimated rvec_b_cg: ', num2str(rvec_b_cg(1)), ' ', ...
+            %                 num2str(rvec_b_cg(2)), ' ', num2str(rvec_b_cg(3)), ' ']);
+            %
+            %             tvec_b_cg = this.tvec_b_cg;
+            %             disp(['Current estimated tvec_b_cg: ', num2str(tvec_b_cg(1)), ' ', ...
+            %                 num2str(tvec_b_cg(2)), ' ', num2str(tvec_b_cg(3)), ' ']);
+            %
+            %             rvec_cg_c = this.rvec_cg_c;
+            %             disp(['Current estimated rvec_cg_c: ', num2str(rvec_cg_c(1)), ' ', ...
+            %                 num2str(rvec_cg_c(2)), ' ', num2str(rvec_cg_c(3)), ' ']);
+            %
+            %             tvec_cg_c = this.tvec_cg_c;
+            %             disp(['Current estimated tvec_cg_c: ', num2str(tvec_cg_c(1)), ' ', ...
+            %                 num2str(tvec_cg_c(2)), ' ', num2str(tvec_cg_c(3)), ' ']);
             
             dt = this.dt;
             disp(['Current estimated dt: ', num2str(dt), ' ']);
             
             k_odo_lin = this.k_odo_lin;
-            disp(['Current estimated k_odo_lin: ', num2str(k_odo_lin), ' ']);
-            
             k_odo_rot = this.k_odo_rot;
-            disp(['Current estimated k_odo_rot: ', num2str(k_odo_rot), ' ']);
+            disp(['Current estimated k_odo_lin k_odo_rot: ', ...
+                num2str(k_odo_lin), ' ', num2str(k_odo_rot), ' ']);
+            
+            fx = this.mat_camera(1,1);
+            fy = this.mat_camera(2,2);
+            cx = this.mat_camera(1,3);
+            cy = this.mat_camera(2,3);
+            disp(['Current estimated fx fy cx cy: ', ...
+                num2str(fx), ' ', num2str(fy), ' ', ...
+                num2str(cx), ' ', num2str(cy), ' ']);            
+            
+            distortion = this.vec_distortion;
+            disp(['Current estimated distortion: ', num2str(distortion(1)), ' ', ...
+                num2str(distortion(2)), ' ', num2str(distortion(3)), ' ', ...
+                num2str(distortion(4)), ' ', num2str(distortion(5)), ' ']);
             
             disp(' ');
         end

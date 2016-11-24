@@ -2,13 +2,13 @@
 # Configuration file for calib-slam solver
 # Path of data
 path:
-  fold: C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520
+  fold: C:\Workspace\Data\jingxing-2016.7.29\jx-r1-205-up-4mm-mk211-calib
   markfilename: Mk.rec
   odofilename: Odo.rec
 # Prune threshold
 prune:
-  thresh_lin: 500
-  thresh_rot: 0.17
+  thresh_lin: 200
+  thresh_rot: 0.1
 # Error coefficients
 error:
   odo:
@@ -20,8 +20,8 @@ error:
     stdratio_x: 0.002
     stdratio_y: 0.002
     stdratio_z: 0.01
-    std_imgu: 5
-    std_imgv: 5
+    std_imgu: 3
+    std_imgv: 3
 # Initial guess
 init:
   rvec_b_c:
@@ -38,19 +38,19 @@ camera:
   image_width: 640
   image_height: 480
   camera_matrix:
-    - [1118.51449, 0., 348.10129]
-    - [0., 1120.60939,  195.92066]
+    - [553.53269 , 0., 326.99457]
+    - [0., 553.43758, 228.15649]
     - [0., 0., 1.]
   distortion_coefficients:
-    - [ -0.05909, -0.31834, -0.00852, 0.00321, 0.00000 ]
+    - [ -0.05356, 0.10994, -0.00099, 0.00108, 0.00000 ]
 # Aruco
 aruco:
-  size: 127
+  size: 221
   tvec_m_pt1:
-    - [-63.5, 0, 63.5]
+    - [-105.5, 0, 105.5]
   tvec_m_pt2:
-    - [-63.5, 0, -63.5]
+    - [-105.5, 0, -105.5]
   tvec_m_pt3:
-    - [63.5, 0, -63.5]
+    - [105.5, 0, -105.5]
   tvec_m_pt4:
-    - [63.5, 0, 63.5]
+    - [105.5, 0, 105.5]

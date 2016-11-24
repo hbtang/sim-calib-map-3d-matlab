@@ -64,9 +64,15 @@ classdef ClassSolverSlam
         SolveJointOpt4(this, measure, calib, map);
         [vecCost, matJacobian] = CostJointOpt4(this, q, mk, odo, time, calib);
         
-        % consider image measurements, 5 dof extrinsic
-        SolveJointOpt5(this, measure, calib, map, setting, flag);
-        [vecCost, matJacobian] = CostJointOpt5(this, q, mk, odo, time, calib, setting, flag);
+        
+        % consider mark observation, do mark slam based calibration
+        SolveJointOptMSlam(this, measure, calib, map, setting, options);
+        [vecCost, matJacobian] = CostJointOptMSlam(this, q, mk, odo, time, calib, setting, options);
+        
+        % consider image feature only, do visual slam based calibration,
+        % calibrate spatio-temporal-odometric-camera by setting 'options'
+        SolveJointOptVSlam(this, measure, calib, map, setting, options);
+        [vecCost, matJacobian] = CostJointOptVSlam(this, q, mk, odo, time, calib, setting, options);
         
         
         %% solve SLAM only, fixed on given calib

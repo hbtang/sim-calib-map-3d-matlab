@@ -1,15 +1,11 @@
 %% init: create class objs and load data
 % clear;
+% close all;
 
-% [FileName,PathName] = uigetfile('*.xml', 'Select the setting file', 'C:\Workspace\Data\');
-% settingFile = [PathName, FileName];
-% settingFile = 'C:\Workspace\Data\sim\sim-sqrmap-inout-2016.1.18\config\setting-simcalibmap3d-slam.xml';
-% settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-slam.xml';
-settingFile = 'setting-slam-exp-3.xml';
-configXml = readXml_slam(settingFile);
+setting = YAML.read('setting-slam-exp-1-fast.yml');
 
 % measure
-measure = ClassMeasure(configXml.PathFold, configXml.NameMk, configXml.NameOdo);
+measure = ClassMeasure(setting.path.fold, setting.path.markfilename, setting.path.odofilename);
 measure.ReadRecData;
 
 %%%%%%%% Debug %%%%%%%%
@@ -21,16 +17,16 @@ measure.time.t_odo = measure.time.t_mk;
 
 measure_raw = ClassMeasure();
 measure.CopyTo(measure_raw);
-measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
+measure.PruneData(setting.prune.thresh_lin, setting.prune.thresh_rot);
 
 % solver
-errConfig.stdErrRatioOdoLin = configXml.SolverConfig_StdErrRatioOdoLin;
-errConfig.stdErrRatioOdoRot = configXml.SolverConfig_StdErrRatioOdoRot;
-errConfig.MinStdErrOdoLin = configXml.SolverConfig_MinStdErrOdoLin;
-errConfig.MinStdErrOdoRot = configXml.SolverConfig_MinStdErrOdoRot;
-errConfig.stdErrRatioMkX = configXml.SolverConfig_StdErrRatioMkX;
-errConfig.stdErrRatioMkY = configXml.SolverConfig_StdErrRatioMkY;
-errConfig.stdErrRatioMkZ = configXml.SolverConfig_StdErrRatioMkZ;
+errConfig.stdErrRatioOdoLin = setting.error.odo.stdratio_lin;
+errConfig.stdErrRatioOdoRot = setting.error.odo.stdratio_rot;
+errConfig.MinStdErrOdoLin = setting.error.odo.stdmin_lin;
+errConfig.MinStdErrOdoRot = setting.error.odo.stdmin_rot;
+errConfig.stdErrRatioMkX = setting.error.mk.stdratio_x;
+errConfig.stdErrRatioMkY = setting.error.mk.stdratio_y;
+errConfig.stdErrRatioMkZ = setting.error.mk.stdratio_z;
 solver = ClassSolverSlam(errConfig);
 
 % map
@@ -38,11 +34,11 @@ map = ClassMap;
 
 % calib
 calib = ClassCalib;
-qcbInit = configXml.qcbInit;
-pt3cbInit = configXml.pt3cbInit;
-RcbInit = quat2rot(qcbInit);
-rveccbInit = rodrigues(RcbInit);
-calib.SetVecbc(rveccbInit, pt3cbInit);
+rvec_b_c_init = setting.init.rvec_b_c.';
+tvec_b_c_init = setting.init.tvec_b_c.';
+calib.SetVecbc(rvec_b_c_init, tvec_b_c_init);
+calib.mat_camera = setting.camera.camera_matrix;
+calib.vec_distortion = setting.camera.distortion_coefficients;
 
 % compute velocity by interpolation
 measure.odo = Odo_Interpolate(measure.odo, measure_raw.odo, measure_raw.time);
@@ -51,68 +47,69 @@ measure_raw.odo = Odo_Interpolate(measure_raw.odo, measure_raw.odo, measure_raw.
 %% init map
 map.InitMap(measure, calib);
 calib.DispCalib;
-% map.DrawMapWithMeasure(measure, calib, true, 'Result: init');
 
-%% step 1: estimate ground
+%% step 1.1: init. estimate ground
 solver.SolveGrndPlaneLin(measure, calib);
-% solver.SolveGrndPlane(measure, calib);
 calib.DispCalib;
-% map.InitMap(measure, calib);
-% map.DrawMapWithMeasure(measure, calib, true, 'Result: ground estimated');
 
-%% step 2: estimate yaw and XY
+%% step 1.2: init. estimate yaw and XY
 solver.SolveYawXY(measure, calib);
 calib.DispCalib;
-% map.InitMap(measure, calib);
-% map.DrawMapWithMeasure(measure, calib, true, 'Result: yaw and translation estimated');
 
+%% step 1.3: m-slam after init.
+map.InitMap(measure, calib);
 
-%% step 2.5: solve slam after init
 solver.SolveSlam(measure, calib, map);
+
 [ err_Mk_1, err_Odo_1, err_MkNorm_1, err_OdoNorm_1 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
-calib.DispCalib;
-fileNameFigOut = '.\temp\slam-init';
-map.DrawMapWithMeasure(measure, calib, true, 'SLAM Result: Initial', fileNameFigOut);
 
-%% step 3: spatio joint optimization
-solver.SolveJointOpt2(measure, calib, map);
-[ err_Mk_2, err_Odo_2, err_MkNorm_2, err_OdoNorm_2 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
 calib.DispCalib;
-fileNameFigOut = '.\temp\slam-spatio';
-map.DrawMapWithMeasure(measure, calib, true, 'SLAM Result: Spatio Calib.', fileNameFigOut);
 
-%% step 3: spatio-temporal joint optimization
-solver.SolveJointOpt3(measure, calib, map);
-[ err_Mk_3, err_Odo_3, err_MkNorm_3, err_OdoNorm_3 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
-calib.DispCalib;
-fileNameFigOut = '.\temp\slam-spatio-temporal';
-map.DrawMapWithMeasure(measure, calib, true, 'SLAM Result: Spatio-Temporal Calib.', fileNameFigOut);
+options_drawmap = struct('strTitle', 'SLAM Result: Initial', 'fileNameFigOut', '.\temp\slam-init', ...
+    'bDrawMeasure', true, 'bDrawMkRot', true, 'scaleMk', 3);
+map.DrawMap(measure, calib, setting, options_drawmap);
 
-%% step 3: spatio-temporal-odometric joint optimization
-solver.SolveJointOpt4(measure, calib, map);
-[ err_Mk_4, err_Odo_4, err_MkNorm_4, err_OdoNorm_4 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
+%% step 2: calib with m-slam
+
+options_mslam = struct('bCalibExtRot', true, 'bCalibExtLin', true,...
+    'bCalibTmp', true, 'bCalibOdo', true);
+solver.SolveJointOptMSlam(measure, calib, map, setting, options_mslam);
+
 calib.DispCalib;
-fileNameFigOut = '.\temp\slam-spatio-temporal-odo';
-map.DrawMapWithMeasure(measure, calib, true, 'SLAM Result: Spatio-Temporal-Odometric Calib.', fileNameFigOut);
+flag_initmap = struct('bKfsOdo', false, 'bMksLin', false, 'bMksRot', true);
+map.InitMap(measure, calib, flag_initmap);
+options_drawmap = struct('strTitle', 'SLAM Result: Spatio', 'fileNameFigOut', '.\temp\mslam', ...
+    'bDrawMeasure', true, 'bDrawMkRot', true, 'scaleMk', 3);
+map.DrawMap(measure, calib, setting, options_drawmap);
+
+%% step 3: calib with v-slam
+
+options_vslam = struct('bCalibExtRot', true, 'bCalibExtLin', true,...
+    'bCalibTmp', true, 'bCalibOdo', true, ...
+    'bCalibCamMat', false, 'bCalibCamDist', false);
+solver.SolveJointOptVSlam(measure, calib, map, setting, options_vslam);
+
+calib.DispCalib;
+options_drawmap = struct('strTitle', 'V-SLAM Result: Spatio', 'fileNameFigOut', '.\temp\vslam', ...
+    'bDrawMeasure', true, 'bDrawMkRot', true, 'scaleMk', 3);
+map.DrawMap(measure, calib, setting, options_drawmap);
+
+options_errvslam = struct('bCalibTmp', true, 'bCalibOdo', true);
+struct_errvslam = Err_vSlam( measure, calib, map, setting, options_errvslam );
 
 %% Draw Error
-cellMat_errMk = {err_Mk_1, err_Mk_2, err_Mk_3, err_Mk_4};
-cellMat_errOdo = {err_Odo_1, err_Odo_2, err_Odo_3, err_Odo_4};
-cellMat_mkNorm = {err_MkNorm_1, err_MkNorm_2, err_MkNorm_3, err_MkNorm_4};
-cellMat_odoNorm = {err_OdoNorm_1, err_OdoNorm_2, err_OdoNorm_3, err_OdoNorm_4};
-DrawErr_Slam(cellMat_errMk, cellMat_errOdo, cellMat_mkNorm, cellMat_odoNorm);
+figure; grid on; axis equal; hold on;
+plot(struct_errvslam.mat_errImg(:,1), struct_errvslam.mat_errImg(:,2), '.', 'Color', 'b');
+plot(struct_errvslam.mat_errImg(:,3), struct_errvslam.mat_errImg(:,4), '.', 'Color', 'g');
+plot(struct_errvslam.mat_errImg(:,5), struct_errvslam.mat_errImg(:,6), '.', 'Color', 'r');
+plot(struct_errvslam.mat_errImg(:,7), struct_errvslam.mat_errImg(:,8), '.', 'Color', 'c');
 
-disp('Root-Mean-Square Error: Init. Results');
-PrintRmsErr( err_Mk_1, err_Odo_1, err_MkNorm_1, err_OdoNorm_1 );
-disp(' ');
-disp('Root-Mean-Square Error: Spatio Joint Opt. Results');
-PrintRmsErr( err_Mk_2, err_Odo_2, err_MkNorm_2, err_OdoNorm_2 );
-disp(' ');
-disp('Root-Mean-Square Error: Spatio-Temporal Joint Opt. Results');
-PrintRmsErr( err_Mk_3, err_Odo_3, err_MkNorm_3, err_OdoNorm_3 );
-disp(' ');
-disp('Root-Mean-Square Error: Spatio-Temporal-Odo Joint Opt. Results');
-PrintRmsErr( err_Mk_4, err_Odo_4, err_MkNorm_4, err_OdoNorm_4 );
-disp(' ');
+%% Debug
+
+
+
+
+
+
 
 

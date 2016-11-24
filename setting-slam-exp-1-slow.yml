@@ -8,7 +8,7 @@ path:
 # Prune threshold
 prune:
   thresh_lin: 200
-  thresh_rot: 0.05
+  thresh_rot: 0.1
 # Error coefficients
 error:
   odo:
@@ -20,6 +20,8 @@ error:
     stdratio_x: 0.002
     stdratio_y: 0.002
     stdratio_z: 0.01
+    std_imgu: 5
+    std_imgv: 5
 # Initial guess
 init:
   rvec_b_c:
