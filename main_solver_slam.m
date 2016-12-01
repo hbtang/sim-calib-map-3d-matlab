@@ -1,8 +1,8 @@
 %% init: create class objs and load data
 % clear;
-% close all;
+close all;
 
-setting = YAML.read('setting-slam-exp-1-fast.yml');
+setting = YAML.read('setting-slam-sim-1.yml');
 
 % measure
 measure = ClassMeasure(setting.path.fold, setting.path.markfilename, setting.path.odofilename);
@@ -20,14 +20,7 @@ measure.CopyTo(measure_raw);
 measure.PruneData(setting.prune.thresh_lin, setting.prune.thresh_rot);
 
 % solver
-errConfig.stdErrRatioOdoLin = setting.error.odo.stdratio_lin;
-errConfig.stdErrRatioOdoRot = setting.error.odo.stdratio_rot;
-errConfig.MinStdErrOdoLin = setting.error.odo.stdmin_lin;
-errConfig.MinStdErrOdoRot = setting.error.odo.stdmin_rot;
-errConfig.stdErrRatioMkX = setting.error.mk.stdratio_x;
-errConfig.stdErrRatioMkY = setting.error.mk.stdratio_y;
-errConfig.stdErrRatioMkZ = setting.error.mk.stdratio_z;
-solver = ClassSolverSlam(errConfig);
+solver = ClassSolverSlam(setting.error);
 
 % map
 map = ClassMap;
@@ -58,20 +51,16 @@ calib.DispCalib;
 
 %% step 1.3: m-slam after init.
 map.InitMap(measure, calib);
-
 solver.SolveSlam(measure, calib, map);
 
-[ err_Mk_1, err_Odo_1, err_MkNorm_1, err_OdoNorm_1 ] = Err_Slam( measure, calib, map, true, solver.errConfig );
-
 calib.DispCalib;
-
 options_drawmap = struct('strTitle', 'SLAM Result: Initial', 'fileNameFigOut', '.\temp\slam-init', ...
     'bDrawMeasure', true, 'bDrawMkRot', true, 'scaleMk', 3);
 map.DrawMap(measure, calib, setting, options_drawmap);
 
 %% step 2: calib with m-slam
-
-options_mslam = struct('bCalibExtRot', true, 'bCalibExtLin', true,...
+options_mslam = struct(...
+    'bCalibExtRot', true, 'bCalibExtLin', true,...
     'bCalibTmp', true, 'bCalibOdo', true);
 solver.SolveJointOptMSlam(measure, calib, map, setting, options_mslam);
 
@@ -83,14 +72,14 @@ options_drawmap = struct('strTitle', 'SLAM Result: Spatio', 'fileNameFigOut', '.
 map.DrawMap(measure, calib, setting, options_drawmap);
 
 %% step 3: calib with v-slam
-
-options_vslam = struct('bCalibExtRot', true, 'bCalibExtLin', true,...
+options_vslam = struct(...
+    'bCalibExtRot', true, 'bCalibExtLin', true,...
     'bCalibTmp', true, 'bCalibOdo', true, ...
-    'bCalibCamMat', false, 'bCalibCamDist', false);
+    'bCalibCamMat', true, 'bCalibCamDist', true);
 solver.SolveJointOptVSlam(measure, calib, map, setting, options_vslam);
 
 calib.DispCalib;
-options_drawmap = struct('strTitle', 'V-SLAM Result: Spatio', 'fileNameFigOut', '.\temp\vslam', ...
+options_drawmap = struct('strTitle', 'V-SLAM Result', 'fileNameFigOut', '.\temp\vslam', ...
     'bDrawMeasure', true, 'bDrawMkRot', true, 'scaleMk', 3);
 map.DrawMap(measure, calib, setting, options_drawmap);
 

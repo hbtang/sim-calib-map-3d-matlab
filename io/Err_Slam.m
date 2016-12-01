@@ -1,4 +1,4 @@
-function [ err_Mk, err_Odo, err_MkNormal, err_OdoNormal ] = Err_Slam( measure, calib, map, bUseTime, errConfig )
+function [ err_Mk, err_Odo, err_MkNormal, err_OdoNormal ] = Err_Slam( measure, calib, map, bUseTime, config_error )
 % Compute error vector of both mark measurements and odometry measurement
 
 %% init data
@@ -44,7 +44,7 @@ for i = 1:mk.num
     err_tvec_c_m = err_tvec_c_m(1:3);
     
     err_Mk(i,:) = err_tvec_c_m.';
-    err_MkNormal(i,:) = (sqrt(CovMk( tvec_c_m, errConfig ))\err_tvec_c_m).';
+    err_MkNormal(i,:) = (sqrt(CovMk( tvec_c_m, config_error ))\err_tvec_c_m).';
 end
 
 %% odometry part
@@ -84,7 +84,7 @@ for i = 2:odo.num
     errPs2d_b1_b2 = ps2d_b1_b2_odo - ps2d_b1_b2_map;
     
     err_Odo(i-1,:) = errPs2d_b1_b2.';
-    err_OdoNormal(i-1,:) = (sqrt(CovOdo( ps2d_b1_b2_odo, errConfig ))\errPs2d_b1_b2).';
+    err_OdoNormal(i-1,:) = (sqrt(CovOdo( ps2d_b1_b2_odo, config_error ))\errPs2d_b1_b2).';
     
     if abs(err_OdoNormal(i-1,3)) > 20
         debug = 1;

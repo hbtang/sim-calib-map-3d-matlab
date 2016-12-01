@@ -1,10 +1,10 @@
-function [ mat_cov ] = CovMk( tvec_c_m, errConfig )
+function [ mat_cov ] = CovMk( tvec_c_m, config_error )
 %COVMK Summary of this function goes here
 %   Detailed explanation goes here
 
-stdErrRatioMkX = errConfig.stdErrRatioMkX;
-stdErrRatioMkY = errConfig.stdErrRatioMkY;
-stdErrRatioMkZ = errConfig.stdErrRatioMkZ;
+stdErrRatioMkX = config_error.mk.stdratio_x;
+stdErrRatioMkY = config_error.mk.stdratio_y;
+stdErrRatioMkZ = config_error.mk.stdratio_z;
 
 dist = norm(tvec_c_m);
 std_z_c = max(dist*stdErrRatioMkZ, 0.001);

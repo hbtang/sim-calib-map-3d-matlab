@@ -194,6 +194,12 @@ elseif ((m==n) & (m==3) & (norm(in' * in - eye(3)) < bigeps)...
                 svec = Smat(idx,:)';
 
                 out = theta * [uabs; vabs; wabs] .* svec;
+                
+                %%% by Hengbo TANG no Dec 1, 2016, in case idx is empty %%%
+                if isempty(out)
+                    out = theta * (sqrt((diag(R)+1)/2).*[1;2*(R(1,2:3)>=0)'-1]);
+                end
+                %%% by Hengbo TANG no Dec 1, 2016, in case idx is empty %%%
 
             end;
 

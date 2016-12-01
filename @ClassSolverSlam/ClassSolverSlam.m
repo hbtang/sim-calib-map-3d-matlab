@@ -4,23 +4,15 @@ classdef ClassSolverSlam
     properties
         % figure handle for display estimation resolt
         hdFigSolver;
-        % err model
-        errConfig;
+        % error configuration
+        config_error;
     end
     
     methods
         
         % constructor function
-        function this = ClassSolverSlam(errConfig)
-            if nargin == 0
-                this.errConfig.stdErrRatioOdoLin = 0.01;
-                this.errConfig.stdErrRatioOdoRot = 0.002;
-                this.errConfig.stdErrRatioMkX = 0.002;
-                this.errConfig.stdErrRatioMkY = 0.002;
-                this.errConfig.stdErrRatioMkZ = 0.01;
-            elseif nargin == 1
-                this.errConfig = errConfig;
-            end
+        function this = ClassSolverSlam(error)
+            this.config_error = error;
         end
         
         %% solver step 1: estimate ground plane in camera frame

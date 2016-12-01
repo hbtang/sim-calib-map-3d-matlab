@@ -1,5 +1,8 @@
-%% init
+%% run and save true data
+
 clear;
 simulator = ClassSimulator;
-simulator.init;
-simulator.run;
+simulator.Init;
+simulator.Run;
+save('./sim/simulator.mat');
+simulator.Stop;

@@ -2,12 +2,12 @@ function [ vecCost, matJacobian ] = CostJointOptVSlam( this, q, mk, odo, time, c
 %COST
 
 % error configure
-stdErrRatioOdoLin = this.errConfig.stdErrRatioOdoLin;
-stdErrRatioOdoRot = this.errConfig.stdErrRatioOdoRot;
-MinStdErrOdoLin = this.errConfig.MinStdErrOdoLin;
-MinStdErrOdoRot = this.errConfig.MinStdErrOdoRot;
-std_imgu = setting.error.mk.std_imgu;
-std_imgv = setting.error.mk.std_imgv;
+stdErrRatioOdoLin = this.config_error.odo.stdratio_lin;
+stdErrRatioOdoRot = this.config_error.odo.stdratio_rot;
+MinStdErrOdoLin = this.config_error.odo.stdmin_lin;
+MinStdErrOdoRot = this.config_error.odo.stdmin_rot;
+stdErrImgU = setting.error.mk.std_imgu;
+stdErrImgV = setting.error.mk.std_imgv;
 
 % vecCost: 8*mk.num + 3*odo.num vector of projection error
 vecCost = zeros(8*mk.num + 3*odo.num,1);
@@ -127,6 +127,9 @@ for i = 1:mk.num
     img_c_pt3_measure = mk.pt3(i,:).';
     img_c_pt4_measure = mk.pt4(i,:).';
     
+    if isempty(rvec_c_m)
+        debug = 1;
+    end
     img_c_pt1 = ProjXYZ2UV( rvec_c_m, tvec_c_m, tvec_m_pt1, mat_camera, vec_distortion );
     img_c_pt2 = ProjXYZ2UV( rvec_c_m, tvec_c_m, tvec_m_pt2, mat_camera, vec_distortion );
     img_c_pt3 = ProjXYZ2UV( rvec_c_m, tvec_c_m, tvec_m_pt3, mat_camera, vec_distortion );
@@ -139,7 +142,7 @@ for i = 1:mk.num
     
     vec_err_temp = [errimg_c_pt1; errimg_c_pt2; errimg_c_pt3; errimg_c_pt4];
     
-    mat_std = diag([std_imgu std_imgv std_imgu std_imgv std_imgu std_imgv std_imgu std_imgv]);
+    mat_std = diag([stdErrImgU stdErrImgV stdErrImgU stdErrImgV stdErrImgU stdErrImgV stdErrImgU stdErrImgV]);
     mats_std_mk{i} = mat_std;
     vecCost(8*i-7: 8*i) = inv(mat_std)*(vec_err_temp);
 end

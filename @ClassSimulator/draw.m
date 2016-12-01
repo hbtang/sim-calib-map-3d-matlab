@@ -1,4 +1,4 @@
-function draw( this )
+function Draw( this )
 %DRAW draw or refresh current status
 
 %% calculate pts to draw
@@ -15,10 +15,10 @@ T3d_b_c = this.calib.T3d_b_c;
 T3d_w_c = T3d_w_b*T3d_b_c;
 
 pts3d_c_range = zeros(8,3);
-distRangeMin = this.config.distRangeMin;
-distRangeMax = this.config.distRangeMax;
-angleOfViewH = this.config.angleOfViewH;
-angleOfViewV = this.config.angleOfViewV;
+distRangeMin = this.setting.range.depth_min;
+distRangeMax = this.setting.range.depth_max;
+angleOfViewH = this.setting.range.angleofview_h;
+angleOfViewV = this.setting.range.angleofview_v;
 
 x_close = tan(angleOfViewH/2)*distRangeMin;
 y_close = tan(angleOfViewV/2)*distRangeMin;
@@ -86,7 +86,7 @@ if isempty(this.hds.hdFigSim)
     alpha(this.hds.hdObjRange, .1);
     
     % set call back function of key pressed 
-    set(this.hds.hdFigSim, 'KeyPressFcn', {@this.onKeyPressed})
+    set(this.hds.hdFigSim, 'KeyPressFcn', {@this.OnKeyPressed})
     
 else
     set(this.hds.hdObjBaseX, 'XData', [pt3d_w_b0(1);pt3d_w_b1(1)]);

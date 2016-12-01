@@ -11,8 +11,8 @@ if ~isfield(options, 'bCalibOdo')
     options.bCalibOdo = false;
 end
 
-mat_camera = setting.camera.camera_matrix;
-vec_distortion = setting.camera.distortion_coefficients;
+mat_camera = calib.mat_camera;
+vec_distortion = calib.vec_distortion;
 
 %% init data
 mk = measure.mk;

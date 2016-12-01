@@ -3,75 +3,109 @@ classdef ClassSimulator < handle
     % to generate record file according to a predefined map
     
     properties
-        % io config
-        % input file of map, including landmark info
-        InputFileMapId;
-        % input file of camera configure, including camera parameters: T_b_c, FoV...
-        InputFileCamId;
-        % output file to record
-        OutputFileOdoId; OutputFileMkId;
-        % figure handles
-        hds;
-        % status if quit main process
-        ifQuit;
+        %% configuration
+        % io configures
+        files = struct( ...
+            'str_simfolder', [], ...
+            'file_out_odo', [], ...
+            'file_out_mk', [], ...
+            'str_path_setting', []);
+        % handles of figure and figure objects
+        hds = struct( ...
+            'hdFigSim', [], ...
+            'hdObjBaseX', [], 'hdObjBaseY', [], 'hdObjBaseZ', [], ...
+            'hdObjMap', [], 'hdObjRange', []);
+        % status
+        flag = struct( ...
+            'bQuit', false);
+        % setting configuration read from yaml file
+        setting;
         
-        % simulated environment
+        %% simulation environment
         % map: ClassMap
         map;
         % calib: ClassCalib
         calib;
-        % camera configure
-        config;
+        % frequency configure
+        timestep;
         
-        % robot status
+        %% robot status
         % current loop id
         lp;
         % current robot pose in w frame, single variable
         ps2d_w_b;
         % odometry measurements, with error ratio (proportional to measure)
         odo;
-        %         stdErrRatioOdoLin; stdErrRatioOdoRot;
         % current mark measure, vector possible
         mk;
         % current robot velocity
-        velLin; velRot;
+        vel_lin; vel_rot;
+        
+        %% raw data record
+        odo_true;
+        mk_true;
+        odo_noise;
+        mk_noise;
         
     end
     
     methods
         function this = ClassSimulator()
+            %% robot status
             this.lp = 0;
             this.ps2d_w_b = [0;0;0];
-            this.velLin = 0; this.velRot = 0;
-            
+            this.vel_lin = 0;
+            this.vel_rot = 0;
             this.odo = struct('lp',0,'x',0,'y',0,'theta',0);
             this.mk = struct('lp',[],'id',[],'rvec',[],'tvec',[]);
             
-            this.config = struct('angleOfViewH',[],'angleOfViewV',[],...
-                'distRangeMin',[],'distRangeMax',[]);
+            %% raw data record
+            this.odo_true = struct('lp',0,'x',0,'y',0,'theta',0);
+            this.mk_true = struct('lp',[],'id',[],'rvec',[],'tvec',[],'image',[]);
+            this.odo_noise = struct('lp',0,'x',0,'y',0,'theta',0);
+            this.mk_noise = struct('lp',[],'id',[],'rvec',[],'tvec',[],'image',[]);
+            
+            %% simulation environment
             this.map = ClassMap;
             this.calib = ClassCalib;
+            this.timestep = 0.1;
             
-            this.hds = struct('hdFigSim', [], 'hdObjBaseX', [], ...
-                'hdObjBaseY', [], 'hdObjBaseZ', [], 'hdObjMap', [], 'hdObjRange', []);
-            
-            this.ifQuit = false;
-            
+            %% configuration
+            this.files = struct( ...
+                'str_simfolder', [], ...
+                'file_out_odo', [], ...
+                'file_out_mk', [], ...
+                'str_path_setting', []);
+            this.hds = struct( ...
+                'hdFigSim', [], ...
+                'hdObjBaseX', [], 'hdObjBaseY', [], 'hdObjBaseZ', [], ...
+                'hdObjMap', [], 'hdObjRange', []);
+            this.flag = struct( ...
+                'bQuit', false);
+            this.setting = [];
         end
+        
         % init function, load map and calib info, set output path, ...
-        init(this);
+        Init(this);
         % main function of simulator
-        run(this);
+        Run(this);
         % stop function
-        stop(this);
+        Stop(this);
         % draw or refresh current status
-        draw(this);
-        % write into record file
-        record(this);
-        % call back function when key pressed
-        onKeyPressed(this, hdFig, callBackData);
+        Draw(this);
         % renew mark observation
-        observe(this);
+        Observe(this);
+        
+        % create odo_out from odo_true with noise
+        odo_out = NoiseOdo(this, odo_true, calib, setting);
+        mk_out = NoiseMk(this, mk_true, calib, setting);
+        
+        % write odo and mk into record file
+        Record( this, options )
+        
+        % call back function when key pressed
+        OnKeyPressed(this, hdFig, callBackData);
+        
         % add noise into rec file
         AddNoise2Rec(this, noiseConfig, foldPath, setId);
     end

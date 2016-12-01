@@ -19,7 +19,7 @@ classdef ClassCalib < handle
         % odometric parameters
         k_odo_lin; k_odo_rot;
         % camera intrinsic
-        mat_camera; vec_distortion;
+        mat_camera; vec_distortion; image_width; image_height;
     end
     
     methods
