@@ -1,0 +1,2 @@
+temp/       # exclude folder named temp
+sim/       # exclude folder named temp
