@@ -1,4 +1,4 @@
-function SolveSlam( this, measure, calib, map )
+function SolveMSlam( this, measure, calib, map )
 % Solve only SLAM problem, with fixed calib
 
 %% init
@@ -24,7 +24,7 @@ end
 options = optimoptions(@lsqnonlin, 'Algorithm', 'levenberg-marquardt', ...
     'Display', 'iter-detailed', 'Jacobian', 'on', 'MaxIter', 50, 'ScaleProblem', 'Jacobian', 'TolX', 1e-6);
 
-[q,resnorm,residual,exitflag,output,lambda,jacobian] = lsqnonlin(@(x)this.CostSlam(x, mk, odo, time, calib), q, [], [], options);
+[q,resnorm,residual,exitflag,output,lambda,jacobian] = lsqnonlin(@(x)this.CostMSlam(x, mk, odo, time, calib), q, [], [], options);
 
 %% save results
 % refresh map

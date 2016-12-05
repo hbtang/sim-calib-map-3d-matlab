@@ -13,6 +13,11 @@ mk = measure.mk;
 cnstrRowsLin = {};
 cnstrRowsRot = {};
 
+% dl_m/dl < threshLinMotion
+% dl_m is the translation of tvec_c_m due to rotation
+% dl is the translation from odometry
+threshLinMotion = 0.15; 
+
 for i = 1:numel(mk.vecMkId)
     mkId_i = mk.vecMkId(i);
     
@@ -36,16 +41,17 @@ for i = 1:numel(mk.vecMkId)
         dx = odo.x(rowOdo1) - odo.x(rowOdo2);
         dy = odo.y(rowOdo2) - odo.y(rowOdo2);
         dl = sqrt(dx*dx + dy*dy);
-        r_inv = dtheta/dl;
+%         rinv = abs(dtheta/dl);
         
-        threshRInv = 1/5000;
-        threshDTheta = 3*pi/180;
-        if abs(dtheta) < threshDTheta
+        tvec_c1_m = mk.tvec(rowMk1,:);
+        dist_c1_m = norm(tvec_c1_m);
+        dl_m = abs(dist_c1_m*dtheta);
+        
+        if abs(dl_m/dl) < threshLinMotion
             cnstrRowsLin{numel(cnstrRowsLin)+1} = cnstrRow;
         else
             cnstrRowsRot{numel(cnstrRowsRot)+1} = cnstrRow;
         end
-        
     end
 end
 

@@ -3,8 +3,8 @@
 # Path of data
 path:
   fold: .\sim
-  markfilename: Mk-eu0-ev0-s1.rec
-  odofilename: Odo-el0-er0-s1.rec
+  markfilename: Mk-eu0.1-ev0.1-s1.rec
+  odofilename: Odo-el0.01-er0.01-s1.rec
 # Prune threshold
 prune:
   thresh_lin: 200
@@ -25,9 +25,9 @@ error:
 # Initial guess
 init:
   rvec_b_c:
-    - [0.001, 0.001, 1.57]
+    - [0, 2.2214, -2.2214]
   tvec_b_c: 
-    - [0.0, 0.0, 0.0]
+    - [0, 0, 0]
 truth:
   rvec_b_c:
     - [0.001, 0.001, 0.001]
@@ -38,8 +38,8 @@ camera:
   image_width: 640
   image_height: 480
   camera_matrix:
-    - [480, 0., 320]
-    - [0., 480, 240]
+    - [500, 0., 320]
+    - [0., 500, 240]
     - [0., 0., 1.]
   distortion_coefficients:
     - [0, 0, 0, 0, 0]
