@@ -5,14 +5,14 @@ classdef ClassSolverSlam
         % figure handle for display estimation resolt
         hdFigSolver;
         % error configuration
-        config_error;
+        setting;
     end
     
     methods
         
         % constructor function
-        function this = ClassSolverSlam(error)
-            this.config_error = error;
+        function this = ClassSolverSlam(settingInput)
+            this.setting = settingInput;
         end
         
         %% calibration init. linear solution
@@ -23,29 +23,27 @@ classdef ClassSolverSlam
         
         %% calibration init. Guo's linear solution
         SolveInitGuo(this, measure, calib);
+        % solve YawXY by Guo's
+        SolveYawXYGuo(this, measure, calib);
         
         %% calibration init. non-linear solution
-        % solve ground plane by non-linear constraints
-        SolveGrndPlane(this, measure, calib);
-        cost = CostGrndPlane(this, q, mk);
+        %         % solve ground plane by non-linear constraints
+        %         SolveGrndPlane(this, measure, calib);
+        %         cost = CostGrndPlane(this, q, mk);
+        %         % solve YawXY by non-linear constraints
+        %         SolveLocalOpt(this, measure, calib);
+        %         [ vecCost, matJacobian ] = CostLocalOpt(this, q, measure, calib);
+        %         % solve YawXY by non-linear constraints, consider loop close
+        %         SolveLocalLoopOpt(this, measure, calib);
+        %         [ vecCost, matJacobian ] = CostLocalLoopOpt(this, q, measure, calib);
         
-        % solve YawXY by non-linear constraints
-        SolveLocalOpt(this, measure, calib);
-        [ vecCost, matJacobian ] = CostLocalOpt(this, q, measure, calib);
-        % solve YawXY by non-linear constraints, consider loop close
-        SolveLocalLoopOpt(this, measure, calib);
-        [ vecCost, matJacobian ] = CostLocalLoopOpt(this, q, measure, calib);
-        
-        %% calibration with joint optimization
-        
+        %% calibration with joint optimization        
         % consider mark observation, do mark slam based calibration
-        SolveJointOptMSlam(this, measure, calib, map, setting, options);
-        [vecCost, matJacobian] = CostJointOptMSlam(this, q, mk, odo, time, calib, setting, options);
-        
+        SolveJointOptMSlam(this, measure, calib, map, options);        
         % consider image feature only, do visual slam based calibration,
-        % calibrate spatio-temporal-odometric-camera by setting 'options'
-        SolveJointOptVSlam(this, measure, calib, map, setting, options);
-        [vecCost, matJacobian] = CostJointOptVSlam(this, q, mk, odo, time, calib, setting, options);
+        SolveJointOptVSlam(this, measure, calib, map, options);
+        
+        %         [vecCost, matJacobian] = CostJointOptVSlam(this, q, mk, odo, time, calib, setting, options);
         
         %         % consider 3 dof extrinsic in ground plane ps2d_b_cg
         %         SolveJointOpt(this, measure, calib, map);
@@ -71,7 +69,7 @@ classdef ClassSolverSlam
         
         %% io
         % draw results gound plane
-        DrawResGrndPlane(this, measure, calib, vec_ground);
+        %         DrawResGrndPlane(this, measure, calib, vec_ground);
         
     end
     

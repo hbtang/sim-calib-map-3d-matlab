@@ -42,8 +42,8 @@ for i = 2:num_odo
     ps2d_o_b1 = [odo_true_time.x(i-1);odo_true_time.y(i-1);odo_true_time.theta(i-1)];
     ps2d_o_b2 = [odo_true_time.x(i);odo_true_time.y(i);odo_true_time.theta(i)];
     ps2d_b1_b2 = FunRelPos2d(ps2d_o_b1, ps2d_o_b2);
-    ps2d_b1_b2(1:2) = k_odo_lin*ps2d_b1_b2(1:2);
-    ps2d_b1_b2(3) = k_odo_rot*ps2d_b1_b2(3);
+    ps2d_b1_b2(1:2) = ps2d_b1_b2(1:2)/k_odo_lin;
+    ps2d_b1_b2(3) = ps2d_b1_b2(3)/k_odo_rot;
             
     stdErrLin = stdratio_lin*norm(ps2d_b1_b2(1:2));
     stdErrRot = stdratio_rot*abs(ps2d_b1_b2(3));

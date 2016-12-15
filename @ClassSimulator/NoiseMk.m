@@ -2,11 +2,11 @@ function mk_out = NoiseMk(this, mk_true, calib, setting)
 
 num_mk = numel(mk_true.lp);
 mk_out = mk_true;
-error = setting.error;
+error_rot = setting.error;
 
 %% add noise into image
-std_imgu = error.mk.std_imgu;
-std_imgv = error.mk.std_imgv;
+std_imgu = error_rot.mk.std_imgu;
+std_imgv = error_rot.mk.std_imgv;
 stdimage = [std_imgu;std_imgv;std_imgu;std_imgv;std_imgu;std_imgv;std_imgu;std_imgv];
 for i = 1:num_mk
     imageTemp = mk_out.image(i,:).';
@@ -29,15 +29,12 @@ cameraParams = cameraParameters(...
 worldPoints = setting.aruco.mattvec;
 
 rows_good = [];
-thresh_err = 1;
-% rec_error = [];
+thresh_err_rot = 1;
+thresh_err_lin = 300;
+rec_error_best = [];
 
 for i = 1:num_mk
-    
-    if i == 246
-        debug = 1;
-    end
-    
+        
     %% solve pnp by solveP3P algorithm
     imageTemp = mk_out.image(i,:);
     pointsTemp = [...
@@ -56,8 +53,10 @@ for i = 1:num_mk
     R_c_m_true = rodrigues(rvec_c_m_true);
     tvec_c_m_true = mk_out.tvec(i,:).';
     
-    idx_bestsolution = 0;
-    error_bestsolution = inf;
+    idx_best = 0;
+    error_best = inf;
+    error_best_rot = inf;
+    error_best_lin = inf;
     rvec_c_m_best = [];
     tvec_c_m_best = [];
     for j = 1:numSolutions
@@ -69,28 +68,30 @@ for i = 1:num_mk
         dR = R_c_m_j.'*R_c_m_true;
         drvec = rodrigues(dR);
         dtvec = tvec_c_m_true - tvec_c_m_j;
-        error = norm(drvec);
+        error_rot = norm(drvec);
+        error_lin = norm(dtvec);
         
-        if error < error_bestsolution
-            error_bestsolution = error;
-            idx_bestsolution = j;
+        if error_rot < error_best
+            error_best = error_rot;
+            error_best_rot = error_rot;
+            error_best_lin = error_lin;
+            idx_best = j;
             rvec_c_m_best = rvec_c_m_j;
             tvec_c_m_best = tvec_c_m_j;
         end
     end    
     
     %% record
-    if idx_bestsolution == 0
+    if idx_best == 0
         continue;
     end
     mk_out.rvec(i,:) = rvec_c_m_best.';
     mk_out.tvec(i,:) = tvec_c_m_best.';    
-    if error_bestsolution < thresh_err
+    if error_best_rot < thresh_err_rot && error_best_lin < thresh_err_lin
         rows_good = [rows_good; i];
+        rec_error_best = [rec_error_best; error_best_rot error_best_lin];
     end
     
-    %% debug
-%     rec_error = [rec_error; error_bestsolution];
 end
 
 %% prune bad mark

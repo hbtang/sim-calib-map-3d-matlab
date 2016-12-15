@@ -97,20 +97,20 @@ end
 %% save image
 set(gcf, 'PaperPositionMode', 'auto');
 
-% view(3);
-% print(options.fileNameFigOut, '-depsc', '-r0');
-% print(options.fileNameFigOut, '-dmeta', '-r0');
-% print(options.fileNameFigOut, '-djpeg', '-r0');
-% 
-% view(0,0);
-% print([options.fileNameFigOut, '-xz'], '-depsc', '-r0');
-% print([options.fileNameFigOut, '-xz'], '-dmeta', '-r0');
-% print([options.fileNameFigOut, '-xz'], '-djpeg', '-r0');
-% 
-% view(90,0);
-% print([options.fileNameFigOut, '-yz'], '-depsc', '-r0');
-% print([options.fileNameFigOut, '-yz'], '-dmeta', '-r0');
-% print([options.fileNameFigOut, '-yz'], '-djpeg', '-r0');
+view(3);
+print(options.fileNameFigOut, '-depsc', '-r0');
+print(options.fileNameFigOut, '-dmeta', '-r0');
+print(options.fileNameFigOut, '-djpeg', '-r0');
+
+view(0,0);
+print([options.fileNameFigOut, '-xz'], '-depsc', '-r0');
+print([options.fileNameFigOut, '-xz'], '-dmeta', '-r0');
+print([options.fileNameFigOut, '-xz'], '-djpeg', '-r0');
+
+view(90,0);
+print([options.fileNameFigOut, '-yz'], '-depsc', '-r0');
+print([options.fileNameFigOut, '-yz'], '-dmeta', '-r0');
+print([options.fileNameFigOut, '-yz'], '-djpeg', '-r0');
 
 view(2);
 print([options.fileNameFigOut, '-xy'], '-depsc', '-r0');

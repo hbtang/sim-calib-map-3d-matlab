@@ -4,7 +4,7 @@ function SolveGrndPlaneLin( this, measure, calib )
 % and dist_g_c, consider linear constraints and one-step optimization.
 
 %% obtain initial guess in linear model
-disp(['Start calibrating ground plane in camera frame...']);
+disp('Init: calibrate ground plane ...');
 
 mk = measure.mk;
 A = zeros(mk.num, 3+mk.numMkId);
@@ -19,32 +19,38 @@ end
 % term of "mark ground plane", which is perpendicular to the ground but go
 % through the related mark.
 
-q = V(:,end);
-q = q./norm(q(1:3));
-cost = this.CostGrndPlane( q, mk );
-disp(['Ground estimation initialized.']);
+[rowV, colV] = size(V);
+V2 = zeros(rowV, colV);
+idx_best = 0;
+norm_residual_best = inf;
 
-%% refine estimation in nonlinear model
-% options = optimoptions(@lsqnonlin, 'Algorithm', 'levenberg-marquardt', 'Display', 'iter', 'ScaleProblem', 'Jacobian');
-% q = lsqnonlin(@(x)this.CostGrndPlane( x, mk ), q, [], [], options);
-% q = q./norm(q(1:3));
+for i = 1:colV
+  vi = V(:,i);
+  vi2 = vi./norm(vi(1:3));
+  V2(:,i) = vi2;
+  vec_residual = A*vi2;
+  norm_residual = norm(vec_residual);
+  if norm_residual < norm_residual_best
+      idx_best = i;
+      norm_residual_best = norm_residual;
+  end
+end
+q = V2(:,idx_best);
 
 %% set y_c point to ground plane negative norm direction
 if q(2) > 0
     q = -q;
 end
 
-% cost = this.CostStep1( q, mk );
-disp(['Ground plane calibration done!']);
-disp(' ');
-
 %% refresh calib
 calib.pvec_g_c = q(1:3);
 calib.dist_g_c = 0;
 calib.RefreshByGrnd;
 
-%% draw result
+%% output result
 % this.DrawResGrndPlane(measure, calib, q);
+disp('Init: calibrate ground plane done!');
+disp(' ');
 
 end
 

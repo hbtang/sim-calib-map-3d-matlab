@@ -3,9 +3,7 @@ function SolveYawXY( this, measure, calib )
 % consider linear constraints and one-step optimization.
 
 %% Read data and group constraints
-disp(['Start initialize yaw angle and translation ...']);
-
-disp(['Building constraints ...']);
+disp('Init: calibrate yaw and xy ...');
 
 odo = measure.odo;
 mk = measure.mk;
@@ -16,7 +14,13 @@ cnstrRowsRot = {};
 % dl_m/dl < threshLinMotion
 % dl_m is the translation of tvec_c_m due to rotation
 % dl is the translation from odometry
-threshLinMotion = 0.15; 
+threshLinMotion = 0.2; 
+
+if isfield(this.setting.solver, 'init_thresh_locallp')
+    threshLpLocal = this.setting.solver.init_thresh_locallp;
+else
+    threshLpLocal = 10;
+end
 
 for i = 1:numel(mk.vecMkId)
     mkId_i = mk.vecMkId(i);
@@ -26,8 +30,15 @@ for i = 1:numel(mk.vecMkId)
     
     for j = 2:numel(vecMkLpFind)
         
-        rowOdo1 = find(odo.lp == vecMkLpFind(j-1));
-        rowOdo2 = find(odo.lp == vecMkLpFind(j));
+        lp1 = vecMkLpFind(j-1);
+        lp2 = vecMkLpFind(j);
+        
+        if abs(lp2-lp1) > threshLpLocal
+            continue;
+        end
+        
+        rowOdo1 = find(odo.lp == lp1);
+        rowOdo2 = find(odo.lp == lp2);
         
         rowMk1 = vecMkFind(j-1);
         rowMk2 = vecMkFind(j);
@@ -56,8 +67,6 @@ for i = 1:numel(mk.vecMkId)
 end
 
 %% Solve yaw with linear motion constraints
-
-disp(['Initializing yaw angle ...']);
 
 ps2d_b_cg = calib.GetPs2dbcg;
 T3d_cg_c = calib.T3d_cg_c;
@@ -100,10 +109,10 @@ calib.SetPs2dbcg(ps2d_b_cg);
 
 %% solve XY_b_cg
 
-disp(['Initializing XY ...']);
-
 A2 = [];
 b2 = [];
+A3 = [];
+b3 = [];
 
 T3d_b_c = calib.T3d_b_c;
 R3d_b_c = T3d_b_c(1:3,1:3);
@@ -136,21 +145,30 @@ for i = 1:numel(cnstrRowsRot)
         sin(theta_b1_b2) cos(theta_b1_b2)];
     R3d_b1_b2 = blkdiag(R2d_b1_b2, 1);
     
+    %% A2*x2 = b2, x2 = [x_b_c;y_b_c]
     A2_i = eye(2) - R2d_b1_b2;
     b2_i_bar = R3d_b1_b2*R3d_b_c*p3d_c_m2 - R3d_b_c*p3d_c_m1 + p3d_b1_b2;
-    b2_i = b2_i_bar(1:2);
-    
+    b2_i = b2_i_bar(1:2);    
     A2 = [A2; A2_i];
-    b2 = [b2; b2_i];    
+    b2 = [b2; b2_i];  
+    
+    %% A3*x3 = b3, x3 = [x_b_c;y_b_c;k_odo_lin]
+    A3_i = [eye(2) - R2d_b1_b2, -p3d_b1_b2(1:2)];
+    b3_i_bar = R3d_b1_b2*R3d_b_c*p3d_c_m2 - R3d_b_c*p3d_c_m1;
+    b3_i = b3_i_bar(1:2);
+    A3 = [A3; A3_i];
+    b3 = [b3; b3_i];
 end
 
-p2d_b_cg = A2\b2;
-ps2d_b_cg(1:2) = p2d_b_cg;
+x2 = A2\b2;
+x3 = A3\b3;
+
+ps2d_b_cg(1:2) = x3(1:2);
 calib.SetPs2dbcg(ps2d_b_cg);
 
 %% return
 
-disp(['Initialization yaw and XY done!'])
+disp('Init: calibrate yaw and xy done!');
 
 end
 

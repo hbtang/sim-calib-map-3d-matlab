@@ -1,19 +1,21 @@
-function PrintRmsErr( err_Mk, err_Odo, err_MkNorm, err_OdoNorm )
+function PrintRmsErr( struct_errors, cell_groups )
 % to print rmse
-
-%% Show rmse
-rmse_Mk = rms(err_Mk);
-rmse_Odo = rms(err_Odo);
-rmse_MkNorm = rms(err_MkNorm);
-rmse_OdoNorm = rms(err_OdoNorm);
-disp(['rmse_Mk: ', num2str(rmse_Mk(1)), ' ', ...
-    num2str(rmse_Mk(2)), ' ', num2str(rmse_Mk(3)), ' ']);
-disp(['rmse_Odo: ', num2str(rmse_Odo(1)), ' ', ...
-    num2str(rmse_Odo(2)), ' ', num2str(rmse_Odo(3)), ' ']);
-disp(['rmse_MkNorm: ', num2str(rmse_MkNorm(1)), ' ', ...
-    num2str(rmse_MkNorm(2)), ' ', num2str(rmse_MkNorm(3)), ' ']);
-disp(['rmse_OdoNorm: ', num2str(rmse_OdoNorm(1)), ' ', ...
-    num2str(rmse_OdoNorm(2)), ' ', num2str(rmse_OdoNorm(3)), ' ']);
-
+disp('rmse:');
+for idx_algor = 1:numel(cell_groups)
+    str_algorithm = cell_groups{idx_algor};
+    struct_error_temp = struct_errors.(str_algorithm);
+    rms_img_temp = rms(struct_error_temp.mat_errPts);
+    rms_odo_temp = rms(struct_error_temp.mat_errOdo);
+    
+    disp([ ...
+        'algorithm: ', str_algorithm, ...
+        '; img_u: ', num2str(rms_img_temp(1)), ...
+        '; img_v: ', num2str(rms_img_temp(2)), ...
+        '; odo_x: ', num2str(rms_odo_temp(1)), ...
+        '; odo_y: ', num2str(rms_odo_temp(2)), ...
+        '; odo_theta: ', num2str(rms_odo_temp(3))
+        ]);
+    
 end
-
+disp(' ');
+end

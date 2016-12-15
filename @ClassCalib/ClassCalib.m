@@ -24,14 +24,18 @@ classdef ClassCalib < handle
     
     methods
         % constructor function
-        function this = ClassCalib()
-            % init as camera point right (z_c = -y_b)
-            this.T3d_b_c = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 1];
-            RefreshByTbc(this);
+        function this = ClassCalib(setting)
             
-            % init as camera point right with u point upward
-            %             this.T3d_b_c = [0 1 0 0; 0 0 -1 0; -1 0 0 0; 0 0 0 1];
-            %             RefreshByTbc(this);
+            if nargin < 1
+                this.T3d_b_c = [-1 0 0 0; 0 0 -1 0; 0 -1 0 0; 0 0 0 1];
+                RefreshByTbc(this);
+            else
+                rvec_b_c_init = setting.init.rvec_b_c.';
+                tvec_b_c_init = setting.init.tvec_b_c.';
+                this.SetVecbc(rvec_b_c_init, tvec_b_c_init);
+                this.mat_camera = setting.camera.camera_matrix;
+                this.vec_distortion = setting.camera.distortion_coefficients;
+            end
             
             this.dt = 0;
             this.k_odo_lin = 1;
@@ -136,7 +140,7 @@ classdef ClassCalib < handle
             cy = this.mat_camera(2,3);
             disp(['Current estimated fx fy cx cy: ', ...
                 num2str(fx), ' ', num2str(fy), ' ', ...
-                num2str(cx), ' ', num2str(cy), ' ']);            
+                num2str(cx), ' ', num2str(cy), ' ']);
             
             distortion = this.vec_distortion;
             disp(['Current estimated distortion: ', num2str(distortion(1)), ' ', ...
@@ -144,6 +148,16 @@ classdef ClassCalib < handle
                 num2str(distortion(4)), ' ', num2str(distortion(5)), ' ']);
             
             disp(' ');
+        end
+        
+        function struct_result = GetCalibResult(this)
+            struct_result.rvec_b_c = this.rvec_b_c;
+            struct_result.tvec_b_c = this.tvec_b_c;
+            struct_result.dt_b_c = this.dt;
+            struct_result.k_odo_lin = this.k_odo_lin;
+            struct_result.k_odo_rot = this.k_odo_rot;
+            struct_result.mat_camera = this.mat_camera;
+            struct_result.vec_distortion = this.vec_distortion;
         end
     end
 end

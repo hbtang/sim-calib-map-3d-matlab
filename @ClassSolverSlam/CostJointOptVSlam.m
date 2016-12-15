@@ -2,12 +2,12 @@ function [ vecCost, matJacobian ] = CostJointOptVSlam( this, q, mk, odo, time, c
 %COST
 
 % error configure
-stdErrRatioOdoLin = this.config_error.odo.stdratio_lin;
-stdErrRatioOdoRot = this.config_error.odo.stdratio_rot;
+stdErrRatioOdoLin = max(this.config_error.odo.stdratio_lin, 1e-3);
+stdErrRatioOdoRot = max(this.config_error.odo.stdratio_rot, 1e-3);
 MinStdErrOdoLin = this.config_error.odo.stdmin_lin;
 MinStdErrOdoRot = this.config_error.odo.stdmin_rot;
-stdErrImgU = setting.error.mk.std_imgu;
-stdErrImgV = setting.error.mk.std_imgv;
+stdErrImgU = max(setting.error.mk.std_imgu, 1e-2);
+stdErrImgV = max(setting.error.mk.std_imgv, 1e-2);
 
 % vecCost: 8*mk.num + 3*odo.num vector of projection error
 vecCost = zeros(8*mk.num + 3*odo.num,1);

@@ -3,12 +3,12 @@
 # Path of data
 path:
   fold: .\sim
-  markfilename: Mk-eu0.1-ev0.1-s1.rec
-  odofilename: Odo-el0.01-er0.01-s1.rec
+  markfilename: Mk-eu0-ev0-s1.rec
+  odofilename: Odo-el0-er0-s1.rec
 # Prune threshold
 prune:
-  thresh_lin: 200
-  thresh_rot: 0.1
+  thresh_lin: 500
+  thresh_rot: 0.2
 # Error coefficients
 error:
   odo:
@@ -30,7 +30,7 @@ init:
     - [0, 0, 0]
 truth:
   rvec_b_c:
-    - [0.001, 0.001, 0.001]
+    - [0, 2.2214, -2.2214]
   tvec_b_c: 
     - [0.0, 0.0, 0.0]
 # Camera intrinsics

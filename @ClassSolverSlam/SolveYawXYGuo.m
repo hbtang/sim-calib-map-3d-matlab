@@ -1,21 +1,17 @@
-function SolveInitGuo( this, measure, calib )
-%SOLVEINITGUO init calibration with linear constraints follows Guo's
-%solution
-
-disp('Init: VO based method ...');
+function SolveYawXYGuo(this, measure, calib)
+%SOLVEYAWXYGUO 此处显示有关此函数的摘要
+%   此处显示详细说明
+disp('Init: solve yaw and xy by VO based solution ...');
 
 %% build constraints
+disp('Building constraints ...');
 
 odo = measure.odo;
 mk = measure.mk;
 
-if isfield(this.setting.solver, 'init_thresh_locallp')
-    threshLpLocal = this.setting.solver.init_thresh_locallp;
-else
-    threshLpLocal = 10;
-end
+threshLpLocal = 10;
 
-cell_cnstrRow = {};
+cell_cnstr = {};
 for i = 1:numel(mk.vecMkId)
     mkId_i = mk.vecMkId(i);
     vecMkFind = find(mk.id == mkId_i);
@@ -34,59 +30,24 @@ for i = 1:numel(mk.vecMkId)
         rowMk1 = vecMkFind(j-1);
         rowMk2 = vecMkFind(j);
         
-        cnstrRow.rowOdo1 = rowOdo1;
-        cnstrRow.rowOdo2 = rowOdo2;
-        cnstrRow.rowMk1 = rowMk1;
-        cnstrRow.rowMk2 = rowMk2;
+        cnstr.rowOdo1 = rowOdo1;
+        cnstr.rowOdo2 = rowOdo2;
+        cnstr.rowMk1 = rowMk1;
+        cnstr.rowMk2 = rowMk2;
         
-        cell_cnstrRow{end+1} = cnstrRow;
+        cell_cnstr{end+1} = cnstr;
     end
 end
 
 %% step 1: init beta-gamma in ZYZ Euler angle alpha-beta-gamma
 
-numCnstr = numel(cell_cnstrRow);
-M = zeros(4*numCnstr, 4);
-for i = 1:numCnstr
-    rowOdo1 = cell_cnstrRow{i}.rowOdo1;
-    rowOdo2 = cell_cnstrRow{i}.rowOdo2;
-    rowMk1 = cell_cnstrRow{i}.rowMk1;
-    rowMk2 = cell_cnstrRow{i}.rowMk2;
-    
-    theta_o_b1 = odo.theta(rowOdo1);
-    theta_o_b2 = odo.theta(rowOdo2);
-    dtheta_b2_b1 = cnstr2period(theta_o_b1 - theta_o_b2, pi, -pi);
-    rvec_b2_b1 = [0;0;dtheta_b2_b1];
-    qvec_b2_b1 = rodrigues2quat(rvec_b2_b1);
-    [Lqvec_b2_b1,~] = quat2mat(qvec_b2_b1);
-    
-    rvec_c1_m = mk.rvec(rowMk1,:).';
-    rvec_c2_m = mk.rvec(rowMk2,:).';
-    R3_c2_c1 = rodrigues(rvec_c2_m)*(rodrigues(rvec_c1_m).');
-    rvec_c2_c1 = rodrigues(R3_c2_c1);
-    qvec_c2_c1 = rodrigues2quat(rvec_c2_c1);
-    [~,Rqvec_c2_c1] = quat2mat(qvec_c2_c1);
-    
-    M_i = Lqvec_b2_b1 - Rqvec_c2_c1;
-    M(i*4-3:i*4,:) = M_i;
-end
-
-[U,S,V] = svd(M.'*M);
-u1 = U(:,4);
-u2 = U(:,3);
-
-% solve non-linear constraints
-[res,fval,exitflag,output] = fsolve(@(x)cnstr_step_1(x, u1, u2), [1;0]);
-if exitflag <= 0
-    error('Error in SolveInitGuo!');
-end
-qvec_b_c_betagamma = res(1)*u1 + res(2)*u2;
-rvec_b_c_betagamma = quat2rodrigues(qvec_b_c_betagamma);
-R3_b_c_betagamma = rodrigues(rvec_b_c_betagamma);
+T3d_cg_c = calib.T3d_cg_c;
+R3d_cg_c = T3d_cg_c(1:3,1:3);
+R3_b_c_betagamma = R3d_cg_c;
 
 %% step 2: init remaining unknowns
-
-numCnstr = numel(cell_cnstrRow);
+disp('Init remaining unknowns...');
+numCnstr = numel(cell_cnstr);
 G = zeros(2*numCnstr, 4);
 w = zeros(2*numCnstr, 1);
 
@@ -99,10 +60,10 @@ w = zeros(2*numCnstr, 1);
 
 for i = 1:numCnstr
     
-    rowOdo1 = cell_cnstrRow{i}.rowOdo1;
-    rowOdo2 = cell_cnstrRow{i}.rowOdo2;
-    rowMk1 = cell_cnstrRow{i}.rowMk1;
-    rowMk2 = cell_cnstrRow{i}.rowMk2;
+    rowOdo1 = cell_cnstr{i}.rowOdo1;
+    rowOdo2 = cell_cnstr{i}.rowOdo2;
+    rowMk1 = cell_cnstr{i}.rowMk1;
+    rowMk2 = cell_cnstr{i}.rowMk2;
     
     x_o_b1 = odo.x(rowOdo1);
     y_o_b1 = odo.y(rowOdo1);
@@ -162,14 +123,5 @@ R3_b_c = R3_b_c_alpha*R3_b_c_betagamma;
 rvec_b_c = rodrigues(R3_b_c);
 
 %% set calib
+disp('Init: solve yaw and xy by VO based solution done!');
 calib.SetVecbc(rvec_b_c, tvec_b_c);
-disp('Init: VO based method done!');
-
-%% functions used
-function F = cnstr_step_1(x, u1, u2)
-a = x(1); b = x(2);
-u = a*u1 + b*u2;
-F(1) = u.'*u - 1;
-F(2) = u(1)*u(4) - u(2)*u(3);
-
-

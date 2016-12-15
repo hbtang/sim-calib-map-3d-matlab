@@ -6,7 +6,7 @@ if norm(q) == 0
 end
 
 q = q/norm(q);
-theta = cnstr2period(acos(q(4))*2, pi, -pi);
+theta = acos(q(4))*2;
 
 if theta == 0
     r = [0;0;0];

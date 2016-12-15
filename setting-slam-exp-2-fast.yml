@@ -9,19 +9,22 @@ path:
 prune:
   thresh_lin: 200
   thresh_rot: 0.1
+# Solver configure
+solver:
+  init_thresh_locallp: 100
 # Error coefficients
 error:
   odo:
-    stdratio_lin: 0.001
-    stdratio_rot: 0.002
+    stdratio_lin: 0.01
+    stdratio_rot: 0.01
     stdmin_lin: 0.01
     stdmin_rot: 1.745e-4
   mk:
     stdratio_x: 0.002
     stdratio_y: 0.002
     stdratio_z: 0.01
-    std_imgu: 3
-    std_imgv: 3
+    std_imgu: 0.5
+    std_imgv: 0.5
 # Initial guess
 init:
   rvec_b_c:
