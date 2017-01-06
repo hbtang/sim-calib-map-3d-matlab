@@ -2,9 +2,9 @@
 % clear;
 % close all;
 
-% setting = YAML.read('setting-slam-sim.yml');
+setting = YAML.read('setting-slam-sim.yml');
 % setting = YAML.read('setting-slam-exp-1-fast.yml');
-setting = YAML.read('setting-slam-exp-2-fast.yml');
+% setting = YAML.read('setting-slam-exp-2-fast.yml');
 
 % measure
 measure = ClassMeasure(setting.path.fold, setting.path.markfilename, setting.path.odofilename);
