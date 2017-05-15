@@ -1,0 +1,59 @@
+# YAML1.0
+# Configuration file for calib-slam solver
+# Path of data
+path:
+  fold: C:\Workspace\Data\sim\sim-sqrmap-inout-2016.11.8
+  markfilename: Mk.rec
+  odofilename: Odo.rec
+# Prune threshold
+prune:
+  thresh_lin: 400
+  thresh_rot: 0.2
+# Solver configure
+solver:
+  init_thresh_locallp: 20
+# Error coefficients
+error:
+  odo:
+    stdratio_lin: 0.01
+    stdratio_rot: 0.01
+    stdmin_lin: 0.01
+    stdmin_rot: 1.745e-4
+  mk:
+    stdratio_x: 0.002
+    stdratio_y: 0.002
+    stdratio_z: 0.01
+    std_imgu: 1
+    std_imgv: 1
+# Initial guess
+init:
+  rvec_b_c:
+    - [0, 2.2214, -2.2214]
+  tvec_b_c: 
+    - [0, 0, 0]
+truth:
+  rvec_b_c:
+    - [0, 2.2214, -2.2214]
+  tvec_b_c: 
+    - [0.0, 0.0, 0.0]
+# Camera intrinsics
+camera:
+  image_width: 640
+  image_height: 480
+  camera_matrix:
+    - [500, 0., 320]
+    - [0., 500, 240]
+    - [0., 0., 1.]
+  distortion_coefficients:
+    - [0, 0, 0, 0, 0]
+# Aruco
+aruco:
+  size: 200
+  tvec_m_pt1:
+    - [-100, 0, 100]
+  tvec_m_pt2:
+    - [-100, 0, -100]
+  tvec_m_pt3:
+    - [100, 0, -100]
+  tvec_m_pt4:
+    - [100, 0, 100]

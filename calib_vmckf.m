@@ -4,55 +4,53 @@
 clear;
 
 % read configure file
+configXml = 1;
 
-% [FileName,PathName] = uigetfile('*.xml', 'Select the setting file', 'C:\Workspace\Data\');
-% settingFile = [PathName, FileName];
-% settingFile = 'C:\Workspace\Data\jingxing-2016.7.29\jx-r1-205-up-4mm-mk211-calib\config\setting-simcalibmap3d-vmckf.xml';
-% settingFile = 'C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520\config\setting-simcalibmap3d-vmckf.xml';
-% settingFile = 'C:\Workspace\Data\sim\sim-sqrmap-inout-2016.11.8\config\setting-simcalibmap3d-vmckf.xml';
-settingFile = 'setting-vmckf-sim-1.xml';
-configXml = readXml_vmckf(settingFile);
+setting = YAML.read('setting-vmckf-sim.yml');
 
 % read record data
-measure = ClassMeasure(configXml.PathFold, configXml.NameMk, configXml.NameOdo);
+measure = ClassMeasure(setting.path.fold, setting.path.markfilename, setting.path.odofilename);
 measure.ReadRecData;
+
 %%%%%%%% Debug Begin %%%%%%%%
 % reset t_odo, because in AGV dataset bad match in t_odo
-measure.time.t_odo = measure.time.t_mk;
+% measure.time.t_odo = measure.time.t_mk;
 % measure.time.t_odo = TimeOdo_ConstVel(measure.time.t_odo);
 % measure.time.t_odo = TimeOdo_EqualOffset(measure.time.t_odo, measure.odo);
 %%%%%%%% Debug End  %%%%%%%%%
+
 measure_raw = ClassMeasure();
 measure.CopyTo(measure_raw);
-measure.PruneData(configXml.ThreshTransPruneData, configXml.ThreshRotPruneData);
+measure.PruneData(setting.prune.thresh_lin, setting.prune.thresh_rot);
 % compute velocity by interpolation
 measure.odo = Odo_Interpolate(measure.odo, measure_raw.odo, measure_raw.time, 1);
 measure_raw.odo = Odo_Interpolate(measure_raw.odo, measure_raw.odo, measure_raw.time, 1);
 
 % init calib
 calib = ClassCalib;
-pt3cbInit = configXml.pt3cbInit;
-rcbInit = configXml.rcbInit;
-calib.SetVecbc(rcbInit, pt3cbInit);
+tvec_b_c_init = setting.init.tvec_b_c;
+rvec_b_c_init = setting.init.rvec_b_c;
+calib.SetVecbc(rvec_b_c_init, tvec_b_c_init);
 calib.dt = 0;
 calib.k_odo_lin = 1;
 calib.k_odo_rot = 1;
 
 % read error config, todo...
-errConfig.stdErrRatioOdoLin = configXml.SolverConfig_StdErrRatioOdoLin;
-errConfig.stdErrRatioOdoRot = configXml.SolverConfig_StdErrRatioOdoRot;
-errConfig.MinStdErrOdoLin = configXml.SolverConfig_MinStdErrOdoLin;
-errConfig.MinStdErrOdoRot = configXml.SolverConfig_MinStdErrOdoRot;
-errConfig.stdErrRatioMkX = configXml.SolverConfig_StdErrRatioMkX;
-errConfig.stdErrRatioMkY = configXml.SolverConfig_StdErrRatioMkY;
-errConfig.stdErrRatioMkZ = configXml.SolverConfig_StdErrRatioMkZ;
+errConfig.stdErrRatioOdoLin = setting.error.odo.stdratio_lin;
+errConfig.stdErrRatioOdoRot = setting.error.odo.stdratio_rot;
+errConfig.MinStdErrOdoLin = setting.error.odo.stdmin_lin;
+errConfig.MinStdErrOdoRot = setting.error.odo.stdmin_rot;
+errConfig.stdErrRatioMkX = setting.error.mk.stdratio_x;
+errConfig.stdErrRatioMkY = setting.error.mk.stdratio_y;
+errConfig.stdErrRatioMkZ = setting.error.mk.stdratio_z;
 
 % init ground truth
-mu_x_true = configXml.MuXTrue;
+tvec_b_c_true = setting.truth.tvec_b_c;
+rvec_b_c_true = setting.truth.rvec_b_c;
 
 % init solver
 % flag: 0 spatio, 1 spatio-temporal, 2 spatio-odo
-flag = 2;
+flag = 0;
 solver = ClassSolverVmckf(errConfig);
 solver.SetStateFromCalib(calib, flag, true);
 solver.ClearSlidingWindow;
@@ -110,7 +108,7 @@ for i = 1:(numel(vec_lp))
                 
                 % set
                 solver.vec_mu_x = vec_mu_x_new;
-                solver.mat_Sigma_x = mat_Sigma_x_new
+                solver.mat_Sigma_x = mat_Sigma_x_new;
                 
             end
         end
