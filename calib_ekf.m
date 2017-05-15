@@ -21,29 +21,30 @@ calib.k_odo_lin = 1;
 calib.k_odo_rot = 1;
 
 % read error config, todo...
-errConfig.stdErrRatioOdoLin = setting.error.odo.stdratio_lin;
-errConfig.stdErrRatioOdoRot = setting.error.odo.stdratio_rot;
-errConfig.MinStdErrOdoLin = setting.error.odo.stdmin_lin;
-errConfig.MinStdErrOdoRot = setting.error.odo.stdmin_rot;
-errConfig.stdErrRatioMkX = setting.error.mk.stdratio_x;
-errConfig.stdErrRatioMkY = setting.error.mk.stdratio_y;
-errConfig.stdErrRatioMkZ = setting.error.mk.stdratio_z;
+% errConfig.stdErrRatioOdoLin = setting.error.odo.stdratio_lin;
+% errConfig.stdErrRatioOdoRot = setting.error.odo.stdratio_rot;
+% errConfig.MinStdErrOdoLin = setting.error.odo.stdmin_lin;
+% errConfig.MinStdErrOdoRot = setting.error.odo.stdmin_rot;
+% errConfig.stdErrRatioMkX = setting.error.mk.stdratio_x;
+% errConfig.stdErrRatioMkY = setting.error.mk.stdratio_y;
+% errConfig.stdErrRatioMkZ = setting.error.mk.stdratio_z;
+err_config = setting.error;
 
 % init ground truth
 tvec_b_c_true = setting.truth.tvec_b_c;
 rvec_b_c_true = setting.truth.rvec_b_c;
 
 % init solver
-solver = ClassSolverEkf(errConfig);
+solver = ClassSolverEkf(err_config);
 solver.SetStateFromCalib(calib);
 solver.InitBasePose(measure);
 
 %% solve in rt, main loop
 vec_lp = measure.odo.lp;
-rec_mu_x = []; 
+rec_mu_x = [];
 rec_cov_x = cell(0,0);
 
-for i = 1:(numel(vec_lp))    
+for i = 1:(numel(vec_lp))
     %% read measure once
     [b_read_fail, struct_measure] = solver.ReadMeasure(measure);
     if b_read_fail
@@ -54,13 +55,13 @@ for i = 1:(numel(vec_lp))
     [struct_measure] = solver.InitMkNew(struct_measure);
     
     %% propagate
-    
+    solver.Propagate(struct_measure);
     
     %% correct
-    
+    solver.Correct(struct_measure);
     
     %% record
-     
+    
 end
 
 

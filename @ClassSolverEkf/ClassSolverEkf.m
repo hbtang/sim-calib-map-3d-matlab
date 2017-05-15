@@ -19,9 +19,9 @@ classdef ClassSolverEkf < handle
     
     %% functions
     methods
-        function this = ClassSolverEkf(errConfig)
+        function this = ClassSolverEkf(err_config)
             % construct function
-            this.err_config = errConfig;
+            this.err_config = err_config;
             
             this.lp_now = [];
             this.lp_last = [];
@@ -37,21 +37,21 @@ classdef ClassSolverEkf < handle
         
         %% read
         [b_read_fail, struct_measure] = ReadMeasure(this, measure);
-        [struct_measure_new] = InitMkNew(this, struct_measure);
+        [struct_measure] = InitMkNew(this, struct_measure);
         
         %% propagation
         % propagate odometry covariance
-        Propagate(this, lp_now, measure);
+        Propagate(this, struct_measure);
         
         %% correction
-        Correct(this, lp_now, measure);
+        Correct(this, struct_measure);
         
         %% output
         SetCalibFromState(this, calib);
         
         %% member functions
         tvec_w_m = FunTvecwm(this, rvec_b_c, tvec_b_c, se2_w_b, tvec_c_m);
-        
+        tvec_c_m = FunTveccm(this, rvec_b_c, tvec_b_c, se2_w_b, tvec_w_m);
         
     end
     
