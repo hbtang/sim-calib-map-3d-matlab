@@ -18,6 +18,8 @@ se2_w_b = vec_mu_x(7:9);
 mat_Sigma_x9 = mat_Sigma_x(1:9,1:9);
 
 rows_mk_keep = [];
+vec_mu_x_bar = vec_mu_x;
+mat_Sigma_x_bar = mat_Sigma_x;
 for i = 1:num_mk
     %% if already initialized
     mkid = struct_measure.mk.id(i);
@@ -32,7 +34,7 @@ for i = 1:num_mk
     
     %% compute tvec_w_m, and renew vec_mu_x    
     tvec_w_m = this.FunTvecwm(rvec_b_c, tvec_b_c, se2_w_b, tvec_c_m);
-    vec_mu_x = [vec_mu_x; tvec_w_m];
+    vec_mu_x_bar = [vec_mu_x_bar; tvec_w_m];
     
     %% compute Jacobian
     J_tvecwm_rvecbc = JacobianNum(@(x)this.FunTvecwm(x, tvec_b_c, se2_w_b, tvec_c_m), rvec_b_c);
@@ -44,21 +46,23 @@ for i = 1:num_mk
     %% compute cov and renew mat_Sigma_x
     mat_Sigma_tvecwm_tvecwm = J_tvecwm_x9 * mat_Sigma_x9 * J_tvecwm_x9.';
     mat_Sigma_x9_tvecwm = J_tvecwm_x9 * mat_Sigma_x9;
-    mat_Sigma_tvecwm_x9 = mat_Sigma_x9 * J_tvecwm_x9.';
+%     mat_Sigma_tvecwm_x9 = mat_Sigma_x9 * J_tvecwm_x9.';
     
-    mat_Sigma_x = blkdiag(mat_Sigma_x, mat_Sigma_tvecwm_tvecwm);
-    mat_Sigma_x(end-2:end, 1:9) = mat_Sigma_x9_tvecwm;
-    mat_Sigma_x(1:9, end-2:end) = mat_Sigma_tvecwm_x9;
+    mat_Sigma_x_bar = blkdiag(mat_Sigma_x_bar, mat_Sigma_tvecwm_tvecwm);
+%     mat_Sigma_x_bar(end-2:end, 1:9) = mat_Sigma_x9_tvecwm;
+%     mat_Sigma_x_bar(1:9, end-2:end) = mat_Sigma_x9_tvecwm.';
     
 end
 
+mat_Sigma_x_bar = (mat_Sigma_x_bar + mat_Sigma_x_bar.')/2;
+
 %% output
-this.vec_mu_x = vec_mu_x;
-this.mat_Sigma_x = mat_Sigma_x;
+this.vec_mu_x = vec_mu_x_bar;
+this.mat_Sigma_x = mat_Sigma_x_bar;
 this.vec_mkid = vec_mkid;
 
 struct_measure.mk.id = struct_measure.mk.id(rows_mk_keep,:);
 struct_measure.mk.rvec = struct_measure.mk.rvec(rows_mk_keep,:);
 struct_measure.mk.tvec = struct_measure.mk.tvec(rows_mk_keep,:);
 
-
+end

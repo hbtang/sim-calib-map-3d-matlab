@@ -31,9 +31,12 @@ row2 = row_lplast_msrodolp+1;
 lp_now = measure.odo.lp(row2);
 
 % read odo
-se2_o_b_last = [measure.odo.x(row1);measure.odo.y(row1);measure.odo.theta(row1)];
-se2_o_b_now = [measure.odo.x(row2);measure.odo.y(row2);measure.odo.theta(row2)];
-se2_b1_b2 = FunRelPos2d( se2_o_b_last, se2_o_b_now );
+se2_o_b1 = [measure.odo.x(row1);measure.odo.y(row1);measure.odo.theta(row1)];
+se2_o_b2 = [measure.odo.x(row2);measure.odo.y(row2);measure.odo.theta(row2)];
+se2_b1_b2 = FunRelPos2d( se2_o_b1, se2_o_b2 );
+odo.se2_o_b1 = se2_o_b1;
+odo.se2_o_b2 = se2_o_b2;
+odo.se2_b1_b2 = se2_b1_b2;
 
 % read mk
 rowmask_now_msrmk = measure.mk.lp == lp_now;
@@ -44,7 +47,7 @@ mk.tvec = measure.mk.tvec(rowmask_now_msrmk,:);
 %% output
 struct_measure.lp_now = lp_now;
 struct_measure.lp_last = lp_last;
-struct_measure.se2_b1_b2 = se2_b1_b2;
+struct_measure.odo = odo;
 struct_measure.mk = mk;
 
 this.lp_now = lp_now;

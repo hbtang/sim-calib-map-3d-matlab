@@ -15,7 +15,7 @@ se2_o_b = [x_o_b; y_o_b; theta_o_b];
 
 % init vec_mu_x and mat_Sigma_x
 this.vec_mu_x(7:9) = se2_o_b;
-this.mat_Sigma_x(7:9, 7:9) = 1e-6 * eye(3);
+this.mat_Sigma_x(7:9, 7:9) = diag([1e4; 1e4; 1e-2]);
 
 this.lp_now = lp;
 

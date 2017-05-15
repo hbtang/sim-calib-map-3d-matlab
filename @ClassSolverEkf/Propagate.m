@@ -8,7 +8,7 @@ stdmin_rot = this.err_config.odo.stdmin_rot;
 stdratio_lin = this.err_config.odo.stdratio_lin;
 stdratio_rot = this.err_config.odo.stdratio_rot;
 
-se2_b1_b2 = struct_measure.se2_b1_b2;
+se2_b1_b2 = struct_measure.odo.se2_b1_b2;
 dist_b1_b2 = norm(se2_b1_b2(1:2));
 theta_b1_b2 = se2_b1_b2(3);
 
@@ -38,10 +38,14 @@ B_7_9 = blkdiag(R_w_b1, 1);
 B = zeros(dim_x, 3);
 B(7:9,:) = B_7_9;
 mat_Sigma_x_bar = A*mat_Sigma_x*A.' + B*mat_Sigma_u*B.';
+mat_Sigma_x_bar = (mat_Sigma_x_bar + mat_Sigma_x_bar.')/2;
 
 %% output
 this.vec_mu_x = vec_mu_x_bar;
 this.mat_Sigma_x = mat_Sigma_x_bar;
+
+%% debug
+this.vec_mu_x(7:9) = struct_measure.odo.se2_o_b2;
 
 end
 

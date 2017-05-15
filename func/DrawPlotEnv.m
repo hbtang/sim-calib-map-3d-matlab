@@ -1,6 +1,9 @@
 function DrawPlotEnv( rec_mu, rec_sigma, vec_id, rec_lp )
 %DRAWPLOTENV plot rec_plgc with envelop of +-3*std
 
+% if draw cov envolop
+b_draw_cov = true;
+
 sz = size(rec_mu);
 
 if nargin == 2
@@ -28,16 +31,22 @@ if nargin == 3
     f = plot(rec_mu(:,vec_id), 'LineWidth',2);
     h = legend(f);
     set(h,'Fontsize',10);
-    plot(rec_env_top, '--');
-    plot(rec_env_btn, '--');
+    
+    if b_draw_cov
+        plot(rec_env_top, '--');
+        plot(rec_env_btn, '--');
+    end
 else
     figure;
     grid on; hold on;
     f = plot(floor(rec_lp/30) ,rec_mu(:,vec_id), 'LineWidth',2);
     h = legend(f);
     set(h,'Fontsize',10);
-    plot(floor(rec_lp/30), rec_env_top, '--');
-    plot(floor(rec_lp/30), rec_env_btn, '--');
+    
+    if b_draw_cov
+        plot(floor(rec_lp/30), rec_env_top, '--');
+        plot(floor(rec_lp/30), rec_env_btn, '--');
+    end
 end
 
 set(gca,'FontSize',10);
