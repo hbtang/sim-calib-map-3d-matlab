@@ -18,11 +18,22 @@ while ~feof(markFileId)
     if lineTmp(2) == 1023
         continue;
     end
+    
+    % debug begin ...
+    % select several mk
+%     if lineTmp(2) > 5
+%         continue;
+%     end
+    % debug end
         
     this.mk.lp = [this.mk.lp; lineTmp(1)];
     this.mk.id = [this.mk.id; lineTmp(2)];
     this.mk.rvec = [this.mk.rvec; lineTmp(3:5)];
     this.mk.tvec = [this.mk.tvec; lineTmp(6:8)];
+    
+    
+    
+    
     
     if numel(lineTmp) < 9
         continue;

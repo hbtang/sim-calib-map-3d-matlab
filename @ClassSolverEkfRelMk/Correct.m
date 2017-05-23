@@ -32,24 +32,34 @@ tvec_b_c = vec_mu_x(4:6);
 se2_w_b = vec_mu_x(7:9);
 
 for i = 1:num_mk
-    % read info
+    % read measure info
     mkid = mk.id(i);
     tvec_c_m = mk.tvec(i,:).';
     
     % compute index
-    row_vecmkid = find(this.vec_mkid == mkid, 1);
-    rows_tveccm_x = (9+row_vecmkid*3-2: 9+row_vecmkid*3);
-    tvec_w_m = vec_mu_x(rows_tveccm_x);
+    row_vecmkid = find(this.vec_mk_id == mkid, 1);    
+    rowbeg_mk = this.vec_mk_rowbeg(row_vecmkid);
+    rowend_mk = this.vec_mk_rowend(row_vecmkid);
+    lp_init = this.vec_mk_lpinit(row_vecmkid);
+    
+    row_veckflp = find(this.vec_kf_lp == lp_init, 1);
+    rowbeg_kf = this.vec_kf_rowbeg(row_veckflp);
+    rowend_kf = this.vec_kf_rowend(row_veckflp);
+    
+    % read state info
+    se2_w_bkf = vec_mu_x(rowbeg_kf:rowend_kf);
+    tvec_ckf_m = vec_mu_x(rowbeg_mk:rowend_mk);
     
     % compute Jacobian
-    H_rvecbc = JacobianNum(@(x)this.FunTveccm(x, tvec_b_c, se2_w_b, tvec_w_m), rvec_b_c);
-    H_tvecbc = JacobianNum(@(x)this.FunTveccm(rvec_b_c, x, se2_w_b, tvec_w_m), tvec_b_c);
-    H_se2wb = JacobianNum(@(x)this.FunTveccm(rvec_b_c, tvec_b_c, x, tvec_w_m), se2_w_b);
-    H_tvecwm = JacobianNum(@(x)this.FunTveccm(rvec_b_c, tvec_b_c, se2_w_b, x), tvec_w_m);
+    H_rvecbc    = JacobianNum(@(x)this.FunTveccmRelMk(x, tvec_b_c, se2_w_b, se2_w_bkf, tvec_ckf_m), rvec_b_c);
+    H_tvecbc    = JacobianNum(@(x)this.FunTveccmRelMk(rvec_b_c, x, se2_w_b, se2_w_bkf, tvec_ckf_m), tvec_b_c);
+    H_se2wb     = JacobianNum(@(x)this.FunTveccmRelMk(rvec_b_c, tvec_b_c, x, se2_w_bkf, tvec_ckf_m), se2_w_b);
+    H_se2wbkf   = JacobianNum(@(x)this.FunTveccmRelMk(rvec_b_c, tvec_b_c, se2_w_b, x, tvec_ckf_m), se2_w_bkf);
+    H_tvecckfm  = JacobianNum(@(x)this.FunTveccmRelMk(rvec_b_c, tvec_b_c, se2_w_b, se2_w_bkf, x), tvec_ckf_m);
     
     % compute z and mat_Sigma_z
     z(3*i-2:3*i,:) = tvec_c_m;
-    z_pred(3*i-2:3*i,:) = this.FunTveccm(rvec_b_c, tvec_b_c, se2_w_b, tvec_w_m);
+    z_pred(3*i-2:3*i,:) = this.FunTveccmRelMk(rvec_b_c, tvec_b_c, se2_w_b, se2_w_bkf, tvec_ckf_m);
     depth_c_m = tvec_c_m(3);
     mat_std = diag([depth_c_m*stdratio_x; depth_c_m*stdratio_y; depth_c_m*stdratio_z]);
     mat_cov = mat_std * mat_std;
@@ -59,7 +69,8 @@ for i = 1:num_mk
     H(3*i-2:3*i, 1:3) = H_rvecbc;
     H(3*i-2:3*i, 4:6) = H_tvecbc;
     H(3*i-2:3*i, 7:9) = H_se2wb;
-    H(3*i-2:3*i, rows_tveccm_x) = H_tvecwm;
+    H(3*i-2:3*i, rowbeg_kf:rowend_kf) = H_se2wbkf;
+    H(3*i-2:3*i, rowbeg_mk:rowend_mk) = H_tvecckfm;
 end
 
 K = mat_Sigma_x * H.' / (H*mat_Sigma_x*H.' + mat_Sigma_z);
@@ -69,7 +80,7 @@ mat_Sigma_x_bar = (mat_Sigma_x_bar + mat_Sigma_x_bar.')/2;
 
 
 %% refine d_mu
-d_rvec_max = 0.1;
+d_rvec_max = 0.05;
 d_tvec_max = 200;
 vec_d_mu_x = vec_mu_x_bar - vec_mu_x;
 for i = 1:3
@@ -106,7 +117,7 @@ if dist_t > max(eig_t)*3 && dist_t > 100 && min(eig_t) < 300
     mat_Sigma_x_bar(4:6,4:6) = mat_Sigma_t + mat_Sigma_temp;
 end
 
-mat_Sigma_x_bar(1:3,1:3) = RefineCov(mat_Sigma_x_bar(1:3,1:3), 1e-6);
+mat_Sigma_x_bar(1:3,1:3) = RefineCov(mat_Sigma_x_bar(1:3,1:3), 1e-8);
 mat_Sigma_x_bar(4:6,4:6) = RefineCov(mat_Sigma_x_bar(4:6,4:6), 1);
 
 %% output
@@ -114,11 +125,7 @@ this.vec_mu_x = vec_mu_x_bar;
 this.mat_Sigma_x = mat_Sigma_x_bar;
 
 %% debug
-[z_pred, z, dz] = FunZpred(this, vec_mu_x, this.vec_mkid, struct_measure);
-[z_pred_bar, z_bar, dz_bar] = FunZpred(this, vec_mu_x_bar, this.vec_mkid, struct_measure);
-
-disp([dz, dz_bar]);
-
+% disp(z - z_pred);
 
 end
 

@@ -2,7 +2,7 @@
 # Configuration file for calib-slam solver
 # Path of data
 path:
-  fold: C:\Workspace\Data\sim\sim-sqrmap-inout-2016.11.8
+  fold: C:\Workspace\Data\cuhksz-2016.3.15\r2-rightback-bidir-mk127-2016031520
   markfilename: Mk.rec
   odofilename: Odo.rec
 # Prune threshold
@@ -20,22 +20,22 @@ error:
     stdmin_lin: 0.01
     stdmin_rot: 1.745e-4
   mk:
-    stdratio_x: 0.002
-    stdratio_y: 0.002
-    stdratio_z: 0.01
+    stdratio_x: 0.005
+    stdratio_y: 0.005
+    stdratio_z: 0.02
     std_imgu: 1
     std_imgv: 1
 # Initial guess
 init:
   rvec_b_c:
-    - [0, 2.2214, -2.2214]
+    - [-0.42349, -1.9546, 2.0215]
   tvec_b_c: 
-    - [0, 0, 0]
+    - [137.8354, -318.4316, 0]
 truth:
   rvec_b_c:
-    - [0, 2.2214, -2.2214]
+    - [-0.42349, -1.9546, 2.0215]
   tvec_b_c: 
-    - [0.0, 0.0, 0.0]
+    - [137.8354, -318.4316, 0]
 # Camera intrinsics
 camera:
   image_width: 640

@@ -38,14 +38,14 @@ for i = 1:num_mk
     
     %% compute Jacobian
     J_tvecwm_rvecbc = JacobianNum(@(x)this.FunTvecwm(x, tvec_b_c, se2_w_b, tvec_c_m), rvec_b_c);
-    J_tvecwm_tvecbc = JacobianNum(@(x)this.FunTvecwm(rvec_b_c, x, se2_w_b, tvec_c_m), tvec_b_c);
+    J_tvecwm_tvecbc = JacobianNum(@(x)this.FunTvecwm(rvec_b_c, x, se2_w_b, tvec_c_m), tvec_b_c, 1);
     J_tvecwm_se2wb = JacobianNum(@(x)this.FunTvecwm(rvec_b_c, tvec_b_c, x, tvec_c_m), se2_w_b);    
     % Jacobian with the first 9 elements of vec_mu_x
     J_tvecwm_x9 = [J_tvecwm_rvecbc J_tvecwm_tvecbc J_tvecwm_se2wb];
     
     %% compute cov and renew mat_Sigma_x
     mat_Sigma_tvecwm_tvecwm = J_tvecwm_x9 * mat_Sigma_x9 * J_tvecwm_x9.';
-    mat_Sigma_x9_tvecwm = J_tvecwm_x9 * mat_Sigma_x9;
+%     mat_Sigma_x9_tvecwm = J_tvecwm_x9 * mat_Sigma_x9;
 %     mat_Sigma_tvecwm_x9 = mat_Sigma_x9 * J_tvecwm_x9.';
     
     mat_Sigma_x_bar = blkdiag(mat_Sigma_x_bar, mat_Sigma_tvecwm_tvecwm);

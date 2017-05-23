@@ -13,14 +13,14 @@ str_datapath = '.\sim\results_spodotemp\';
 
 % load algorithms
 bCalibSp = true;
-bCalibSpOdo = false;
+bCalibSpOdo = true;
 bCalibSpOdoTmp = true;
 
 % draw configure
-b_drawimg = false;
-stdratio_odo = 0.0;
-b_drawodo = true;
-std_img = 0;
+b_drawimg = true;
+stdratio_odo = 0.01;
+b_drawodo = false;
+std_img = 1;
 if bCalibSp && bCalibSpOdo && bCalibSpOdoTmp
     vec_flag_algor = [1,2,3,4];
 elseif bCalibSp && bCalibSpOdoTmp
@@ -139,8 +139,13 @@ for flag_algorithm = vec_flag_algor
         case 2
             options_draw.algorithms = { ...                
                 'mslamodotemp', 'vslamodotemp'};
-        case 3            
-        case 4            
+        case 3  
+            options_draw.algorithms = { ...                
+                'mslam', 'vslam', ...
+                'mslamodotemp', 'vslamodotemp'};
+        case 4   
+            options_draw.algorithms = { ...                
+                'mslamodotemp', 'vslamodotemp'};
     end
     
     if b_drawimg
@@ -168,7 +173,7 @@ for flag_algorithm = vec_flag_algor
     DrawResultRmse( cell_results, vec_errodo, vec_errmk, options_draw);
     
     options_draw.property = 'k_odo_rot';
-    options_draw.outputfilename = [outputfilename_prefix, '-krot'];
+    options_draw.outputfilename = [outputfilename_prefix, '-y_krot'];
     DrawResultRmse( cell_results, vec_errodo, vec_errmk, options_draw);
     
 end

@@ -4,9 +4,7 @@
 clear;
 
 % read configure file
-configXml = 1;
-
-setting = YAML.read('setting-vmckf-sim.yml');
+setting = YAML.read('setting-gf-exp-d.yml');
 
 % read record data
 measure = ClassMeasure(setting.path.fold, setting.path.markfilename, setting.path.odofilename);
@@ -146,7 +144,7 @@ switch flag
         
 end
 
-
+solver.vec_mu_x.'
 
 
 

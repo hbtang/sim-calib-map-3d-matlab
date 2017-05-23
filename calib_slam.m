@@ -2,8 +2,8 @@
 % clear;
 % close all;
 
-setting = YAML.read('setting-slam-sim.yml');
-% setting = YAML.read('setting-slam-exp-1-fast.yml');
+% setting = YAML.read('setting-slam-sim.yml');
+setting = YAML.read('setting-slam-exp-1-fast.yml');
 % setting = YAML.read('setting-slam-exp-2-fast.yml');
 
 % measure
@@ -69,25 +69,25 @@ options_errvslam = struct('bCalibTmp', true, 'bCalibOdo', true);
 struct_errvslam_init = Err_vSlam( measure, calib, map, setting, options_errvslam );
 
 %% calib with m-slam
-% % do m-slam-calib
-% options_mslam = struct(...
-%     'bCalibExtRot', true, 'bCalibExtLin', true,...
-%     'bCalibTmp', false, 'bCalibOdo', false);
-% solver.SolveJointOptMSlam(measure, calib, map, setting, options_mslam);
-% % display m-slam-calib results
-% calib.DispCalib;
-% % do v-slam based on m-slam-calib results
-% options_mslam = struct(...
-%     'bCalibExtRot', false, 'bCalibExtLin', false,...
-%     'bCalibTmp', false, 'bCalibOdo', false);
-% solver.SolveJointOptVSlam(measure, calib, map, setting, options_mslam);
-% % draw v-slam results
-% options_drawmap = struct('strTitle', 'v-SLAM Result: m-Calib.', 'fileNameFigOut', '.\temp\mslam-all', ...
-%     'bDrawMeasure', true, 'bDrawMkRot', true, 'scaleMk', 3);
-% map.DrawMap(measure, calib, setting, options_drawmap);
-% % compute vslam error 
-% options_errvslam = struct('bCalibTmp', true, 'bCalibOdo', true);
-% struct_errvslam_mcalib = Err_vSlam( measure, calib, map, setting, options_errvslam );
+% do m-slam-calib
+options_mslam = struct(...
+    'bCalibExtRot', true, 'bCalibExtLin', true,...
+    'bCalibTmp', false, 'bCalibOdo', false);
+solver.SolveJointOptMSlam(measure, calib, map, options_mslam);
+% display m-slam-calib results
+calib.DispCalib;
+% do v-slam based on m-slam-calib results
+options_mslam = struct(...
+    'bCalibExtRot', false, 'bCalibExtLin', false,...
+    'bCalibTmp', false, 'bCalibOdo', false);
+solver.SolveJointOptVSlam(measure, calib, map, options_mslam);
+% draw v-slam results
+options_drawmap = struct('strTitle', 'v-SLAM Result: m-Calib.', 'fileNameFigOut', '.\temp\mslam-all', ...
+    'bDrawMeasure', true, 'bDrawMkRot', true, 'scaleMk', 3);
+map.DrawMap(measure, calib, setting, options_drawmap);
+% compute vslam error 
+options_errvslam = struct('bCalibTmp', true, 'bCalibOdo', true);
+struct_errvslam_mcalib = Err_vSlam( measure, calib, map, setting, options_errvslam );
 
 %% calib with v-slam
 % do v-slam-calib

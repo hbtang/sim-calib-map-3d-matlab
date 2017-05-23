@@ -15,7 +15,7 @@ switch flag
         rvec_b_c = calib.rvec_b_c;
         tvec_b_c = calib.tvec_b_c;
         this.vec_mu_x = [rvec_b_c; tvec_b_c];
-        this.mat_Sigma_x = blkdiag(eye(3)*3, eye(3)*1e6);      
+        this.mat_Sigma_x = blkdiag(eye(3)*0.04, eye(3)*40000);      
     case 1
         % for debug
         rvec_b_c = calib.rvec_b_c;
